@@ -64,7 +64,12 @@
     </div>
     @endif
 
-    @yield('content')
+    
+    @include('admin.layouts.partials._menu')
+    <div id="page-wrapper">
+        @yield('content')
+    </div>
+    
 
     <!-- jQuery -->
     <script src="{{asset('/admin/vendor/jquery/jquery.min.js')}}"></script>

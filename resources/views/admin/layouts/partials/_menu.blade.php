@@ -1,8 +1,4 @@
-@extends('adm.template')
-
-@section('content')
 <div id="wrapper">
-
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -12,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-        <a class="navbar-brand" href="{{ route('admin_dashboard') }}">Colepom - Administração</a>
+        <a class="navbar-brand" href="#">Colepom - Administração</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -25,7 +21,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li>
-                    <a href="{{route('admin_logout')}}">
+                    <a href="#">
                             <i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
@@ -39,12 +35,12 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="{{route('admin_dashboard')}}">
+                        <a href="#">
                             <i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
 
                     <li>
-                        <a href="{{route('admin_adm_list')}}">
+                        <a href="#">
                             <i class="fa fa-users fa-fw"></i> Administradores</a>
                     </li>
 
@@ -55,19 +51,19 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{route('admin_sin_list')}}">Sindicatos/Associações</a>
+                                <a href="#">Sindicatos/Associações</a>
                             </li>
                             <li>
-                                <a href="{{route('admin_sin_est_list')}}">Endereços</a>
+                                <a href="#">Endereços</a>
                             </li>   
                             <li>
-                                <a href="{{route('admin_sin_cat_list')}}">Categorias</a>
+                                <a href="#">Categorias</a>
                             </li>
                         </ul>
                     </li>
 
                     <li>
-                        <a href="{{route('admin_ass_list')}}">
+                        <a href="#">
                             <i class="fa fa-thumbs-o-up fa-fw"></i> Associados</a>
                         </li>
                     <li>
@@ -79,13 +75,13 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{route('admin_par_list')}}">Parceiros</a>
+                                <a href="#">Parceiros</a>
                             </li>
                             <li>
-                                <a href="{{route('admin_par_est_list')}}">Endereços</a>
+                                <a href="#">Endereços</a>
                             </li>  
                             <li>
-                                <a href="{{route('admin_par_cat_list')}}">Categorias/Subcategorias</a>
+                                <a href="#">Categorias/Subcategorias</a>
                             </li>
                         </ul>
                     </li>
@@ -96,15 +92,15 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{route('admin_pro_list')}}">Promoções</a>
+                                <a href="#">Promoções</a>
                             </li>
                             <li>
-                                <a href="{{route('admin_pro_cat_list')}}">Categorias/Subcategorias</a>
+                                <a href="#">Categorias/Subcategorias</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{route('admin_cup_list')}}">
+                        <a href="#">
                             <i class="fa fa-ticket fa-fw"></i> Cupons</a>
                     </li>
                 </ul>
@@ -113,8 +109,4 @@
         </div>
         <!-- /.navbar-static-side -->
     </nav>
-
-    @yield('inside')
-
 </div>
-@endsection
