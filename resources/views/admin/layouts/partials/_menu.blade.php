@@ -33,59 +33,27 @@
 
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                    </li>
+                <ul class="nav" id="side-menu">                    
 
                     <li>
-                        <a href="#">
-                            <i class="fa fa-users fa-fw"></i> Administradores</a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-building-o fa-fw"></i> Sindicatos/Associações
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Sindicatos/Associações</a>
-                            </li>
-                            <li>
-                                <a href="#">Endereços</a>
-                            </li>   
-                            <li>
-                                <a href="#">Categorias</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-thumbs-o-up fa-fw"></i> Associados</a>
-                        </li>
-                    <li>
-
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-cubes fa-fw"></i> Parceiros
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Parceiros</a>
-                            </li>
-                            <li>
-                                <a href="#">Endereços</a>
-                            </li>  
-                            <li>
-                                <a href="#">Categorias/Subcategorias</a>
-                            </li>
-                        </ul>
+                        <a href="{{route('categories.index')}}">Categorias/Subcategorias</a>
                     </li>
                     <li>
+                        <a href="{{route('syndicates.index')}}">Sindicatos</a>
+                    </li>
+                    <li>
+                        <a href="{{route('partners.index')}}">Parceiros</a>
+                    </li>
+                    <li>
+                        <a href="{{route('stores.index')}}">Estabelecimentos</a>
+                    </li>
+                    <li>
+                        <a href="{{route('affiliates.index')}}">Associados</a>
+                    </li>
+                    <li>
+                        <a href="{{route('promotions.index')}}">Promoções</a>
+                    </li>
+                    <!-- <li>
                         <a href="#">
                             <i class="fa fa-money fa-fw"></i> Promoções
                             <span class="fa arrow"></span>
@@ -98,15 +66,9 @@
                                 <a href="#">Categorias/Subcategorias</a>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-ticket fa-fw"></i> Cupons</a>
-                    </li>
+                    </li> -->                   
                 </ul>
-            </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
+            </div>          
+        </div>        
     </nav>
 </div>

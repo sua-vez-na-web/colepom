@@ -16,6 +16,7 @@ class CreateAffiliatesTable extends Migration
         Schema::create('affiliates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('syndicate_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('first_name');
             $table->string('last_name');
             $table->date('birth_of_date');
@@ -31,7 +32,7 @@ class CreateAffiliatesTable extends Migration
             $table->boolean('is_aprooved')->default(false);           
 
             $table->foreign('syndicate_id')->references('id')->on('syndicates');   
-
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

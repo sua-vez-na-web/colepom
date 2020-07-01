@@ -18,8 +18,8 @@ class CreatePromotionsTable extends Migration
             $table->unsignedBigInteger('partner_id');
             $table->string('code')->unique();
             $table->string('title');
-            $table->string('description');
-            $table->string('image');
+            $table->string('description')->nullable();
+            $table->string('image')->nullable();
             $table->dateTime('due_date');
             $table->double('amount',10,2);
             $table->boolean('is_active')->default(false);

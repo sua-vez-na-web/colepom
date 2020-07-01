@@ -6,6 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
+    protected $fillable = [
+        'syndicate_id',
+        'partner_id',
+        'name',
+        'zip_code',
+        'city',
+        'address',
+        'neighborhood',
+        'state',
+        'lat',
+        'lng',
+        'phone',
+        'alt_phone',
+        'is_aprooved',        
+    ];
     /**
      * Relations
      */

@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin')
 
 @section('content')    
-<div class="row">        
+    <div class="row">        
         <h3 class="page-header">
             Editar Sindicato {{$syndicate->fantasy_name}}                     
         </h3>        

@@ -15,7 +15,7 @@ class CreateAffiliateCoupomsTable extends Migration
     {
         Schema::create('affiliate_coupoms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('affiliate_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('promotion_id');
             $table->unsignedBigInteger('partner_id');
             $table->dateTime('used_at');

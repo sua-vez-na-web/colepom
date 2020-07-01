@@ -6,21 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUpdateSyndicate extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+    
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+   
     public function rules()
     {
         $id = $this->segment(3);
@@ -28,11 +20,11 @@ class StoreUpdateSyndicate extends FormRequest
         return [
             'fantasy_name'  => "required|min:3|max:100|unique:syndicates,fantasy_name,{$id},id",
             'social_reason' => "required|min:3|max:100|unique:syndicates,social_reason,{$id},id",
-            'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",            
+            'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
+            'user_id' => "required"            
         ];
     }
-
-    //para customizar as mensagens das validacoes
+    
     public function messages()
     {
         return [

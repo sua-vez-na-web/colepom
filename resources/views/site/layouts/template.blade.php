@@ -31,24 +31,24 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<a class="navbar-brand" href="{{ route('index') }}">
+			<a class="navbar-brand" href="{{ route('site.index') }}">
 				<img src="{{ asset('img/colepom_logo.png') }}" alt="colepom_logo">
 			</a>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 				<ul class="navbar-nav ml-md-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="{{ route('promocoes') }}">Explorar Cupons
+						<a class="nav-link" href="{{ route('site.promotions') }}">Explorar Cupons
 							<span class="sr-only">Promoções</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ route('parceiros') }}">Parceiros
+						<a class="nav-link" href="#">Parceiros
 							<span class="sr-only">Parceiros</span>
 						</a>
 					</li>
 					<li class="nav-item" style="margin-right: 20px;">
-						<a class="nav-link" href="{{ route('organizacoes') }}">Sindicatos/Associações
+						<a class="nav-link" href="#">Sindicatos/Associações
 							<span class="sr-only">Sindicatos/Associações</span>
 						</a>
 					</li>
@@ -88,7 +88,8 @@
               </div>
         </div>
     </div>
-    @endif
+	@endif
+	
     @yield('content')
     
 	<footer>
@@ -142,7 +143,7 @@
 	<div id="associado_login" class="modal fade modal-account" tabindex="-1" role="dialog" aria-labelledby="Logar" aria-hidden="true">
 		<div class="modal-dialog modal-md">
 		  	<div class="modal-content">
-				{!! Form::open(['route' => 'ass_logar', 'method'=>'post']) !!}
+			
 					<fieldset>
 						<h4 class="text-center">Entrar como Associado</h4>
 						<div class="form-group">
@@ -150,7 +151,7 @@
 						</div>
 							<div class="form-group">
 								<input class="form-control" placeholder="Password" name="password" type="password" value="">
-								<a href="{{ route('promocoes') }}">Esqueci minha senha de Associado</a>
+								<a href="#">Esqueci minha senha de Associado</a>
 							</div>
 							<div class="checkbox">
 								<label>
@@ -161,14 +162,14 @@
 						<button type="submit" class="btn btn-lg btn-block full_colored ">Entrar como Associado</button>
 						
 						<div class="modal-account-options">
-						<a class="registrar-associado" href="{{ route('ass_registrar') }}">Registrar como Associado</a>
+						<a class="registrar-associado" href="#">Registrar como Associado</a>
 							<br>
 							<a class="login-parceiro" href="#">Entrar como Parceiro</a>
 							<br>
 							<a class="login-sindicato" href="#">Entrar como Sindicato/Associação</a>
 						</div>
 					</fieldset>
-				{!! Form::close() !!}
+				
 		  	</div>
 		</div>
 	</div>
@@ -176,7 +177,7 @@
 		<div id="sindicato_login" class="modal fade modal-account" tabindex="-1" role="dialog" aria-labelledby="Logar" aria-hidden="true">
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
-					{!! Form::open(['route' => 'parc_logar', 'method'=>'post']) !!}
+					
 						<fieldset>
 							<h4 class="text-center">Entrar como Sindicato</h4>
 							<div class="form-group">
@@ -184,7 +185,7 @@
 							</div>
 								<div class="form-group">
 									<input class="form-control" placeholder="Password" name="password" type="password" value="">
-									<a href="{{ route('promocoes') }}">Esqueci minha senha de Sindicato</a>
+									<a href="#">Esqueci minha senha de Sindicato</a>
 								</div>
 								<div class="checkbox">
 									<label>
@@ -195,14 +196,14 @@
 							<button type="submit" class="btn btn-lg btn-block full_colored ">Entrar como Sindicato</button>
 							
 							<div class="modal-account-options">
-							<a class="registrar-associado" href="{{ route('sind_registrar') }}">Registrar como Sindicato</a>
+							<a class="registrar-associado" href="#">Registrar como Sindicato</a>
 								<br>
 								<a class="login-parceiro" href="#">Entrar como Parceiro</a>
 								<br>
 								<a class="login-associado" href="#">Entrar como Associado</a>
 							</div>
 						</fieldset>
-					{!! Form::close() !!}
+				
 		  		</div>
 			</div>
 		</div>
@@ -210,7 +211,7 @@
 		<div id="parceiro_login" class="modal fade modal-account" tabindex="-1" role="dialog" aria-labelledby="Logar" aria-hidden="true">
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
-					{!! Form::open(['route' => 'parc_logar', 'method'=>'post']) !!}
+					
 						<fieldset>
 							<h4 class="text-center">Entrar como Parceiro</h4>
 							<div class="form-group">
@@ -218,7 +219,7 @@
 							</div>
 								<div class="form-group">
 									<input class="form-control" placeholder="Password" name="password" type="password" value="">
-									<a href="{{ route('promocoes') }}">Esqueci minha senha de Parceiro</a>
+									<a href="#">Esqueci minha senha de Parceiro</a>
 								</div>
 								<div class="checkbox">
 									<label>
@@ -229,14 +230,14 @@
 							<button type="submit" class="btn btn-lg btn-block full_colored ">Entrar como Parceiro</button>
 							
 							<div class="modal-account-options">
-							<a class="registrar-associado" href="{{ route('parc_registrar') }}">Registrar como Parceiro</a>
+							<a class="registrar-associado" href="#">Registrar como Parceiro</a>
 								<br>
 								<a class="login-sindicato" href="#">Entrar como Sindicato</a>
 								<br>
 								<a class="login-associado" href="#">Entrar como Associado</a>
 							</div>
 						</fieldset>
-					{!! Form::close() !!}
+				
 		  		</div>
 			</div>
 		</div>

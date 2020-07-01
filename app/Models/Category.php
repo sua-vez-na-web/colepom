@@ -20,9 +20,9 @@ class Category extends Model
         return $this->hasMany(SubCategory::class);
     }
 
-    public function roles()
+    public function role()
     {
-        return $this->hasMany(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
 }
