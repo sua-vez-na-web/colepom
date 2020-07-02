@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes(['login','logout']);
 
+
 /**
  * Site Routes
  */
@@ -26,7 +27,7 @@ Route::group(['namespace'=>'Site'],function(){
 /**
  * Admin Routes
  */
-Route::group(['prefix'=>'admin','namespace'=>'Admin'],function () {
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'auth'],function () {
 
   /**
    * Dashboard Routes
@@ -57,7 +58,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function () {
   /**
    * Affiliates Routes
    */
-  Route::resource('affiliates','AffiliatesController')->only(['index','show']);
+  Route::resource('affiliates','AffiliatesController');
 
   /**
    * Promotions Routes

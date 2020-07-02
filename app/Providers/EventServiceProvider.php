@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Affiliate;
+use App\Observers\SyndicateObserver;
+use App\Models\Syndicate;
+use App\Observers\AffiliateObserver;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -27,6 +31,7 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        Syndicate::observe(SyndicateObserver::class);
+        Affiliate::observe(AffiliateObserver::class);
     }
 }

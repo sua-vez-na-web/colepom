@@ -4,9 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUpdateSyndicate extends FormRequest
+class StoreUpdateAffiliate extends FormRequest
 {
-    
     public function authorize()
     {
         return true;
@@ -18,9 +17,10 @@ class StoreUpdateSyndicate extends FormRequest
         $id = $this->segment(3);
 
         return [
-            'fantasy_name'  => "required|min:3|max:100|unique:syndicates,fantasy_name,{$id},id",
-            'social_reason' => "required|min:3|max:100|unique:syndicates,social_reason,{$id},id",
-            'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",                   
+            'first_name'  => "required|min:3|max:100|",
+            'birth_of_date' => "required|date|",
+            'document' => "required|min:3|max:100|unique:affiliates,document,{$id},id",
+            'email' => "required|email|unique:affiliates",
         ];
     }
     
@@ -37,8 +37,8 @@ class StoreUpdateSyndicate extends FormRequest
     public function attributes()
     {
         return [
-            'fantasy_name' => 'Nome Fantasia',
-            'social_reason' => 'Razão Social'
+            'first_name' => 'Nome',
+            'birth_of_date' => 'Data de nascimento'
         ];
     }
 }

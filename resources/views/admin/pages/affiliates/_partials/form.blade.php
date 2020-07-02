@@ -1,21 +1,53 @@
-<div class="form-group  @error('fantasy_name') has-error @enderror">
-    <label>Nome Fantasia</label>
-    <input class="form-control" name="fantasy_name" type="text" value="{{ $syndicate->fantasy_name ?? @old('fantasy_name') }}">
-    @error('fantasy_name')
+<div class="form-group  @error('first_name') has-error @enderror">
+    <label>Nome</label>
+    <input class="form-control" name="first_name" type="text" value="{{ $syndicate->first_name ?? @old('first_name') }}">
+    @error('first_name')
         <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>
 
-<div class="form-group  @error('social_reason') has-error @enderror">
-    <label>Razão Social</label>
-    <input class="form-control" name="social_reason" type="text" value="{{ $syndicate->social_reason ?? @old('social_reason') }}">
-    @error('social_reason')
+<div class="form-group  @error('last_name') has-error @enderror">
+    <label>Sobre Nome</label>
+    <input class="form-control" name="last_name" type="text" value="{{ $syndicate->last_name ?? @old('last_name') }}">
+    @error('last_name')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('birth_of_date') has-error @enderror">
+    <label>Data de Nasc.</label>
+    <input class="form-control" name="birth_of_date" type="date" value="{{ $syndicate->birth_of_date ?? @old('birth_of_date') }}">
+    @error('birth_of_date')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('genre') has-error @enderror">
+    <label>Genero</label>
+    <input class="form-control" name="genre" type="text" value="{{ $syndicate->genre ?? @old('genre') }}">
+    @error('genre')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('company') has-error @enderror">
+    <label>Empresa</label>
+    <input class="form-control" name="company" type="text" value="{{ $syndicate->company ?? @old('company') }}">
+    @error('company')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('job_post') has-error @enderror">
+    <label>Cargo</label>
+    <input class="form-control" name="job_post" type="text" value="{{ $syndicate->job_post ?? @old('job_post') }}">
+    @error('job_post')
         <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>
 
 <div class="form-group  @error('document') has-error @enderror">
-    <label>CNPJ</label>
+    <label>CPF</label>
     <input class="form-control" name="document" type="text" value="{{ $syndicate->document ?? @old('document') }}">
     @error('document')
         <span class="text-danger">{{ $message ?? '' }}</span>

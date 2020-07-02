@@ -17,6 +17,7 @@ class CreateAffiliatesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('syndicate_id');
             $table->unsignedBigInteger('user_id');
+            $table->string('email')->unique();
             $table->string('first_name');
             $table->string('last_name');
             $table->date('birth_of_date');

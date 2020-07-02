@@ -3,15 +3,15 @@
 @section('content')    
     <div class="row">        
         <h3 class="page-header">
-            Editar Categoria {{$category->fantasy_name}}                     
+            Editar Associado {{$affiliate->fantasy_name}}                     
         </h3>        
     </div>
 
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="#">Dashboard</a></li>
-            <li><a href="{{ route('categories.index') }}">Categorias</a></li>
-            <li class="active">Editar de Categorias</li>
+            <li><a href="{{ route('affiliates.index') }}">Associados</a></li>
+            <li class="active">Editar de Associados</li>
         </ol>      
     </div>
             
@@ -19,13 +19,13 @@
         <div class="col-lg-10">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1 class="panel-header">Editar Categoria</h1>
+                    <h1 class="panel-header">Editar Associado</h1>
                 </div>
                 <div class="panel-body">
-                    <form action="{{ route('categories.update',$category->id) }}" method="post">
+                    <form action="{{ route('affiliates.update',$affiliate->id) }}" method="post">
                         @method('PUT')
                         @csrf                    
-                        @include('admin.pages.categories._partials.form')
+                        @include('admin.pages.affiliates._partials.form')
                     </form>
                 </div>               
             </div>                   

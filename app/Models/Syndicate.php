@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Syndicate extends Model
 {
     protected $fillable = [
+        'user_id',
         'fantasy_name',
         'social_reason',
         'document',
