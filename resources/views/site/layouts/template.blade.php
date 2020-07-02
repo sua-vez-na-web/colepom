@@ -53,7 +53,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="btn light-colored" data-toggle="modal" data-target=".modal-account">ENTRAR
+						<a class="btn light-colored" data-toggle="modal" data-target=".modal-login">ENTRAR
 							<span class="sr-only">Login</span>
 						</a>
 					</li>
@@ -139,138 +139,14 @@
 			</div>
 		</div>
 	</footer>
+	@include('site.layouts._partials._modal-login')
+		
 
-	<div id="associado_login" class="modal fade modal-account" tabindex="-1" role="dialog" aria-labelledby="Logar" aria-hidden="true">
-		<div class="modal-dialog modal-md">
-		  	<div class="modal-content">
-			
-					<fieldset>
-						<h4 class="text-center">Entrar como Associado</h4>
-						<div class="form-group">
-							<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-						</div>
-							<div class="form-group">
-								<input class="form-control" placeholder="Password" name="password" type="password" value="">
-								<a href="#">Esqueci minha senha de Associado</a>
-							</div>
-							<div class="checkbox">
-								<label>
-									<input name="remember" type="checkbox" value="Remember Me"> Lembrar-me
-								</label>
-							</div>
-							<!-- Change this to a button or input when using this as a form -->
-						<button type="submit" class="btn btn-lg btn-block full_colored ">Entrar como Associado</button>
-						
-						<div class="modal-account-options">
-						<a class="registrar-associado" href="#">Registrar como Associado</a>
-							<br>
-							<a class="login-parceiro" href="#">Entrar como Parceiro</a>
-							<br>
-							<a class="login-sindicato" href="#">Entrar como Sindicato/Associação</a>
-						</div>
-					</fieldset>
-				
-		  	</div>
-		</div>
-	</div>
-
-		<div id="sindicato_login" class="modal fade modal-account" tabindex="-1" role="dialog" aria-labelledby="Logar" aria-hidden="true">
-			<div class="modal-dialog modal-md">
-				<div class="modal-content">
-					
-						<fieldset>
-							<h4 class="text-center">Entrar como Sindicato</h4>
-							<div class="form-group">
-								<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-							</div>
-								<div class="form-group">
-									<input class="form-control" placeholder="Password" name="password" type="password" value="">
-									<a href="#">Esqueci minha senha de Sindicato</a>
-								</div>
-								<div class="checkbox">
-									<label>
-										<input name="remember" type="checkbox" value="Remember Me"> Lembrar-me
-									</label>
-								</div>
-								<!-- Change this to a button or input when using this as a form -->
-							<button type="submit" class="btn btn-lg btn-block full_colored ">Entrar como Sindicato</button>
-							
-							<div class="modal-account-options">
-							<a class="registrar-associado" href="#">Registrar como Sindicato</a>
-								<br>
-								<a class="login-parceiro" href="#">Entrar como Parceiro</a>
-								<br>
-								<a class="login-associado" href="#">Entrar como Associado</a>
-							</div>
-						</fieldset>
-				
-		  		</div>
-			</div>
-		</div>
-
-		<div id="parceiro_login" class="modal fade modal-account" tabindex="-1" role="dialog" aria-labelledby="Logar" aria-hidden="true">
-			<div class="modal-dialog modal-md">
-				<div class="modal-content">
-					
-						<fieldset>
-							<h4 class="text-center">Entrar como Parceiro</h4>
-							<div class="form-group">
-								<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-							</div>
-								<div class="form-group">
-									<input class="form-control" placeholder="Password" name="password" type="password" value="">
-									<a href="#">Esqueci minha senha de Parceiro</a>
-								</div>
-								<div class="checkbox">
-									<label>
-										<input name="remember" type="checkbox" value="Remember Me"> Lembrar-me
-									</label>
-								</div>
-								<!-- Change this to a button or input when using this as a form -->
-							<button type="submit" class="btn btn-lg btn-block full_colored ">Entrar como Parceiro</button>
-							
-							<div class="modal-account-options">
-							<a class="registrar-associado" href="#">Registrar como Parceiro</a>
-								<br>
-								<a class="login-sindicato" href="#">Entrar como Sindicato</a>
-								<br>
-								<a class="login-associado" href="#">Entrar como Associado</a>
-							</div>
-						</fieldset>
-				
-		  		</div>
-			</div>
-		</div>
-
-		<div id="parceiro_login" class="modal fade modal-account" tabindex="-1" role="dialog" aria-labelledby="Logar" aria-hidden="true">
-			<div class="modal-dialog modal-md">
-					Parceiro Login
-			</div>
-		</div>
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	    crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	    crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-		crossorigin="anonymous"></script>
-
-	@yield('js')
-	<script>
-		$('.login-associado').click(function() {
-			$('.modal').modal('hide');
-			$('#associado_login').modal('show');
-		});
-		$('.login-parceiro').click(function() {
-			$('.modal').modal('hide');
-			$('#parceiro_login').modal('show');
-		});
-		$('.login-sindicato').click(function() {
-			$('.modal').modal('hide');
-			$('#sindicato_login').modal('show');
-		});
-	</script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
 	<script src="{{ asset('js/scripts.js') }}"></script>
+	@yield('js')
 </body>
 
 </html>

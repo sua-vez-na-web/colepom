@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Auth::routes();
+Auth::routes(['login','logout']);
 
 /**
  * Site Routes
@@ -27,6 +27,13 @@ Route::group(['namespace'=>'Site'],function(){
  * Admin Routes
  */
 Route::group(['prefix'=>'admin','namespace'=>'Admin'],function () {
+
+  /**
+   * Dashboard Routes
+   */
+  Route::get('/dashboard','DashboardController@index')->name('dashboard.index');
+
+
   /**
    * Syndicats Routes
    */
