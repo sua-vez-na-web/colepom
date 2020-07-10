@@ -29,7 +29,7 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Nome</th>
-                                        <th>Dt.Nascimento</th>
+                                        <th>Email</th>
                                         <th>Sindicato</th>
                                         <th>Empresa</th>                                        
                                         <th>Cargo</th>                                       
@@ -43,7 +43,7 @@
                                     <tr>
                                         <th>{{$affiliate->id}}</th>
                                         <th>{{$affiliate->first_name}}</th>
-                                        <th>{{$affiliate->birth_of_date}}</th>
+                                        <th>{{$affiliate->email}}</th>
                                         <th>{{$affiliate->syndicate->fantasy_name}}</th>
                                         <th>{{$affiliate->company}}</th>
                                         <th>{{$affiliate->job_post}}</th>

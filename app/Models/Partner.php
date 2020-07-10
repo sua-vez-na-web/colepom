@@ -26,4 +26,5 @@ class Partner extends Model
     {
         return $this->hasMany(Promotion::class);
     }
+    
 }

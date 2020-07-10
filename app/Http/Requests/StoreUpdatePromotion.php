@@ -20,8 +20,7 @@ class StoreUpdatePromotion extends FormRequest
             'code'  => "required|unique:promotions,code,{$id},id",
             'title' => "required|min:3|max:100",
             'due_date' => "required|date|",            
-            'amount' => "required|numeric",  
-            'partner_id' => "required"          
+            'amount' => "required|numeric",                    
         ];
     }
     

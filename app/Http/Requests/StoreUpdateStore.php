@@ -18,9 +18,7 @@ class StoreUpdateStore extends FormRequest
 
         return [
             'name'  => "required|min:3|max:100|unique:stores,name,{$id},id",
-            'zip_code' => "required",
-            'syndicate_id' => "required",
-            'partner_id' => "required",
+            'zip_code' => "required",           
             'phone' => "required"
         ];
     }

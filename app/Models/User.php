@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -29,5 +30,10 @@ class User extends Authenticatable
     public function syndicate()
     {
         return $this->hasOne(Syndicate::class);
+    }
+
+    public function partner()
+    {
+        return $this->hasOne(Partner::class);
     }
 }

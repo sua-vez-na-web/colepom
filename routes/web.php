@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes(['login','logout']);
 
-
 /**
  * Site Routes
  */

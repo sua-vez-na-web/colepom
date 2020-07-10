@@ -19,8 +19,7 @@ class StoreUpdatePartner extends FormRequest
         return [
             'fantasy_name'  => "required|min:3|max:100|unique:syndicates,fantasy_name,{$id},id",
             'social_reason' => "required|min:3|max:100|unique:syndicates,social_reason,{$id},id",
-            'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
-            'user_id' => "required"                 
+            'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",           
         ];
     }
     

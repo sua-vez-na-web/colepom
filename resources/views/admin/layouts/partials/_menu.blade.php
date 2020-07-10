@@ -53,7 +53,7 @@
                             <a href="{{route('partners.index')}}">Parceiros</a>
                         </li>
                     @endcan
-                    @can(['partner','administrator'])
+                    @can('partner','administrator')
                         <li>
                             <a href="{{route('stores.index')}}">Estabelecimentos</a>
                         </li>

@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\PartnerTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
 {
+    use PartnerTrait;
+    
     protected $fillable = [
         'partner_id',
         'code',

@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\PartnerTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
+    use PartnerTrait;
+    
     protected $fillable = [
         'syndicate_id',
         'partner_id',
