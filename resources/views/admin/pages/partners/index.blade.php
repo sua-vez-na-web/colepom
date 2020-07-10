@@ -19,8 +19,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a href="{{route('partners.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Novo Parceiro </a>
+                        <div class="panel-heading">                            
+                            <a href="{{route('partners.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Novo Parceiro </a>                            
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

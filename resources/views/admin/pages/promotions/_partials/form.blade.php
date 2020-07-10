@@ -1,3 +1,12 @@
+<div class="form-group  @error('category_id') has-error @enderror">
+    <label>Categoria</label>    
+    {!! Form::select('category_id',$categories,null,['class'=>'form-control']) !!}
+    @error('category_id')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+
 <div class="form-group  @error('partner_id') has-error @enderror">
     <label>Parceiro ID</label>
     <input class="form-control" name="partner_id" type="text" value="{{ $partner->partner_id ?? @old('partner_id') }}">

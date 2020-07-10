@@ -16,10 +16,7 @@
 
 <div class="form-group  @error('role_id') has-error @enderror">
     <label>Perfil ID</label>
-    <input class="form-control" name="role_id" type="text" value="{{ $category->role_id ?? @old('role_id') }}">
-    @error('role_id')
-        <span class="text-danger">{{ $message ?? '' }}</span>
-    @enderror
+    {!!  Form::select('role_id',$roles,null,['class'=>'form-control']) !!}
 </div>
 
 

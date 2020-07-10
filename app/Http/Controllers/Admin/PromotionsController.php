@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePromotion;
+use App\Models\Category;
 use App\Models\Promotion;
+use App\Models\Role;
 
 class PromotionsController extends Controller
 {
-    private $promotionRepository;
+    private $promotionRepository,$categoyRepository;
 
-    public function __construct(Promotion $promotion)
+    public function __construct(Promotion $promotion,Category $category)
     {
         $this->promotionRepository = $promotion;
+        $this->categoryRepository = $category;
     }
 
     public function index()
@@ -24,7 +27,9 @@ class PromotionsController extends Controller
 
     public function create()
     {
-      return view('admin.pages.promotions.create');
+     $categories = $this->categoryRepository->where('role_id',Role::PARTNER)
+                                           ->pluck('name','id');
+      return view('admin.pages.promotions.create',compact('categories'));
     }
 
     
@@ -51,8 +56,9 @@ class PromotionsController extends Controller
         if(!$promotion = $this->promotionRepository->find($id)){
             return redirect()->back();
         };
-
-        return view('admin.pages.promotions.edit',compact('promotion'));
+        $categories = $this->categoryRepository->where('role_id',Role::PARTNER)
+                                           ->pluck('name','id');
+        return view('admin.pages.promotions.edit',compact('promotion','categories'));
     }
 
    

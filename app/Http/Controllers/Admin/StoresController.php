@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateStore;
+use App\Models\Category;
+use App\Models\Role;
 use App\Models\Store;
 
 class StoresController extends Controller
 {
-    private $storeRepository;
+    private $storeRepository,$categoryRepository;
 
-    public function __construct(Store $store)
+    public function __construct(Store $store,Category $category)
     {
         $this->storeRepository = $store;
+        $this->categoryRepository = $category;
     }
 
     public function index()
@@ -24,7 +27,9 @@ class StoresController extends Controller
 
     public function create()
     {
-      return view('admin.pages.stores.create');
+     $categories = $this->categoryRepository->where('role_id',Role::PARTNER)
+                                           ->pluck('name','id');
+      return view('admin.pages.stores.create',compact('categories'));
     }
 
     
@@ -51,8 +56,9 @@ class StoresController extends Controller
         if(!$store = $this->storeRepository->find($id)){
             return redirect()->back();
         };
-
-        return view('admin.pages.stores.edit',compact('store'));
+        $categories = $this->categoryRepository->where('role_id',Role::PARTNER)
+                                           ->pluck('name','id');
+        return view('admin.pages.stores.edit',compact('store','categories'));
     }
 
    

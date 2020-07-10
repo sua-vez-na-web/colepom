@@ -1,3 +1,11 @@
+<div class="form-group  @error('category_id') has-error @enderror">
+    <label>Categoria</label>    
+    {!! Form::select('category_id',$categories,null,['class'=>'form-control']) !!}
+    @error('category_id')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
 <div class="form-group  @error('syndicate_id') has-error @enderror">
     <label>Sindicato ID</label>
     <input class="form-control" name="syndicate_id" type="text" value="{{ $partner->syndicate_id ?? @old('syndicate_id') }}">

@@ -11,6 +11,7 @@ class Promotion extends Model
     
     protected $fillable = [
         'partner_id',
+        'category_id',
         'code',
         'title',
         'description',
@@ -27,6 +28,11 @@ class Promotion extends Model
     public function partner()
     {
         return $this->belongsTo(Partner::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
 }

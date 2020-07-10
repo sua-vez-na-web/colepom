@@ -17,6 +17,7 @@ class CreateStoresTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('syndicate_id');
             $table->unsignedBigInteger('partner_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('name');
             $table->string('zip_code')->nullable();
             $table->string('city')->nullable();
@@ -31,6 +32,7 @@ class CreateStoresTable extends Migration
 
             $table->foreign('syndicate_id')->references('id')->on('syndicates');
             $table->foreign('partner_id')->references('id')->on('partners');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateSyndicate;
+use App\Models\Category;
+use App\Models\Role;
 use App\Models\Syndicate;
 
 class SyndicatesController extends Controller
 {
-    private $syndicateRepository;
+    private $syndicateRepository,$categoryRepository;
 
-    public function __construct(Syndicate $syndicate)
+    public function __construct(Syndicate $syndicate,Category $category)
     {
         $this->syndicateRepository = $syndicate;
+        $this->categoryRepository = $category;
     }
 
     public function index()
@@ -25,7 +28,9 @@ class SyndicatesController extends Controller
     
     public function create()
     {
-      return view('admin.pages.syndicates.create');
+      $categories = $this->categoryRepository->where('role_id',Role::SYNDICATE)
+                            ->pluck('name','id');
+      return view('admin.pages.syndicates.create',compact('categories'));
     }
 
     
@@ -52,8 +57,9 @@ class SyndicatesController extends Controller
         if(!$syndicate = $this->syndicateRepository->find($id)){
             return redirect()->back();
         };
-
-        return view('admin.pages.syndicates.edit',compact('syndicate'));
+        $categories = $this->categoryRepository->where('role_id',Role::SYNDICATE)
+                            ->pluck('name','id');
+        return view('admin.pages.syndicates.edit',compact('syndicate','categories'));
     }
 
    

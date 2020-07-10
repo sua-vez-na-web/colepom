@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePartner;
+use App\Models\Category;
 use App\Models\Partner;
+use App\Models\Role;
 
 class PartnersController extends Controller
 {
-    private $partnerRepository;
-
-    public function __construct(Partner $partner)
+    private $partnerRepository,$categoryRepository;
+    
+    public function __construct(Partner $partner,Category $category)
     {
         $this->partnerRepository = $partner;
+        $this->categoryRepository = $category;
     }
 
     public function index()
@@ -24,7 +27,9 @@ class PartnersController extends Controller
 
     public function create()
     {
-      return view('admin.pages.partners.create');
+      $categories = $this->categoryRepository->where('role_id',Role::PARTNER)
+                        ->pluck('name','id');
+      return view('admin.pages.partners.create',compact('categories'));
     }
 
     

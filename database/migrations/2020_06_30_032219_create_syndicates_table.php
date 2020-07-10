@@ -16,6 +16,7 @@ class CreateSyndicatesTable extends Migration
         Schema::create('syndicates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('fantasy_name');
             $table->string('social_reason');
             $table->string('document')->unique(); //CNPJ or CPF
@@ -29,6 +30,7 @@ class CreateSyndicatesTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

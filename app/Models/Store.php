@@ -12,6 +12,7 @@ class Store extends Model
     protected $fillable = [
         'syndicate_id',
         'partner_id',
+        'category_id',
         'name',
         'zip_code',
         'city',
@@ -35,5 +36,10 @@ class Store extends Model
     public function partner()
     {
         return $this->belongsTo(Partner::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

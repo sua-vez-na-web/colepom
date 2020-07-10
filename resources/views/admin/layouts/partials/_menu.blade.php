@@ -40,10 +40,10 @@
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
-                    <li>
-                        <a href="{{route('categories.index')}}">Categorias/Subcategorias</a>
-                    </li>        
-                    @can('administrator')            
+                    @can('administrator')     
+                        <li>
+                            <a href="{{route('categories.index')}}">Categorias/Subcategorias</a>
+                        </li>
                         <li>
                             <a href="{{route('syndicates.index')}}">Sindicatos</a>
                         </li>

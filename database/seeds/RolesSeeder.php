@@ -35,6 +35,6 @@ class RolesSeeder extends Seeder
         Role::create([
             'name' => 'visitante',
             'description' => 'Perfil Visitante'
-        ]);
+        ]);       
     }
 }

@@ -16,6 +16,7 @@ class CreatePromotionsTable extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('partner_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('code')->unique();
             $table->string('title');
             $table->string('description')->nullable();
@@ -26,6 +27,7 @@ class CreatePromotionsTable extends Migration
             $table->timestamps();
 
             $table->foreign('partner_id')->references('id')->on('partners');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

@@ -20,7 +20,9 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a href="{{route('promotions.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Nova Promocao </a>
+                            @can('partner')
+                                <a href="{{route('promotions.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Nova Promocao </a>
+                            @endcan
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

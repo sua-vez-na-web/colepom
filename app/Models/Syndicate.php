@@ -8,6 +8,7 @@ class Syndicate extends Model
 {
     protected $fillable = [
         'user_id',
+        'category_id',
         'fantasy_name',
         'social_reason',
         'document',
@@ -30,5 +31,10 @@ class Syndicate extends Model
     public function affiliates()
     {
         return $this->hasMany(Affiliate::class);
-    }    
+    }
+    
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
