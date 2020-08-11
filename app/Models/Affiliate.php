@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Affiliate extends Model
 {
     use AffiliatesTrait;
-    
+
     protected $fillable =
     [
         'user_id',
@@ -20,9 +20,14 @@ class Affiliate extends Model
         'company',
         'job_post',
         'email',
-        'document'
+        'document',
+        'addresss',
+        'city',
+        'neighborhood',
+        'state',
+        'zip_code'
     ];
-    
+
     /**
      * Relations
      */

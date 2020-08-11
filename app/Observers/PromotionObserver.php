@@ -15,14 +15,14 @@ class PromotionObserver
      */
     public function creating(Promotion $promotion)
     {
-        $user = Auth::user();        
-       
+        $user = Auth::user();
+
         $partner = $user->partner;
-     
+
         $promotion->partner_id = $partner->id;
     }
-        
-    
+
+
 
     /**
      * Handle the promotion "updated" event.

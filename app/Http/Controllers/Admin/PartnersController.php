@@ -11,9 +11,9 @@ use App\Models\Role;
 
 class PartnersController extends Controller
 {
-    private $partnerRepository,$categoryRepository;
-    
-    public function __construct(Partner $partner,Category $category)
+    private $partnerRepository, $categoryRepository;
+
+    public function __construct(Partner $partner, Category $category)
     {
         $this->partnerRepository = $partner;
         $this->categoryRepository = $category;
@@ -22,17 +22,16 @@ class PartnersController extends Controller
     public function index()
     {
         $partners = $this->partnerRepository->paginate();
-        return view('admin.pages.partners.index',compact('partners'));
+        return view('admin.pages.partners.index', compact('partners'));
     }
 
     public function create()
     {
-      $categories = $this->categoryRepository->where('role_id',Role::PARTNER)
-                        ->pluck('name','id');
-      return view('admin.pages.partners.create',compact('categories'));
+        $categories = $this->categoryRepository->pluck('name', 'id');
+        return view('admin.pages.partners.create', compact('categories'));
     }
 
-    
+
     public function store(StoreUpdatePartner $request)
     {
         $this->partnerRepository->create($request->all());
@@ -40,31 +39,32 @@ class PartnersController extends Controller
         return redirect()->route('partners.index');
     }
 
-    
+
     public function show($id)
     {
-        if(!$partner = $this->partnerRepository->find($id)){
+        if (!$partner = $this->partnerRepository->find($id)) {
             return redirect()->back();
         };
 
-        return view('admin.pages.partners.show',compact('partner'));
+        return view('admin.pages.partners.show', compact('partner'));
     }
 
-    
+
     public function edit($id)
     {
-        if(!$partner = $this->partnerRepository->find($id)){
+        if (!$partner = $this->partnerRepository->find($id)) {
             return redirect()->back();
         };
 
-        return view('admin.pages.partners.edit',compact('partner'));
+        $categories = $this->categoryRepository->pluck('name', 'id');
+        return view('admin.pages.partners.edit', compact('partner', 'categories'));
     }
 
-   
+
     public function update(StoreUpdatePartner $request, $id)
     {
-        
-        if(!$partner = $this->partnerRepository->find($id)){
+
+        if (!$partner = $this->partnerRepository->find($id)) {
             return redirect()->back();
         };
 
@@ -75,7 +75,7 @@ class PartnersController extends Controller
 
     public function destroy($id)
     {
-        if(!$partner = $this->partnerRepository->find($id)){
+        if (!$partner = $this->partnerRepository->find($id)) {
             return redirect()->back();
         };
 

@@ -1,6 +1,6 @@
 <div class="form-group  @error('fantasy_name') has-error @enderror">
-    <label>Categoria</label>    
-    {!! Form::select('category_id',$categories,null,['class'=>'form-control']) !!}
+    <label>Categoria</label>
+    {!! Form::select('category_id',$categories,null,['class'=>'form-control','placeholder'=>'Selecione...']) !!}
 </div>
 
 
@@ -8,7 +8,7 @@
     <label>Nome Fantasia</label>
     <input class="form-control" name="fantasy_name" type="text" value="{{ $partner->fantasy_name ?? @old('fantasy_name') }}">
     @error('fantasy_name')
-        <span class="text-danger">{{ $message ?? '' }}</span>
+    <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>
 
@@ -16,15 +16,15 @@
     <label>Razão Social</label>
     <input class="form-control" name="social_reason" type="text" value="{{ $partner->social_reason ?? @old('social_reason') }}">
     @error('social_reason')
-        <span class="text-danger">{{ $message ?? '' }}</span>
+    <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>
 
 <div class="form-group  @error('document') has-error @enderror">
     <label>CNPJ</label>
-    <input class="form-control" name="document" type="text" value="{{ $partner->document ?? @old('document') }}">
+    <input class="form-control cnpj" name="document" type="text" value="{{ $partner->document ?? @old('document') }}">
     @error('document')
-        <span class="text-danger">{{ $message ?? '' }}</span>
+    <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>
 
@@ -32,12 +32,42 @@
     <label>Email</label>
     <input class="form-control" name="email" type="email" value="{{ $partner->email ?? @old('email') }}">
     @error('email')
-        <span class="text-danger">{{ $message ?? '' }}</span>
+    <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('site') has-error @enderror">
+    <label>Site</label>
+    <input class="form-control" name="site" type="text" value="{{ $partner->site ?? @old('site') }}">
+    @error('site')
+    <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('facebook') has-error @enderror">
+    <label>Facebook</label>
+    <input class="form-control" name="facebook" type="text" value="{{ $partner->facebook ?? @old('facebook') }}">
+    @error('facebook')
+    <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('instagram') has-error @enderror">
+    <label>Instagram</label>
+    <input class="form-control" name="instagram" type="instagram" value="{{ $partner->instagram ?? @old('instagram') }}">
+    @error('instagram')
+    <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('youtube') has-error @enderror">
+    <label>Youtube</label>
+    <input class="form-control" name="youtube" type="text" value="{{ $partner->youtube ?? @old('youtube') }}">
+    @error('youtube')
+    <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>
 
 
 <a href="{{route('partners.index')}}" type="reset" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
-
-               

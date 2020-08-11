@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Promotion;
 
 class SiteController extends Controller
@@ -11,7 +12,7 @@ class SiteController extends Controller
     public function index()
     {
         $promotions = Promotion::all();
-        return view('site.pages.home.index',[
+        return view('site.pages.home.index', [
             'promotions' => $promotions
         ]);
     }
@@ -19,9 +20,11 @@ class SiteController extends Controller
     public function promotions()
     {
         $promotions = Promotion::all();
-        
-        return view('site.pages.promotions.index',[
-            'promotions' => $promotions
+        $categories = Category::all();
+
+        return view('site.pages.promotions.index', [
+            'promotions' => $promotions,
+            'categories' => $categories
         ]);
     }
 }

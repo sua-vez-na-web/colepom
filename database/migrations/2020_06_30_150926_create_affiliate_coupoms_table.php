@@ -20,7 +20,7 @@ class CreateAffiliateCoupomsTable extends Migration
             $table->unsignedBigInteger('partner_id');
             $table->dateTime('used_at');
             $table->boolean('is_used')->default(false);
-            $table->boolean('is_active')->default(false);            
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

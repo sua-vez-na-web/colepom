@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
 
     <meta charset="utf-8">
@@ -23,20 +24,21 @@
     <link href="{{asset('/admin/vendor/morrisjs/morris.css')}}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="{{asset('/admin/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">  
+    <link href="{{asset('/admin/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 
+    <link href="{{asset('css/dropify.min.css')}}" rel="stylesheet" type="text/css">
     @yield('css')
 </head>
 
 <body>
-    
+
     @include('admin.layouts.partials._menu')
     <div id="page-wrapper">
         <div class="col-10">
             @include('admin.layouts.partials._messages')
         </div>
         @yield('content')
-    </div>    
+    </div>
 
     <!-- jQuery -->
     <script src="{{asset('/admin/vendor/jquery/jquery.min.js')}}"></script>
@@ -55,7 +57,12 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{asset('/admin/dist/js/sb-admin-2.js')}}"></script>
- 
+    <script src="{{asset('js/viaCep.js') }}"></script>
+    <script src="{{asset('js/jquery.mask.min.js') }}"></script>
+    <script src="{{ asset('js/dropify.min.js') }}"></script>
+
+    <script src="{{asset('js/scripts.js') }}"></script>
+
     @yield('js')
 
 </body>

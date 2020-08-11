@@ -16,11 +16,10 @@ class StoreObserver
      */
     public function creating(Store $store)
     {
-       $user = Auth::user();        
-       
-       $partner = $user->partner;
-       $store->partner_id = $partner->id;
-       $store->syndicate_id = 1;
+        $user = Auth::user();
+
+        $partner = $user->partner;
+        $store->partner_id = $partner->id;
     }
 
     /**

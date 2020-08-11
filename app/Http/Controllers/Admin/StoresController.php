@@ -11,9 +11,9 @@ use App\Models\Store;
 
 class StoresController extends Controller
 {
-    private $storeRepository,$categoryRepository;
+    private $storeRepository, $categoryRepository;
 
-    public function __construct(Store $store,Category $category)
+    public function __construct(Store $store, Category $category)
     {
         $this->storeRepository = $store;
         $this->categoryRepository = $category;
@@ -22,17 +22,16 @@ class StoresController extends Controller
     public function index()
     {
         $stores = $this->storeRepository->paginate();
-        return view('admin.pages.stores.index',compact('stores'));
+        return view('admin.pages.stores.index', compact('stores'));
     }
 
     public function create()
     {
-     $categories = $this->categoryRepository->where('role_id',Role::PARTNER)
-                                           ->pluck('name','id');
-      return view('admin.pages.stores.create',compact('categories'));
+        $categories = $this->categoryRepository->pluck('name', 'id');
+        return view('admin.pages.stores.create', compact('categories'));
     }
 
-    
+
     public function store(StoreUpdateStore $request)
     {
         $this->storeRepository->create($request->all());
@@ -40,32 +39,31 @@ class StoresController extends Controller
         return redirect()->route('stores.index');
     }
 
-    
+
     public function show($id)
     {
-        if(!$store = $this->storeRepository->find($id)){
+        if (!$store = $this->storeRepository->find($id)) {
             return redirect()->back();
         };
 
-        return view('admin.pages.stores.show',compact('store'));
+        return view('admin.pages.stores.show', compact('store'));
     }
 
-    
+
     public function edit($id)
     {
-        if(!$store = $this->storeRepository->find($id)){
+        if (!$store = $this->storeRepository->find($id)) {
             return redirect()->back();
         };
-        $categories = $this->categoryRepository->where('role_id',Role::PARTNER)
-                                           ->pluck('name','id');
-        return view('admin.pages.stores.edit',compact('store','categories'));
+        $categories = $this->categoryRepository->pluck('name', 'id');
+        return view('admin.pages.stores.edit', compact('store', 'categories'));
     }
 
-   
+
     public function update(StoreUpdateStore $request, $id)
     {
-        
-        if(!$store = $this->storeRepository->find($id)){
+
+        if (!$store = $this->storeRepository->find($id)) {
             return redirect()->back();
         };
 
@@ -76,7 +74,7 @@ class StoresController extends Controller
 
     public function destroy($id)
     {
-        if(!$store = $this->storeRepository->find($id)){
+        if (!$store = $this->storeRepository->find($id)) {
             return redirect()->back();
         };
 
