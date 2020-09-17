@@ -1,4 +1,5 @@
-@extends('template') 
+@extends('site.layouts.template')
+
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -13,7 +14,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-3 col-sm-4">
                             <div class="black-canvas">
-                                <img class="cupom-img-top" alt="Parceiro" src="/img/colepom_bg_white.png" width="450" height="600">
+                                <img class="cupom-img-top" alt="Parceiro" src="{{ asset('img/colepom_bg_white.png') }}" width="450" height="600">
                             </div>
                         </div>
                     </div>
@@ -26,151 +27,150 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="page-title">
-            <h1>Registre-se como Associado</h1>
+            <h3>Registre-se como Associado</h3>
         </div>
-        <div class="col-md-8 offset-md-2">
-
+        <div class="col-md-12">
             <div class="page-text">
-                <div class="col-lg-8">
-                    {!! Form::open(['route'=>'ass_registrar_action', 'method'=>'post', 'files'=>true]) !!}
-
-                    <div class="form-group">
-                        <label>Sindicato</label>
-                        <select class="form-control" name="sindicato" required>
-                            <option value="">Selecione o Sindicato</option>
-                            @foreach($sindicatos as $sindicato)
-                            <option value="{{$sindicato->SIN_ID}}">
-                                {{$sindicato->SIN_FANTASIA}}
-                            </option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Nome</label>
-                        <input class="form-control" name="nome" type="text" value="" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Sobrenome</label>
-                        <input class="form-control" name="sobrenome" type="text" value="" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input class="form-control" name="email" type="email" value="" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Senha</label>
-                        <input class="form-control" name="senha" type="password" value="" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Nascimento</label>
-                        <input class="form-control" name="nascimento" type="date" value="" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Genero</label>
-
-                        <label class="radio-inline">
-                            <input name="genero" type="radio" value="M" required checked> Masculino
-                        </label>
-
-                        <label class="radio-inline">
-                            <input name="genero" type="radio" value="F" required> Feminino
-                        </label>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Empresa</label>
-                        <input class="form-control" name="empresa" type="text" value="" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Função</label>
-                        <input class="form-control" name="funcao" type="text" value="" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>CPF</label>
-                        <input class="form-control" name="CPF" type="text" value="" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>CEP</label>
-                        <input class="form-control" name="CEP" type="text" value="">
-                    </div>
-
-                    <div class="form-group">
-                        <label>UF</label>
-                        <select id="seleciona-estados" class="form-control" name="UF">
-                            <option value="AC">Acre</option>
-                            <option value="AL">Alagoas</option>
-                            <option value="AP">Amapá</option>
-                            <option value="AM">Amazonas</option>
-                            <option value="BA">Bahia</option>
-                            <option value="CE">Ceará</option>
-                            <option value="DF">Distrito Federal</option>
-                            <option value="ES">Espírito Santo</option>
-                            <option value="GO">Goiás</option>
-                            <option value="MA">Maranhão</option>
-                            <option value="MT">Mato Grosso</option>
-                            <option value="MS">Mato Grosso do Sul</option>
-                            <option value="MG">Minas Gerais</option>
-                            <option value="PA">Pará</option>
-                            <option value="PB">Paraíba</option>
-                            <option value="PR">Paraná</option>
-                            <option value="PE">Pernambuco</option>
-                            <option value="PI">Piauí</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="RN">Rio Grande do Norte</option>
-                            <option value="RS">Rio Grande do Sul</option>
-                            <option value="RO">Rondônia</option>
-                            <option value="RR">Roraima</option>
-                            <option value="SC">Santa Catarina</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="SE">Sergipe</option>
-                            <option value="TO">Tocantins</option>
-                         </select>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label>Cidade</label>
-                        <input class="form-control" name="cidade" type="text" value="">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Bairro</label>
-                        <input class="form-control" name="bairro" type="text" value="">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Rua</label>
-                        <input class="form-control" name="rua" type="text" value="">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Numero</label>
-                        <input class="form-control" name="numero" type="number" value="">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Complemento</label>
-                        <input class="form-control" name="complemento" type="text" value="">
-                    </div>
-
-                    <div class="text-center">
-                        <button type="submit" class="btn full_colored">
-						    Registrar
-                        </button>
-                    </div>
-                    {!! Form::close() !!}
+                {!! Form::open(['route'=>'register.affiliates']) !!}
+                <div class="form-group">
+                    <label>Sindicato</label>
+                    {!! Form::select('syndicate_id',$syndicates,null,['class'=>'form-control','placeholder'=>'Escolha um Sindicato']) !!}
+                    @error('syndicate_id')
+                    <span class="text-danger">{{ $message ?? '' }}</span>
+                    @enderror
                 </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    {{form::email('email',null,['class'=>'form-control']) }}
+                    @error('email')
+                    <span class="text-danger">{{ $message ?? '' }}</span>
+                    @enderror
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label>Nome</label>
+                        {{form::text('first_name',null,['class'=>'form-control']) }}
+                        @error('first_name')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label>Sobrenome</label>
+                        {{form::text('last_name',null,['class'=>'form-control']) }}
+                        @error('last_name')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label>Nascimento</label>
+                        {{form::date('birth_of_date',null,['class'=>'form-control']) }}
+                        @error('birth_of_date')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label>Genero</label>
+                        <div class="input-group">
+                            <label class="radio-inline">
+                                <input name="genre" type="radio" value="M" required checked> Masculino
+                            </label>
+
+                            <label class="radio-inline mx-4">
+                                <input name="genre" type="radio" value="F" required> Feminino
+                            </label>
+                        </div>
+                        @error('genre')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Empresa</label>
+                    {{form::text('company',null,['class'=>'form-control']) }}
+                    @error('company')
+                    <span class="text-danger">{{ $message ?? '' }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label>Função</label>
+                    {{form::text('job_post',null,['class'=>'form-control']) }}
+                    @error('job_post')
+                    <span class="text-danger">{{ $message ?? '' }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label>CPF</label>
+                    {{form::text('document',null,['class'=>'form-control']) }}
+                    @error('document')
+                    <span class="text-danger">{{ $message ?? '' }}</span>
+                    @enderror
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-12 col-md-2">
+                        <label>CEP</label>
+                        {{form::text('zip_code',null,['class'=>'form-control','id'=>"cep"]) }}
+                        @error('zip_code')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-sm-12 col-md-10">
+                        <label>Rua</label>
+                        {{form::text('address',null,['class'=>'form-control','id'=>"rua"]) }}
+                        @error('address')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label>UF</label>
+                        {{form::text('state',null,['class'=>'form-control','readonly'=>"true",'id'=>"uf"]) }}
+                    </div>
+
+
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label>Cidade</label>
+                        {{form::text('city',null,['class'=>'form-control','id'=>'cidade']) }}
+                        @error('city')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label>Bairro</label>
+                        {{form::text('neighborhood',null,['class'=>'form-control','id'=>'bairro']) }}
+                        @error('nighborhood')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn full_colored">
+                        Registrar
+                    </button>
+                </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script src="{{ asset('js/viaCep.js') }}"></script>
 @endsection

@@ -23,7 +23,7 @@
             </div>
             <div class="panel-body">
                 <!-- <form action="{{ route('stores.update',$store->id) }}" method="post"> -->
-                {!! Form::model($store,['route' => ['stores.update',$store->id]]) !!}
+                {!! Form::model($store,['route' => ['stores.update',$store->id],'enctype'=>'multipart/form-data']) !!}
                 @method('PUT')
                 @csrf
                 @include('admin.pages.stores._partials.form')

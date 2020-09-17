@@ -1,3 +1,19 @@
+<div class="form-group  @error('image') has-error @enderror">
+    <label>Imagem</label>
+    <input type="file" name="image" id="" class="dropify">
+    @error('image')
+    <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<h4>Dados Gerais</h4>
+<hr>
+
+<div class="form-group @error('partner_id') has-error @enderror">
+    <label for="partner_id">Parceiro</label>
+    {!! Form::select('partner_id',$partners,null,['class'=>'form-control','placeholder'=>'Selecione...']) !!}
+</div>
+
 <div class="form-group  @error('category_id') has-error @enderror">
     <label>Categoria</label>
     {!! Form::select('category_id',$categories,null,['class'=>'form-control','placeholder'=>"Selecione..."]) !!}
@@ -13,44 +29,21 @@
     <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>
-
 <div class="row">
-    <div class="form-group col-md-1">
-        <label for="cep">Cep</label>
-        <input type="text" id="cep" name="zip_code" class="form-control" value="{{ $store->zip_code ?? @old('zip_code') }}">
+    <div class="form-group col-md-3 col-sm-12  @error('phone') has-error @enderror">
+        <label>Telefone</label>
+        <input class="form-control cnpj" name="phone" type="text" value="{{ $store->phone ?? @old('phone') }}">
+        @error('phone')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
     </div>
-    <div class="form-group col-md-3">
-        <label for="ru">Rua/Logradouro</label>
-        <input type="text" id="rua" name="address" class="form-control" value="{{ $store->address ?? @old('address') }}">
+    <div class="form-group col-md-3 col-sm-12  @error('mobile_phone') has-error @enderror">
+        <label>Celular</label>
+        <input class="form-control cnpj" name="mobile_phone" type="text" value="{{ $store->mobile_phone ?? @old('mobile_phone') }}">
+        @error('mobile_phone')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
     </div>
-    <div class="form-group col-md-2">
-        <label for="cep">Cidade</label>
-        <input type="text" id="cidade" name="city" class="form-control" value="{{ $store->city ?? @old('city') }}">
-    </div>
-    <div class="form-group col-md-2">
-        <label for="cep">Bairro</label>
-        <input type="text" id="bairro" name="neighborhood" class="form-control" value="{{ $store->neighborhood ?? @old('neighborhood') }}">
-    </div>
-    <div class="form-group col-md-1">
-        <label for="cep">UF</label>
-        <input type="text" id="uf" name="state" class="form-control" value="{{ $store->state ?? @old('state') }}">
-    </div>
-</div>
-
-<div class="form-group  @error('phone') has-error @enderror">
-    <label>Telefone</label>
-    <input class="form-control phone" name="phone" type="text" value="{{ $store->phone ?? @old('phone') }}">
-    @error('phone')
-    <span class="text-danger">{{ $message ?? '' }}</span>
-    @enderror
-</div>
-
-<div class="form-group  @error('alt_phone') has-error @enderror">
-    <label>Telefone Alternativo</label>
-    <input class="form-control phone" name="alt_phone" type="text" value="{{ $store->alt_phone ?? @old('alt_phone') }}">
-    @error('alt_phone')
-    <span class="text-danger">{{ $message ?? '' }}</span>
-    @enderror
 </div>
 
 <div class="row">
@@ -63,6 +56,57 @@
         <input type="text" name="lng" class="form-control" value="{{ $store->lng ?? @old('lng') }}">
     </div>
 </div>
+
+<h4>Localização</h4>
+<hr>
+<div class="row">
+    <div class="form-group col-md-2 col-sm-12  @error('zipcode') has-error @enderror">
+        <label>Cep</label>
+        <input class="form-control" name="zipcode" type="text" value="{{ $store->zipcode ?? @old('zipcode') }}">
+        @error('zipcode')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
+    </div>
+    <div class="form-group col-md-8 col-sm-12  @error('address') has-error @enderror">
+        <label>Endereco</label>
+        <input class="form-control" name="address" type="text" value="{{ $store->address ?? @old('address') }}">
+        @error('address')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
+    </div>
+    <div class="form-group col-md-2 col-sm-12  @error('address_number') has-error @enderror">
+        <label>Numero</label>
+        <input class="form-control" name="address_number" type="text" value="{{ $store->address_number ?? @old('address_number') }}">
+        @error('address_number')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-4 col-sm-12  @error('city') has-error @enderror">
+        <label>Cidade</label>
+        <input class="form-control" name="city" type="text" value="{{ $store->city ?? @old('city') }}">
+        @error('city')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
+    </div>
+    <div class="form-group col-md-4 col-sm-12  @error('province') has-error @enderror">
+        <label>Estado</label>
+        <input class="form-control" name="province" type="text" value="{{ $store->province ?? @old('province') }}">
+        @error('province')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
+    </div>
+    <div class="form-group col-md-4 col-sm-12  @error('address_complement') has-error @enderror">
+        <label>Complemento</label>
+        <input class="form-control" name="address_complement" type="text" value="{{ $store->address_complement ?? @old('address_complement') }}">
+        @error('address_complement')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
+    </div>
+</div>
+
 
 <a href="{{route('stores.index')}}" type="reset" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>

@@ -8,6 +8,7 @@ use App\Http\Requests\StoreUpdateSyndicate;
 use App\Models\Category;
 use App\Models\Role;
 use App\Models\Syndicate;
+use App\Models\User;
 
 class SyndicatesController extends Controller
 {
@@ -35,7 +36,13 @@ class SyndicatesController extends Controller
 
     public function store(StoreUpdateSyndicate $request)
     {
-        $this->syndicateRepository->create($request->all());
+        $data = $request->all();
+        // dd($data);
+        $user = User::createUserAccount($request->email, $request->username, Role::SYNDICATE);
+
+        $data['user_id'] = $user->id;
+
+        $this->syndicateRepository->create($data);
 
         return redirect()->route('syndicates.index');
     }

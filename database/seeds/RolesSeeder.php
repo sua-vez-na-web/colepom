@@ -31,10 +31,5 @@ class RolesSeeder extends Seeder
             'name' => 'parceiros',
             'description' => 'Perfil de Parceiro'
         ]);
-
-        Role::create([
-            'name' => 'visitante',
-            'description' => 'Perfil Visitante'
-        ]);       
     }
 }

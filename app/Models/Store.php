@@ -2,28 +2,27 @@
 
 namespace App\Models;
 
-use App\Traits\PartnerTrait;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Store extends Model
 {
-    use PartnerTrait;
-    
+
     protected $fillable = [
-        'syndicate_id',
         'partner_id',
         'category_id',
         'name',
-        'zip_code',
-        'city',
+        'phone',
+        'mobile_phone',
+        'zipcode',
         'address',
-        'neighborhood',
-        'state',
+        'address_number',
+        'address_complement',
+        'province',
+        'city',
         'lat',
         'lng',
-        'phone',
-        'alt_phone',
-        'is_aprooved',        
+        'is_aprooved',
     ];
     /**
      * Relations

@@ -14,11 +14,9 @@
 	<link rel="shortcut icon" type="image/png" href="{{ asset('favicon.png') }}" />
 
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto:300,400,700|Sunflower:300,500,700" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	    crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-	    crossorigin="anonymous">	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
 
@@ -64,34 +62,36 @@
 		</div>
 	</nav>
 
-    @if (session('sucesso'))
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="alert alert-success alert-dismissible show" role="alert">
-                {{ session('sucesso') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-        </div>
-    </div>
-    @endif
-
-    @if (session('erro'))
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="alert alert-danger alert-dismissible show" role="alert">
-                {{ session('erro') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-        </div>
-    </div>
+	@if (session('sucesso'))
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="alert alert-success alert-dismissible show" role="alert">
+				{{ session('sucesso') }}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+	</div>
 	@endif
-	
-    @yield('content')
-    
+
+	@if (session('erro'))
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="alert alert-danger alert-dismissible show" role="alert">
+				{{ session('erro') }}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	@endif
+	<main>
+
+		@yield('content')
+	</main>
+
 	<footer>
 		<div class="container">
 			<div class="row">
@@ -140,12 +140,13 @@
 		</div>
 	</footer>
 	@include('site.layouts._partials._modal-login')
-		
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+	<script src="{{asset('js/app.js')}}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
-	<script src="{{ asset('js/scripts.js') }}"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+	<!-- <script src="{{ asset('js/scripts.js') }}"></script> -->
 	@yield('js')
 </body>
 

@@ -21,18 +21,19 @@ class CreateAffiliatesTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->date('birth_of_date');
-            $table->string('genre',1);
+            $table->string('genre', 1);
             $table->string('company')->nullable();
             $table->string('job_post')->nullable();
             $table->string('document')->unique();
-            $table->string('zip_code')->nullable();
-            $table->string('city')->nullable();
-            $table->string('address')->nullable();
-            $table->string('neighborhood')->nullable();
-            $table->string('state')->nullable();            
-            $table->boolean('is_aprooved')->default(false);           
+            $table->string('zipcode');
+            $table->string('address');
+            $table->string('address_number');
+            $table->string('address_complement');
+            $table->string('city');
+            $table->string('province');
+            $table->boolean('is_aprooved')->default(false);
 
-            $table->foreign('syndicate_id')->references('id')->on('syndicates');   
+            $table->foreign('syndicate_id')->references('id')->on('syndicates');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

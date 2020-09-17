@@ -8,17 +8,29 @@ class Syndicate extends Model
 {
     protected $fillable = [
         'user_id',
-        'category_id',
-        'fantasy_name',
-        'social_reason',
-        'document',
+        'name',
+        'president_name',
+        'cpf_cnpj',
+        'phone',
+        'mobile_phone',
         'email',
         'brand',
         'site',
         'facebook',
         'instagram',
         'youtube',
-        'is_aprooved',        
+        'zipcode',
+        'address',
+        'address_number',
+        'address_complement',
+        'province',
+        'city',
+        'asaas_notify',
+        'asaas_id',
+        'municipal_inscription',
+        'state_inscription',
+        'observations',
+        'is_aprooved',
     ];
     /**
      * Relations
@@ -31,10 +43,5 @@ class Syndicate extends Model
     public function affiliates()
     {
         return $this->hasMany(Affiliate::class);
-    }
-    
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
     }
 }

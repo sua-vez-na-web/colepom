@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Partner;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -35,5 +40,24 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request)
+    {
+
+        $credentals = $request->only(['email', 'password']);
+
+        if (Auth::attempt($credentals)) {
+
+            $user = Auth::user();
+
+            if ($user->role_id == Role::AFFILIATE) {
+                return redirect()->route('affiliates.dashboard');
+            }
+
+            return redirect()->to($this->redirectTo);
+        }
+
+        return redirect()->route('login');
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Requests\StoreUpdatePartner;
 use App\Models\Category;
 use App\Models\Partner;
 use App\Models\Role;
+use App\Models\User;
 
 class PartnersController extends Controller
 {
@@ -34,7 +35,13 @@ class PartnersController extends Controller
 
     public function store(StoreUpdatePartner $request)
     {
-        $this->partnerRepository->create($request->all());
+        $data = $request->all();
+
+        $user = User::createUserAccount($request->email, $request->username, Role::PARTNER);
+
+        $data['user_id'] = $user->id;
+
+        $this->partnerRepository->create($data);
 
         return redirect()->route('partners.index');
     }

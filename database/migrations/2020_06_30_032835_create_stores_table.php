@@ -18,15 +18,18 @@ class CreateStoresTable extends Migration
             $table->unsignedBigInteger('partner_id');
             $table->unsignedBigInteger('category_id');
             $table->string('name');
-            $table->string('zip_code')->nullable();
-            $table->string('city')->nullable();
-            $table->string('address')->nullable();
-            $table->string('neighborhood')->nullable();
-            $table->string('state')->nullable();
+            $table->string('phone');
+            $table->string('brand')->nullable();
+            $table->string('mobile_phone')->nullable();
+            $table->string('zipcode');
+            $table->string('address');
+            $table->string('address_number');
+            $table->string('address_complement')->nullable();
+            $table->string('city');
+            $table->string('province');
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('alt_phone')->nullable();
+
             $table->timestamps();
 
 

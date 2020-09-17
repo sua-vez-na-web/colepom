@@ -28,11 +28,11 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nome Fantasia</th>
-                            <th>Razão Social</th>
-                            <th>Categoria</th>
+                            <th>Nome</th>
+                            <th>Presidente</th>
                             <th>CNPJ</th>
                             <th>Email</th>
+                            <th>Assas ID</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -40,11 +40,11 @@
                         @foreach($syndicates as $syndicate)
                         <tr>
                             <th>{{$syndicate->id}}</th>
-                            <th>{{$syndicate->fantasy_name}}</th>
-                            <th>{{$syndicate->social_reason}}</th>
-                            <th>{{$syndicate->category->name }}</th>
-                            <th>{{$syndicate->document}}</th>
+                            <th>{{$syndicate->name}}</th>
+                            <th>{{$syndicate->president_name}}</th>
+                            <th>{{$syndicate->cpf_cnpj}}</th>
                             <th>{{$syndicate->email}}</th>
+                            <th>{{$syndicate->assas_id}}</th>
                             <th>
                                 <a href="{{ route('syndicates.edit',$syndicate->id) }}" class="btn btn-primary btn-xs">
                                     <i class="fa fa-pencil"></i> Editar
