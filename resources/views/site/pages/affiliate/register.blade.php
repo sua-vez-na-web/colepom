@@ -119,16 +119,23 @@
                 <div class="row">
                     <div class="form-group col-sm-12 col-md-2">
                         <label>CEP</label>
-                        {{form::text('zip_code',null,['class'=>'form-control','id'=>"cep"]) }}
-                        @error('zip_code')
+                        {{form::text('zipcode',null,['class'=>'form-control','id'=>"cep"]) }}
+                        @error('zipcode')
                         <span class="text-danger">{{ $message ?? '' }}</span>
                         @enderror
                     </div>
 
-                    <div class="form-group col-sm-12 col-md-10">
+                    <div class="form-group col-sm-12 col-md-8">
                         <label>Rua</label>
                         {{form::text('address',null,['class'=>'form-control','id'=>"rua"]) }}
                         @error('address')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-sm-12 col-md-2">
+                        <label>Número</label>
+                        {{form::text('address_number',null,['class'=>'form-control','id'=>"rua"]) }}
+                        @error('address_number')
                         <span class="text-danger">{{ $message ?? '' }}</span>
                         @enderror
                     </div>
@@ -152,8 +159,8 @@
 
                     <div class="form-group col-md-4 col-sm-12">
                         <label>Bairro</label>
-                        {{form::text('neighborhood',null,['class'=>'form-control','id'=>'bairro']) }}
-                        @error('nighborhood')
+                        {{form::text('province',null,['class'=>'form-control','id'=>'bairro']) }}
+                        @error('province')
                         <span class="text-danger">{{ $message ?? '' }}</span>
                         @enderror
                     </div>

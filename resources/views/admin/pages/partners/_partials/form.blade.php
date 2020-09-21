@@ -150,9 +150,9 @@
     </div>
 </div>
 
+@if(!Request::segment(4) == 'edit')
 <h4>Acesso</h4>
 <hr>
-
 <div class="row">
     <div class="form-group col-md-3 col-sm-12  @error('username') has-error @enderror">
         <label>Nome do Usuário</label>
@@ -162,6 +162,6 @@
         @enderror
     </div>
 </div>
-
+@endif
 <a href="{{route('partners.index')}}" type="reset" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>

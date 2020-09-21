@@ -48,8 +48,14 @@ class AffiliatesController extends Controller
 
         $AffiliateUser = User::createUserAccount($request->email, $request->username, Role::AFFILIATE);
 
+        if ($user->role_id == Role::ADMINISTRATOR) {
+            $syndicate = Syndicate::find($request->syndicate_id);
+            $data['syndicate_id'] = $syndicate->id;
+        } else {
+            $data['syndicate_id'] = $user->syndicate->id;
+        }
+
         $data['user_id'] = $AffiliateUser->id;
-        $data['syndicate_id'] = $user->syndicate->id;
 
         Affiliate::create($data);
 

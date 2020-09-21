@@ -24,8 +24,12 @@ class StoreUpdateAffiliate extends FormRequest
             'job_post'  => "required|min:3|max:100",
             'birth_of_date' => "required|date",
             'document' => "required|min:3|max:100|unique:affiliates,document,{$id},id",
-            'email' => "required|email|unique:affiliates",
-            'zip_code' => "required"
+            'email' => 'required|email|unique:affiliates',
+            'zipcode' => 'required',
+            'address' => 'required',
+            'address_number' => 'required',
+            'city' => 'required',
+            "province" => 'required'
         ];
     }
 
@@ -46,10 +50,14 @@ class StoreUpdateAffiliate extends FormRequest
             'first_name' => 'Nome',
             'last_name' => 'Sobrenome',
             'birth_of_date' => 'Data de nascimento',
-            'zip_code' => 'cep',
+            'zipcode' => 'Cep',
             'company' => 'empresa',
             'job_post' => 'cargo ou ocupacção',
-            'document' => 'CPF'
+            'document' => 'CPF',
+            'address' => 'Rua',
+            'address_number' => 'Número',
+            'city' => 'Cidade',
+            'province' => 'Bairro',
         ];
     }
 }

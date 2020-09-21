@@ -10,7 +10,7 @@
 <div class="row">
     <ol class="breadcrumb">
         <li><a href="#">Dashboard</a></li>
-        <li><a href="{{ route('stores.index') }}">Estabelecimentoss</a></li>
+        <li><a href="{{ route('stores.index') }}">Estabelecimentos</a></li>
         <li class="active">Editar Estabelecimentos</li>
     </ol>
 </div>

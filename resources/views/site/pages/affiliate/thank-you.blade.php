@@ -25,8 +25,8 @@
 </div>
 
 <div class="container mt-5">
-    <h2>Obriago pelo seu cadastro</h2>
-    <p>Seu cadastro está em processo de aprovação. Enviaremos um email quando seu cadastro for aprovado.</p>
+    <h2>Obrigado pelo seu cadastro</h2>
+    <p>Seu cadastro está em processo de aprovação. Enviaremos um email com sua senha provissória quando seu cadastro for aprovado.</p>
 </div>
 
 @endsection

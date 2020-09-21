@@ -23,10 +23,11 @@ class Affiliate extends Model
         'email',
         'document',
         'address',
+        'address_number',
+        'address_complement',
         'city',
-        'neighborhood',
-        'state',
-        'zip_code'
+        'province',
+        'zipcode'
     ];
 
     /**

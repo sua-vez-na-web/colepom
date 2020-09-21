@@ -44,7 +44,7 @@
                             <th>{{$syndicate->president_name}}</th>
                             <th>{{$syndicate->cpf_cnpj}}</th>
                             <th>{{$syndicate->email}}</th>
-                            <th>{{$syndicate->assas_id}}</th>
+                            <th>{{$syndicate->asaas_id}}</th>
                             <th>
                                 <a href="{{ route('syndicates.edit',$syndicate->id) }}" class="btn btn-primary btn-xs">
                                     <i class="fa fa-pencil"></i> Editar

@@ -50,12 +50,13 @@
 							<span class="sr-only">Sindicatos/Associações</span>
 						</a>
 					</li>
+					@Guest
 					<li class="nav-item">
 						<a class="btn light-colored" data-toggle="modal" data-target=".modal-login">ENTRAR
 							<span class="sr-only">Login</span>
 						</a>
 					</li>
-
+					@endGuest
 
 				</ul>
 			</div>

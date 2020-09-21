@@ -8,6 +8,7 @@ use App\Http\Requests\StoreUpdateAffiliate;
 use App\Models\Affiliate;
 use App\Models\Category;
 use App\Models\Promotion;
+use App\Models\Role;
 use App\Models\Syndicate;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -44,7 +45,7 @@ class SiteController extends Controller
 
     public function showRegistrationForm()
     {
-        $syndicates = Syndicate::pluck('fantasy_name', 'id');
+        $syndicates = Syndicate::pluck('name', 'id');
 
         return view('site.pages.affiliate.register', compact('syndicates'));
     }
@@ -53,7 +54,8 @@ class SiteController extends Controller
     {
         $data = $request->all();
 
-        $user = User::createUserAccount($request->email, $request->first_name, $request->last_name, User::AFFILIATE);
+        $username = $request->first_name . "-" . $request->last_name;
+        $user = User::createUserAccount($request->email, $username, Role::AFFILIATE);
 
         $data['user_id'] = $user->id;
 

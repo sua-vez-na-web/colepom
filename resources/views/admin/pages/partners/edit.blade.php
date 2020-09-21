@@ -10,7 +10,7 @@
 <div class="row">
     <ol class="breadcrumb">
         <li><a href="#">Dashboard</a></li>
-        <li><a href="{{ route('partners.index') }}">Parcieross</a></li>
+        <li><a href="{{ route('partners.index') }}">Parcieros</a></li>
         <li class="active">Editar de Parcieross</li>
     </ol>
 </div>
