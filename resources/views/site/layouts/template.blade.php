@@ -41,12 +41,12 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Parceiros
+						<a class="nav-link" href="{{ route('site.partners')}}">Parceiros
 							<span class="sr-only">Parceiros</span>
 						</a>
 					</li>
 					<li class="nav-item" style="margin-right: 20px;">
-						<a class="nav-link" href="#">Sindicatos/Associações
+						<a class="nav-link" href="{{ route('site.syndicates') }}">Sindicatos/Associações
 							<span class="sr-only">Sindicatos/Associações</span>
 						</a>
 					</li>

@@ -52,18 +52,52 @@
     @enderror
 </div>
 
-<div class="form-group  @error('due_date') has-error @enderror">
+<div class="form-group  @error('expiration_date') has-error @enderror">
     <label>Data Expiração:</label>
-    <input class="form-control" name="due_date" type="date" value="{{ $promotion->due_date ?? @old('due_date') }}">
-    @error('due_date')
+    <input class="form-control" name="expiration_date" type="date" value="{{ $promotion->expiration_date ?? @old('expiration_date') }}">
+    @error('expiration_date')
     <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>
 
-<div class="form-group  @error('amount') has-error @enderror">
+<div class="form-group  @error('original_value') has-error @enderror">
+    <label>Valor Original (R$)</label>
+    <input class="form-control" name="original_value" type="text" value="{{ $promotion->original_value ?? @old('original_value') }}">
+    @error('original_value')
+    <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('discount') has-error @enderror">
     <label>Desconto (%)</label>
-    <input class="form-control" name="amount" type="text" value="{{ $promotion->amount ?? @old('amount') }}">
-    @error('amount')
+    <input class="form-control" name="discount" type="text" value="{{ $promotion->discount ?? @old('discount') }}">
+    @error('discount')
+    <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('qty_available') has-error @enderror">
+    <label>Quantidade Disponível</label>
+    <input class="form-control" name="qty_available" type="text" value="{{ $promotion->qty_available ?? @old('qty_available') }}">
+    @error('qty_available')
+    <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('qty_remaining') has-error @enderror">
+    <label>Quantidade Restante</label>
+    <input class="form-control" name="qty_remaining" type="text" value="{{ $promotion->qty_remaining ?? @old('qty_remaining') }}">
+    @error('qty_remaining')
+    <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('redemption_rules') has-error @enderror">
+    <label>Regras de Resgate</label>
+    <textarea name="redemption_rules" id="" cols="30" rows="10" class="form-control">
+
+    </textarea>
+    @error('qty_remaining')
     <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>

@@ -11,7 +11,7 @@ class StoreUpdatePromotion extends FormRequest
         return true;
     }
 
-   
+
     public function rules()
     {
         $id = $this->segment(3);
@@ -19,11 +19,11 @@ class StoreUpdatePromotion extends FormRequest
         return [
             'code'  => "required|unique:promotions,code,{$id},id",
             'title' => "required|min:3|max:100",
-            'due_date' => "required|date|",            
-            'amount' => "required|numeric",                    
+            'expiration_date' => "required|date|",
+            'original_value' => "required|numeric",
         ];
     }
-    
+
     public function messages()
     {
         return [
@@ -41,8 +41,8 @@ class StoreUpdatePromotion extends FormRequest
         return [
             'code' => 'Codigo',
             'title' => 'Título',
-            'due_date' => 'Vencimento',
-            'amount' => 'Valor Desconto'
+            'expiration_date' => 'Data da Expiração',
+            'original_value' => 'Valor Original'
         ];
     }
 }

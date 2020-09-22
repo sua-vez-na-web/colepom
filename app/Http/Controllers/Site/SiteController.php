@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateAffiliate;
 use App\Models\Affiliate;
 use App\Models\Category;
+use App\Models\Partner;
 use App\Models\Promotion;
 use App\Models\Role;
 use App\Models\Syndicate;
@@ -32,6 +33,29 @@ class SiteController extends Controller
 
         return view('site.pages.promotions.index', [
             'promotions' => $promotions,
+            'categories' => $categories
+        ]);
+    }
+
+
+    public function partners()
+    {
+        $partners = Partner::all();
+        $categories = Category::all();
+
+        return view('site.pages.partners.index', [
+            'partners' => $partners,
+            'categories' => $categories
+        ]);
+    }
+
+    public function syndicates()
+    {
+        $syndicates = Syndicate::all();
+        $categories = Category::all();
+
+        return view('site.pages.syndicates.index', [
+            'syndicates' => $syndicates,
             'categories' => $categories
         ]);
     }

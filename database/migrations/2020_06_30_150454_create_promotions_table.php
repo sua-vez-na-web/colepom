@@ -22,11 +22,14 @@ class CreatePromotionsTable extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('image')->nullable();
-            $table->dateTime('due_date');
-            $table->double('amount', 10, 2);
+            $table->dateTime('expiration_date')->nullable();
+            $table->double('original_value', 10, 2)->default(0);
+            $table->double('discount', 10, 2)->default(0);
+            $table->integer('qty_available')->default(1);
+            $table->integer('qty_remaining')->default(1);
+            $table->text('redemption_rules')->nullable();
             $table->boolean('is_active')->default(false);
             $table->timestamps();
-
             $table->foreign('partner_id')->references('id')->on('partners');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('store_id')->references('id')->on('stores');

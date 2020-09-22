@@ -39,20 +39,20 @@
                     <tbody>
                         @foreach($syndicates as $syndicate)
                         <tr>
-                            <th>{{$syndicate->id}}</th>
-                            <th>{{$syndicate->name}}</th>
-                            <th>{{$syndicate->president_name}}</th>
-                            <th>{{$syndicate->cpf_cnpj}}</th>
-                            <th>{{$syndicate->email}}</th>
-                            <th>{{$syndicate->asaas_id}}</th>
-                            <th>
+                            <td>{{$syndicate->id}}</td>
+                            <td>{{$syndicate->name}}</td>
+                            <td>{{$syndicate->president_name}}</td>
+                            <td>{{$syndicate->cpf_cnpj}}</td>
+                            <td>{{$syndicate->email}}</td>
+                            <td>{{$syndicate->asaas_id}}</td>
+                            <td>
                                 <a href="{{ route('syndicates.edit',$syndicate->id) }}" class="btn btn-primary btn-xs">
                                     <i class="fa fa-pencil"></i> Editar
                                 </a>
                                 <a href="{{ route('syndicates.show',$syndicate->id) }}" class="btn btn-primary btn-xs">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                            </th>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
