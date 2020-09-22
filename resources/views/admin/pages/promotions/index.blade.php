@@ -34,7 +34,9 @@
                             <th>Code</th>
                             <th>Title</th>
                             <th>Estabelecimento</th>
+                            <th>Categoria</th>
                             <th>Validade</th>
+                            <th>Valor Original</th>
                             <th>Desconto</th>
                             <th>Ações</th>
                         </tr>
@@ -42,21 +44,26 @@
                     <tbody>
                         @foreach($promotions as $promotion)
                         <tr>
-                            <th>{{$promotion->id}}</th>
-                            <th><img src="{{ Storage::url($promotion->image) }}" alt="" width="50" height="50"></th>
-                            <th>{{$promotion->code}}</th>
-                            <th>{{$promotion->title}}</th>
-                            <th>{{$promotion->store->name}}</th>
-                            <th>{{ date('d/m/Y',strToTime($promotion->due_date))}}</th>
-                            <th><span class="badge">{{$promotion->amount}}%</span></th>
-                            <th>
+                            <td>{{$promotion->id}}</td>
+                            <td><img src="{{ Storage::url($promotion->image) }}" alt="" widtd="50" height="50"></td>
+                            <td>{{$promotion->code}}</td>
+                            <td>{{$promotion->title}}</td>
+                            <td>{{$promotion->store->name}}</td>
+                            <td>{{$promotion->category->name}}</td>
+                            <td>{{ date('d/m/Y h:m:s',strToTime($promotion->expiration_date))}}</td>
+                            <td>
+                                R$ {{$promotion->original_value}}</td>
+                            <td><span class="badge">{{$promotion->discount}}%</span>
+                            </td>
+
+                            <td>
                                 <a href="{{ route('promotions.edit',$promotion->id) }}" class="btn btn-primary btn-xs">
                                     <i class="fa fa-pencil"></i> Editar
                                 </a>
                                 <a href="{{ route('promotions.show',$promotion->id) }}" class="btn btn-primary btn-xs">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                            </th>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

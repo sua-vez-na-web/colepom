@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Storage;
 
 class PromotionsController extends Controller
 {
-
-
     public function index()
     {
         $user = Auth::user();

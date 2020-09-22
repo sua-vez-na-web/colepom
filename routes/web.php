@@ -11,7 +11,7 @@ Auth::routes(['login', 'logout']);
 Route::group(['namespace' => 'Site'], function () {
   Route::get('/', 'SiteController@index')->name('site.index');
 
-  Route::get('promocoes/{id}', 'SiteController@showPromotion')->name('promotions.show');
+  Route::get('promocoes/resgatar/{id}', 'SiteController@showPromotion')->name('promotions.redeem');
   Route::get('promocoes', 'SiteController@promotions')->name('site.promotions');
 
   Route::get('parceiros/{id}', 'SiteController@showPartner')->name('site.partner');
