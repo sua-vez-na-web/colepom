@@ -41,4 +41,9 @@ class Store extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function promotions()
+    {
+        return $this->hasMany(Promotion::class);
+    }
 }

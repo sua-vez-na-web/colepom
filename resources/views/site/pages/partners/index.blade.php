@@ -20,29 +20,28 @@
 
 <div class="container my-3">
 	<div class="card p-2">
-		<div class="form">
-			<form class="form-inline">
-				<label class="sr-only" for="inlineFormInputName2">Name</label>
-				<input type="text" class="form-control mb-2 mr-sm-2 col-6" id="inlineFormInputName2" placeholder="Pequisar um Parceiro">
+{{--		<div class="form">--}}
+{{--			<form class="form-inline">--}}
+{{--				<label class="sr-only" for="inlineFormInputName2">Name</label>--}}
+{{--				<input type="text" class="form-control mb-2 mr-sm-2 col-6" id="inlineFormInputName2" placeholder="Pequisar um Parceiro">--}}
 
-				<label class="sr-only" for="inlineFormInputGroupUsername2">Categoria</label>
-				<div class="input-group mb-2 mr-sm-2">
-					<select name="category_id" id="" class="form-control">
-						<option value="">Selecione uma categoria</option>
-						@foreach($categories as $category)
-						<option value="{{ $category->id }}">{{$category->name}}</option>
-						@endforeach
-						<option value="all">Todas Categorias</option>
-					</select>
-				</div>
-				<button type="submit" class="btn btn-default mb-2">Pesquisar</button>
-			</form>
-		</div>
+{{--				<label class="sr-only" for="inlineFormInputGroupUsername2">Categoria</label>--}}
+{{--				<div class="input-group mb-2 mr-sm-2">--}}
+{{--					<select name="category_id" id="" class="form-control">--}}
+{{--						<option value="">Selecione uma categoria</option>--}}
+{{--						@foreach($categories as $category)--}}
+{{--						<option value="{{ $category->id }}">{{$category->name}}</option>--}}
+{{--						@endforeach--}}
+{{--						<option value="all">Todas Categorias</option>--}}
+{{--					</select>--}}
+{{--				</div>--}}
+{{--				<button type="submit" class="btn btn-default mb-2">Pesquisar</button>--}}
+{{--			</form>--}}
+{{--		</div>--}}
 		<ul class="list-group list-group-flush mt-2">
 			@foreach($partners as $partner)
 			<div class="partner">
-				<img src="" alt="">
-				<a href="" class="list-group-item list-group-item-action">{{$partner->name}}</a>
+				<a href="{{ route('site.partner',$partner->id)  }}" class="list-group-item list-group-item-action">{{$partner->name}}</a>
 			</div>
 			@endforeach
 		</ul>

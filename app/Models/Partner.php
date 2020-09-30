@@ -38,6 +38,10 @@ class Partner extends Model
         return $this->hasMany(Promotion::class);
     }
 
+    public function stores(){
+        return $this->hasMany(Store::class);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -90,4 +90,24 @@ class SiteController extends Controller
             return view('site.pages.affiliate.thank-you');
         }
     }
+
+    public function showPartner($id)
+    {
+        $partner = Partner::find($id);
+        $stores = $partner->stores()->pluck('id');
+        $promotions = Promotion::whereIn('store_id',$stores)->get();
+
+        return view('site.pages.partners.partner', [
+            'partner' => $partner,
+            'stores' => $stores,
+            'promotions' => $promotions
+        ]);
+    }
+
+    public function showSyndicate($id)
+    {
+        return view('site.pages.syndicates.syndicate',[
+            'syndicate' => Syndicate::find($id)
+        ]);
+    }
 }
