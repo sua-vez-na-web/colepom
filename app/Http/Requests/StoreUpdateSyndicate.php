@@ -6,24 +6,33 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUpdateSyndicate extends FormRequest
 {
-    
+
     public function authorize()
     {
         return true;
     }
 
-   
+
     public function rules()
     {
         $id = $this->segment(3);
 
         return [
-            'fantasy_name'  => "required|min:3|max:100|unique:syndicates,fantasy_name,{$id},id",
-            'social_reason' => "required|min:3|max:100|unique:syndicates,social_reason,{$id},id",
-            'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",                   
+            'name'  => "required|min:3|max:100|unique:syndicates,name,{$id},id",
+            'president_name' => "required|min:3|max:100|unique:syndicates,president_name,{$id},id",
+            'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
+            'phone' => 'required',
+            'mobile_phone' => 'required',
+            'cpf_cnpj' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
+            'zipcode' => "required",
+            'address' => "required",
+            'address_number' => "required",
+            'city' => "required",
+            'province' => "required",
+            'username' => "required|min:3|max:10|unique:users,name"
         ];
     }
-    
+
     public function messages()
     {
         return [
@@ -37,8 +46,17 @@ class StoreUpdateSyndicate extends FormRequest
     public function attributes()
     {
         return [
-            'fantasy_name' => 'Nome Fantasia',
-            'social_reason' => 'Razão Social'
+            'name' => 'Nome',
+            'president_name' => 'Presidente',
+            'phone' => 'Telefone',
+            'mobile_phone' => 'Telefone Movel',
+            'cpf_cnpj' => "cpf ou cnpj",
+            'zipcode' => "cep",
+            'address' => "endereco",
+            'address_number' => "numero do endereco",
+            'city' => "cidade",
+            'province' => "bairro",
+            "username" => 'Usuário'
         ];
     }
 }

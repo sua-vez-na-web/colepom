@@ -7,31 +7,38 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePromotion;
 use App\Models\Category;
 use App\Models\Promotion;
+use App\Models\Role;
 use Illuminate\Support\Str;
 use App\Models\Store;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PromotionsController extends Controller
 {
-    private $promotionRepository, $categoryRepository, $storyRepository;
-
-    public function __construct(Promotion $promotion, Category $category, Store $store)
-    {
-        $this->promotionRepository = $promotion;
-        $this->categoryRepository = $category;
-        $this->storyRepository = $store;
-    }
-
     public function index()
     {
-        $promotions = $this->promotionRepository->paginate();
+        $user = Auth::user();
+
+        if ($user->role_id == Role::ADMINISTRATOR) {
+            $promotions = Promotion::all();
+        } else {
+            $promotions = Promotion::where('partner_id', $user->partner->id)->get();
+        }
         return view('admin.pages.promotions.index', compact('promotions'));
     }
 
     public function create()
     {
-        $categories = $this->categoryRepository->pluck('name', 'id');
-        $stores = $this->storyRepository->pluck('name', 'id');
+        $user = Auth::user();
+
+        if ($user->role_id == Role::ADMINISTRATOR) {
+            $stores = Store::pluck('name', 'id');
+        } else {
+            $stores = Store::where('partner_id', $user->partner->id)->pluck('name', 'id');
+        }
+
+        $categories = Category::pluck('name', 'id');
+
         return view('admin.pages.promotions.create', compact('categories', 'stores'));
     }
 
@@ -43,8 +50,16 @@ class PromotionsController extends Controller
         if ($request->hasFile('image')) {
             $data['image'] = $request->image->store('promotions');
         }
+        $user = Auth::user();
 
-        $this->promotionRepository->create($data);
+        if ($user->role_id == Role::ADMINISTRATOR) {
+            $store = Store::find($request->store_id);
+            $data['partner_id'] = $store->partner->id;
+        } else {
+            $data['partner_id'] = $user->partner->id;
+        }
+
+        Promotion::create($data);
 
         return redirect()->route('promotions.index');
     }
@@ -52,7 +67,7 @@ class PromotionsController extends Controller
 
     public function show($id)
     {
-        if (!$promotion = $this->promotionRepository->find($id)) {
+        if (!$promotion = Promotion::find($id)) {
             return redirect()->back();
         };
 
@@ -62,11 +77,11 @@ class PromotionsController extends Controller
 
     public function edit($id)
     {
-        if (!$promotion = $this->promotionRepository->find($id)) {
+        if (!$promotion = Promotion::find($id)) {
             return redirect()->back();
         };
-        $categories = $this->categoryRepository->pluck('name', 'id');
-        $stores = $this->storyRepository->pluck('name', 'id');
+        $categories = Category::pluck('name', 'id');
+        $stores = Store::pluck('name', 'id');
         return view('admin.pages.promotions.edit', compact('promotion', 'categories', 'stores'));
     }
 
@@ -74,7 +89,7 @@ class PromotionsController extends Controller
     public function update(StoreUpdatePromotion $request, $id)
     {
 
-        if (!$promotion = $this->promotionRepository->find($id)) {
+        if (!$promotion = Promotion::find($id)) {
             return redirect()->back();
         };
 
@@ -93,7 +108,7 @@ class PromotionsController extends Controller
 
     public function destroy($id)
     {
-        if (!$promotion = $this->promotionRepository->find($id)) {
+        if (!$promotion = Promotion::find($id)) {
             return redirect()->back();
         };
 

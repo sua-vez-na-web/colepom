@@ -18,16 +18,17 @@ class AffiliateObserver
      */
     public function creating(Affiliate $affiliate)
     {
-       $user = Auth::user();        
-       //Create a User for affiliates
-       $newUser = User::create(
-        [
-            'name' => Str::kebab($affiliate->first_name),
-            'email' => $affiliate->email,
-            'password' =>  bcrypt('colepom'),
-            'role_id' => Role::AFFILIATE
-        ]);
-        
+        $user = Auth::user();
+        //Create a User for affiliates
+        $newUser = User::create(
+            [
+                'name' => Str::kebab($affiliate->first_name),
+                'email' => $affiliate->email,
+                'password' =>  bcrypt('colepom'),
+                'role_id' => Role::AFFILIATE
+            ]
+        );
+
         $affiliate->user_id = $newUser->id;
         $affiliate->syndicate_id = $user->syndicate->id;
     }

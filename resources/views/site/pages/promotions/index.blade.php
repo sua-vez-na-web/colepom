@@ -70,28 +70,17 @@
 			<div class="row">
 				@foreach ($promotions as $promotion)
 				<div class="col-md-4 col-sm-6">
-					<a class="cupom-click" href="#">
+					<a class="cupom-click" href="{{route('promotions.redeem',$promotion->id)}}">
 						<div class="cupom">
 							<div class="tesoura"></div>
 							<div class="black-canvas">
 								<img class="cupom-img-top" alt="Parceiro" src="{{Storage::url($promotion->image)}}" width="450" height="600">
 							</div>
-							<div class="cupom-desconto">{{$promotion->amount}}%</div>
+							<div class="cupom-desconto">{{$promotion->discount}}%</div>
 							<div class="cupom-block">
 								<h5 class="cupom-title" data-toggle="tooltip" title="{{ $promotion->title }}">
 									{{$promotion->title}}
 								</h5>
-								<div class="cupom-place">
-									<div class="map-marker">
-									</div>
-									<div class="cupom-place-text">
-										<span class="cupom-parceiro" data-toggle="tooltip" title="Parceiro"> {{$promotion->store->name ?? ''}}</span>
-										<br>
-										<span class="cupom-local" data-toggle="tooltip" title="STORE BAIRRO | STORE CIDADE">
-											{{$promotion->store->city}} | {{$promotion->store->neighborhood}}
-										</span>
-									</div>
-								</div>
 							</div>
 						</div>
 					</a>

@@ -11,7 +11,7 @@ Auth::routes(['login', 'logout']);
 Route::group(['namespace' => 'Site'], function () {
   Route::get('/', 'SiteController@index')->name('site.index');
 
-  Route::get('promocoes/{id}', 'SiteController@showPromotion')->name('site.promotions');
+  Route::get('promocoes/resgatar/{id}', 'SiteController@showPromotion')->name('promotions.redeem');
   Route::get('promocoes', 'SiteController@promotions')->name('site.promotions');
 
   Route::get('parceiros/{id}', 'SiteController@showPartner')->name('site.partner');
@@ -19,6 +19,20 @@ Route::group(['namespace' => 'Site'], function () {
 
   Route::get('sindicatos/{id}', 'SiteController@showSyndicate')->name('site.syndicate');
   Route::get('sindicatos', 'SiteController@syndicates')->name('site.syndicates');
+
+  Route::get('/associado/cadastro', 'SiteController@showRegistrationForm')->name('affiliates.register');
+  Route::post('/associado', 'SiteController@registerAffiliate')->name('register.affiliates');
+});
+
+
+/**
+ * Affiliates Auth Routes
+ */
+
+Route::group(['namespace' => 'Affiliates', 'prefix' => 'associado'], function () {
+  Route::get('/', function () {
+    return view('site.pages.affiliate.affiliate');
+  })->name('affiliates.dashboard');
 });
 
 
@@ -26,7 +40,7 @@ Route::group(['namespace' => 'Site'], function () {
 /**
  * Admin Routes
  */
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
   /**
    * Dashboard Routes

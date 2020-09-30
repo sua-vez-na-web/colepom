@@ -29,28 +29,28 @@
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
+                            <th>Parceiro</th>
                             <th>Telefone</th>
                             <th>Cidade</th>
-                            <th>Bairro</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($stores as $store)
                         <tr>
-                            <th>{{$store->id}}</th>
-                            <th>{{$store->name}}</th>
-                            <th>{{$store->phone}}</th>
-                            <th>{{$store->city}}</th>
-                            <th>{{$store->neighborhood}}</th>
-                            <th>
+                            <td>{{$store->id}}</td>
+                            <td>{{$store->name}}</td>
+                            <td>{{$store->partner->name}}</td>
+                            <td>{{$store->phone}}</td>
+                            <td>{{$store->city}}</td>
+                            <td>
                                 <a href="{{ route('stores.edit',$store->id) }}" class="btn btn-primary btn-xs">
                                     <i class="fa fa-pencil"></i> Editar
                                 </a>
                                 <a href="{{ route('stores.show',$store->id) }}" class="btn btn-primary btn-xs">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                            </th>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

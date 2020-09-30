@@ -2,39 +2,58 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateStore;
 use App\Models\Category;
+use App\Models\Partner;
 use App\Models\Role;
 use App\Models\Store;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class StoresController extends Controller
 {
-    private $storeRepository, $categoryRepository;
-
-    public function __construct(Store $store, Category $category)
-    {
-        $this->storeRepository = $store;
-        $this->categoryRepository = $category;
-    }
 
     public function index()
     {
-        $stores = $this->storeRepository->paginate();
+        $user = Auth::user();
+
+        if ($user->role_id == Role::ADMINISTRATOR) {
+            $stores = Store::all();
+        } else {
+            $stores = Store::where('partner_id', $user->partner->id)->get();
+        }
+
         return view('admin.pages.stores.index', compact('stores'));
     }
 
     public function create()
     {
-        $categories = $this->categoryRepository->pluck('name', 'id');
-        return view('admin.pages.stores.create', compact('categories'));
+        $user = Auth::user();
+
+        if ($user->role_id == Role::ADMINISTRATOR) {
+            $partners = Partner::pluck('name', 'id');
+        } else {
+            $partners = Partner::where('user_id', $user->id)->pluck('name', 'id');
+        }
+
+        $categories = Category::pluck('name', 'id');
+
+        return view('admin.pages.stores.create', compact('categories', 'partners'));
     }
 
 
     public function store(StoreUpdateStore $request)
     {
-        $this->storeRepository->create($request->all());
+        $data = $request->all();
+
+
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->image->store('stores');
+        }
+
+        Store::create($data);
 
         return redirect()->route('stores.index');
     }
@@ -42,7 +61,7 @@ class StoresController extends Controller
 
     public function show($id)
     {
-        if (!$store = $this->storeRepository->find($id)) {
+        if (!$store = Store::find($id)) {
             return redirect()->back();
         };
 
@@ -52,29 +71,46 @@ class StoresController extends Controller
 
     public function edit($id)
     {
-        if (!$store = $this->storeRepository->find($id)) {
+        if (!$store = Store::find($id)) {
             return redirect()->back();
         };
-        $categories = $this->categoryRepository->pluck('name', 'id');
-        return view('admin.pages.stores.edit', compact('store', 'categories'));
+
+        $user = Auth::user();
+
+        if ($user->role_id == Role::ADMINISTRATOR) {
+            $partners = Partner::pluck('name', 'id');
+        } else {
+            $partners = Partner::where('user_id', $user->id)->pluck('name', 'id');
+        }
+
+        $categories = Category::pluck('name', 'id');
+        return view('admin.pages.stores.edit', compact('store', 'categories', 'partners'));
     }
 
 
     public function update(StoreUpdateStore $request, $id)
     {
 
-        if (!$store = $this->storeRepository->find($id)) {
+        if (!$store = Store::find($id)) {
             return redirect()->back();
         };
 
-        $store->update($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            Storage::delete($store->image);
+
+            $data['image'] = $request->image->store('stores');
+        }
+
+        $store->update($data);
 
         return redirect()->route('stores.index');
     }
 
     public function destroy($id)
     {
-        if (!$store = $this->storeRepository->find($id)) {
+        if (!$store = Store::find($id)) {
             return redirect()->back();
         };
 

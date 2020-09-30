@@ -10,7 +10,7 @@
 <div class="row">
     <ol class="breadcrumb">
         <li><a href="#">Dashboard</a></li>
-        <li><a href="{{ route('stores.index') }}">Estabelecimentoss</a></li>
+        <li><a href="{{ route('stores.index') }}">Estabelecimentos</a></li>
         <li class="active">Editar Estabelecimentos</li>
     </ol>
 </div>
@@ -23,7 +23,7 @@
             </div>
             <div class="panel-body">
                 <!-- <form action="{{ route('stores.update',$store->id) }}" method="post"> -->
-                {!! Form::model($store,['route' => ['stores.update',$store->id]]) !!}
+                {!! Form::model($store,['route' => ['stores.update',$store->id],'enctype'=>'multipart/form-data']) !!}
                 @method('PUT')
                 @csrf
                 @include('admin.pages.stores._partials.form')

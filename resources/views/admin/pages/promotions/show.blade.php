@@ -36,11 +36,27 @@
             </dl>
             <dl class="row">
                 <dt class="col-sm-2">Validade</dt>
-                <dd class="col-sm-10">{{date('d/m/Y',strToTime($promotion->due_date))}}</dd>
+                <dd class="col-sm-10">{{date('d/m/Y h:m:s',strToTime($promotion->expiration_date))}}</dd>
             </dl>
             <dl class="row">
                 <dt class="col-sm-2">Desconto</dt>
-                <dd class="col-sm-10">{{$promotion->amount}}%</dd>
+                <dd class="col-sm-10">{{$promotion->discount}}%</dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-2">Valor Original</dt>
+                <dd class="col-sm-10">R$ {{$promotion->original_value}}</dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-2">Disponíveis</dt>
+                <dd class="col-sm-10">{{$promotion->qty_available}}</dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-2">Restantes</dt>
+                <dd class="col-sm-10">{{$promotion->qty_remaining}}</dd>
+            </dl>
+            <dl class="row">
+                <dt class="col-sm-2">Regras de Resgate</dt>
+                <dd class="col-sm-10">{{$promotion->redemption_rules}}</dd>
             </dl>
         </div>
     </div>

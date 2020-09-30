@@ -11,19 +11,28 @@ class StoreUpdateAffiliate extends FormRequest
         return true;
     }
 
-   
+
     public function rules()
     {
         $id = $this->segment(3);
 
         return [
-            'first_name'  => "required|min:3|max:100|",
-            'birth_of_date' => "required|date|",
+            'syndicate_id' => 'required',
+            'first_name'  => "required|min:3|max:100",
+            'last_name'  => "required|min:3|max:100",
+            'company'  => "required|min:3|max:100",
+            'job_post'  => "required|min:3|max:100",
+            'birth_of_date' => "required|date",
             'document' => "required|min:3|max:100|unique:affiliates,document,{$id},id",
-            'email' => "required|email|unique:affiliates",
+            'email' => 'required|email|unique:affiliates',
+            'zipcode' => 'required',
+            'address' => 'required',
+            'address_number' => 'required',
+            'city' => 'required',
+            "province" => 'required'
         ];
     }
-    
+
     public function messages()
     {
         return [
@@ -37,8 +46,18 @@ class StoreUpdateAffiliate extends FormRequest
     public function attributes()
     {
         return [
+            'syndicate_id' => 'Sindicato',
             'first_name' => 'Nome',
-            'birth_of_date' => 'Data de nascimento'
+            'last_name' => 'Sobrenome',
+            'birth_of_date' => 'Data de nascimento',
+            'zipcode' => 'Cep',
+            'company' => 'empresa',
+            'job_post' => 'cargo ou ocupacção',
+            'document' => 'CPF',
+            'address' => 'Rua',
+            'address_number' => 'Número',
+            'city' => 'Cidade',
+            'province' => 'Bairro',
         ];
     }
 }

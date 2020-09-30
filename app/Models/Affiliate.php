@@ -4,10 +4,11 @@ namespace App\Models;
 
 use App\Traits\AffiliatesTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Affiliate extends Model
 {
-    use AffiliatesTrait;
+    //use AffiliatesTrait;
 
     protected $fillable =
     [
@@ -21,11 +22,12 @@ class Affiliate extends Model
         'job_post',
         'email',
         'document',
-        'addresss',
+        'address',
+        'address_number',
+        'address_complement',
         'city',
-        'neighborhood',
-        'state',
-        'zip_code'
+        'province',
+        'zipcode'
     ];
 
     /**

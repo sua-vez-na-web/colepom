@@ -7,17 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 class Partner extends Model
 {
     protected $fillable = [
-        'fantasy_name',
+        'name',
         'social_reason',
         'category_id',
-        'document',
+        'cpf_cnpj',
+        'phone',
+        'mobile_phone',
         'email',
         'brand',
         'site',
         'facebook',
         'instagram',
         'youtube',
-        'is_aprooved',        
+        'zipcode',
+        'address',
+        'address_number',
+        'address_complement',
+        'province',
+        'city',
+        'observations',
+        'user_id',
+        'is_aprooved',
     ];
 
     /**
@@ -28,9 +38,12 @@ class Partner extends Model
         return $this->hasMany(Promotion::class);
     }
 
+    public function stores(){
+        return $this->hasMany(Store::class);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-    
 }

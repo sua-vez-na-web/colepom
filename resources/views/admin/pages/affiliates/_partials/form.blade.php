@@ -1,3 +1,8 @@
+<div class="form-group @error('first_name') has-error @enderror">
+    <label for="syndicate_id">Sindicato</label>
+    {!! Form::select('syndicate_id',$syndicates,null,['class'=>'form-control','placeholder'=>'Selecione...']) !!}
+</div>
+
 <div class="form-group  @error('first_name') has-error @enderror">
     <label>Nome</label>
     <input class="form-control" name="first_name" type="text" value="{{ $syndicate->first_name ?? @old('first_name') }}">
@@ -22,26 +27,53 @@
     @enderror
 </div>
 
+<h4>Localização</h4>
+<hr>
 <div class="row">
-    <div class="form-group col-md-1">
-        <label for="cep">Cep</label>
-        <input type="text" id="cep" name="zip_code" class="form-control">
+    <div class="form-group col-md-2 col-sm-12  @error('zipcode') has-error @enderror">
+        <label>Cep</label>
+        <input class="form-control" name="zipcode" type="text" value="{{ $syndicate->zipcode ?? @old('zipcode') }}">
+        @error('zipcode')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
     </div>
-    <div class="form-group col-md-3">
-        <label for="ru">Rua/Logradouro</label>
-        <input type="text" id="rua" name="address" class="form-control">
+    <div class="form-group col-md-8 col-sm-12  @error('address') has-error @enderror">
+        <label>Endereco</label>
+        <input class="form-control" name="address" type="text" value="{{ $syndicate->address ?? @old('address') }}">
+        @error('address')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
     </div>
-    <div class="form-group col-md-2">
-        <label for="cep">Cidade</label>
-        <input type="text" id="cidade" name="city" class="form-control">
+    <div class="form-group col-md-2 col-sm-12  @error('address_number') has-error @enderror">
+        <label>Numero</label>
+        <input class="form-control" name="address_number" type="text" value="{{ $syndicate->address_number ?? @old('address_number') }}">
+        @error('address_number')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
     </div>
-    <div class="form-group col-md-2">
-        <label for="cep">Bairro</label>
-        <input type="text" id="bairro" name="neighborhood" class="form-control">
+</div>
+
+<div class="row">
+    <div class="form-group col-md-4 col-sm-12  @error('city') has-error @enderror">
+        <label>Cidade</label>
+        <input class="form-control" name="city" type="text" value="{{ $syndicate->city ?? @old('city') }}">
+        @error('city')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
     </div>
-    <div class="form-group col-md-1">
-        <label for="cep">UF</label>
-        <input type="text" id="uf" name="state" class="form-control">
+    <div class="form-group col-md-4 col-sm-12  @error('province') has-error @enderror">
+        <label>Estado</label>
+        <input class="form-control" name="province" type="text" value="{{ $syndicate->province ?? @old('province') }}">
+        @error('province')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
+    </div>
+    <div class="form-group col-md-4 col-sm-12  @error('address_complement') has-error @enderror">
+        <label>Complemento</label>
+        <input class="form-control" name="address_complement" type="text" value="{{ $syndicate->address_complement ?? @old('address_complement') }}">
+        @error('address_complement')
+        <span class="text-danger">{{ $message ?? '' }}</span>
+        @enderror
     </div>
 </div>
 
@@ -76,6 +108,14 @@
     <label>CPF</label>
     <input class="form-control cpf" name="document" type="text" value="{{ $syndicate->document ?? @old('document') }}">
     @error('document')
+    <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+<div class="form-group  @error('username') has-error @enderror">
+    <label>Usuário</label>
+    <input class="form-control" name="username" type="username" value="{{ $syndicate->username ?? @old('username') }}">
+    @error('username')
     <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>

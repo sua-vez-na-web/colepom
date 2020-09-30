@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Traits\PartnerTrait;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
 {
-    use PartnerTrait;
+    //use PartnerTrait;
 
     protected $fillable = [
         'partner_id',
@@ -17,16 +18,29 @@ class Promotion extends Model
         'title',
         'description',
         'image',
-        'due_date',
-        'amount',
+        'expiration_date',
+        'original_value',
+        'discount',
+        'qty_available',
+        'qty_remaining',
+        'redemption_rules',
         'image',
         'is_active'
+    ];
+
+    protected $dates = [
+        'expiration_date'
     ];
 
     /**
      * Relations
      */
 
+    public function setExpirationDateAttribute($value)
+    {
+        $_expiration_date = Carbon::parse($value)->endOfDay();
+        $this->attributes['expiration_date'] = $_expiration_date;
+    }
 
     public function partner()
     {
