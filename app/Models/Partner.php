@@ -31,11 +31,16 @@ class Partner extends Model
     ];
 
     /**
-     * Relations 
+     * Relations
      * */
     public function promotions()
     {
         return $this->hasMany(Promotion::class);
+    }
+
+    public function stores()
+    {
+        return $this->hasMany(Store::class);
     }
 
     public function category()

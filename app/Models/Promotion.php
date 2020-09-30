@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
 {
-    //use PartnerTrait;
-
-    protected $fillable = [
+   protected $fillable = [
         'partner_id',
         'store_id',
         'category_id',

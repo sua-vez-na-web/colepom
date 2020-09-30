@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dependent extends Model
 {
-    
+
 
     /**
      * Relations
@@ -15,5 +15,5 @@ class Dependent extends Model
     {
         return $this->belongsTo(Affiliate::class);
     }
-    
+
 }
