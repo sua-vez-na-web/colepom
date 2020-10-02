@@ -30,7 +30,7 @@
 	<div class="page-text mt-5">
 		<div class="row d-flex justify-content-between">
 			<h3>Bem vindo: {{Auth::user()->name}}</h3>
-			<a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Sair</a>
+			<a class="btn btn-dark" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Sair</a>
 			<form action="{{ route('logout') }}" id="logout-form" style="display: none" method="post">
 				@csrf
 			</form>
@@ -39,12 +39,16 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div class="list-group">
-				<a href="#" class="list-group-item list-group-item-action">Minha Conta</a>
-				<a href="#" class="list-group-item list-group-item-action">Promoções e Descontos</a>
+				<a href="#" class="list-group-item list-group-item-action">
+					<i class="fa fa-user"></i>
+					Minha Conta</a>
+				<a href="#" class="list-group-item list-group-item-action">
+					<i class="fas fa-ticket-alt"></i>
+					Promoções</a>
 			</div>
 		</div>
 		<div class="col-md-8">
-			<p>Seu Cadastro está passando por aprovaçao.</p>
+			<p>Seu cadastro será aprovado em breve, aguarde.</p>
 		</div>
 	</div>
 </div>

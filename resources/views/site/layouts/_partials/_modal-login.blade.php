@@ -16,7 +16,8 @@
                     <button type="submit" class="btn btn-lg btn-block full_colored ">Entrar</button>
                 </form>
                 <div class="modal-account-options">
-                    <a class="btn btn-outline-warning" href="{{ route('affiliates.register') }}">Cadastre-se</a>
+                    <span>Não tem uma conta?</span>
+                    <a class="btn btn-outline-dark" href="{{ route('affiliates.register') }}">Cadastre-se</a>
                 </div>
             </fieldset>
         </div>

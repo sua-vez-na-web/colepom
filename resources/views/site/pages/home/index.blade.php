@@ -145,41 +145,15 @@
                 </h4>
             </div>
             <div class="row">
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a class="cupom-click" href="#">
-                        <div class="cupom">
-                            <div class="tesoura"></div>
-                            <div class="black-canvas">
-                                <img class="cupom-img-top" alt="Parceiro" src="http://img.itdg.com.br/tdg/images/recipes/000/119/893/277814/277814_original.jpg?mode=crop&width=600&height=450">
-                            </div>
-                            <div class="cupom-desconto">90%</div>
-                            <div class="cupom-block">
-                                <h5 class="cupom-title" data-toggle="tooltip" title="Pizza Grande Simples ou Especial">
-                                    Pizza Grande Simples ou Especial
-                                </h5>
-                                <div class="cupom-place">
-                                    <div class="map-marker">
-                                    </div>
-                                    <div class="cupom-place-text">
-                                        <span class="cupom-parceiro" data-toggle="tooltip" title="Pizzaria Andreon">Pizzaria Andreon</span>
-                                        <br>
-                                        <span class="cupom-local" data-toggle="tooltip" title="Vila Velha, Praia da Costa">Vila Velha, Praia da Costa</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
                 @foreach ($promotions as $promotion)
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a class="cupom-click" href="{{route('promotions.show',$promotion->id)}}">
                         <div class="cupom">
                             <div class="tesoura"></div>
                             <div class="black-canvas">
-                                <img class="cupom-img-top" alt="Parceiro" src="#" width="450" height="600">
+                                <img class="cupom-img-top" alt="Parceiro" src="{{$promotion->image}}" width="450" height="600">
                             </div>
-                            <div class="cupom-desconto">{{ $promotion->amount }}%</div>
+                            <div class="cupom-desconto">{{ $promotion->discount }}%</div>
                             <div class="cupom-block">
                                 <h5 class="cupom-title" data-toggle="tooltip" title="{{ $promotion->title }}">
                                     {{ $promotion->title }}
@@ -188,9 +162,9 @@
                                     <div class="map-marker">
                                     </div>
                                     <div class="cupom-place-text">
-                                        <span class="cupom-parceiro" data-toggle="tooltip" title="{{ $promotion->partner->fantasy_name }}"> {{ $promotion->partner->fantasy_name }} </span>
+                                        <span class="cupom-parceiro" data-toggle="tooltip" title="{{ $promotion->partner->name }}"> {{ $promotion->partner->name }} </span>
                                         <br>
-                                        <span class="cupom-local" data-toggle="tooltip" title="#">Cidade,Bairro</span>
+                                        <span class="cupom-local" data-toggle="tooltip" title="#">{{$promotion->store->city}},{{$promotion->store->province}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +174,7 @@
                 @endforeach
             </div>
             <div class="text-center">
-                <a href="#" class="btn colored">Ver mais</a>
+                <a href="{{route('site.promotions')}}" class="btn colored">Ver mais</a>
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
 {
-   protected $fillable = [
+    protected $fillable = [
         'partner_id',
         'store_id',
         'category_id',
@@ -38,6 +38,12 @@ class Promotion extends Model
     {
         $_expiration_date = Carbon::parse($value)->endOfDay();
         $this->attributes['expiration_date'] = $_expiration_date;
+    }
+
+    public function getImageAttribute()
+    {
+        $defaultImage = asset('/img/colepom_bg_white.png');
+        return $this->attributes['image'] ? $this->attributes['image'] : $defaultImage;
     }
 
     public function partner()
