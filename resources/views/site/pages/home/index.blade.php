@@ -82,12 +82,10 @@
             </div>
             <div class="row">
                 <div class="col-md-4 card-box">
-                    <div class="round-card">
-                        <i class="fas fa-star"></i>
-                    </div>
+                        <img src="{{ asset('img/icone1.png') }}" alt="" height="130px">
                     <div class="card-block">
                         <h5 class="card-title">
-                            Cadastres-se
+                            Cadastre-se
                         </h5>
                         <p class="card-text">
                             Escolha o sindicato/associação a qual é associado e cadastre-se
@@ -95,9 +93,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 card-box">
-                    <div class="round-card">
-                        <i class="fas fa-star"></i>
-                    </div>
+                    <img src="{{ asset('img/icone2.png') }}" alt="" height="130px">
                     <div class="card-block">
                         <h5 class="card-title">
                             Escolha
@@ -108,9 +104,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 card-box">
-                    <div class="round-card">
-                        <i class="fas fa-star"></i>
-                    </div>
+                    <img src="{{ asset('img/icone3.png') }}" alt="" height="130px">
                     <div class="card-block">
                         <h5 class="card-title">
                             Resgate

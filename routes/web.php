@@ -20,8 +20,23 @@ Route::group(['namespace' => 'Site'], function () {
   Route::get('sindicatos/{id}', 'SiteController@showSyndicate')->name('site.syndicate');
   Route::get('sindicatos', 'SiteController@syndicates')->name('site.syndicates');
 
-  Route::get('/associado/cadastro', 'SiteController@showRegistrationForm')->name('affiliates.register');
-  Route::post('/associado', 'SiteController@registerAffiliate')->name('register.affiliates');
+  Route::get('associado/cadastro', 'SiteController@AffiliateRegister')->name('affiliates.register');
+  Route::get('parceiro/cadastro', 'SiteController@PartnerRegister')->name('partners.register');
+  Route::get('sindicato/cadastro', 'SiteController@SyndicateRegister')->name('syndicates.register');
+
+  Route::post('associado', 'SiteController@storeAffiliate')->name('store.affiliates');
+  Route::post('parceiro', 'SiteController@storePartner')->name('store.partners');
+  Route::post('sindicato', 'SiteController@storeSyndicate')->name('store.syndicates');
+
+  Route::get('politica-de-privacidade','SiteController@policy');
+  Route::get('termos-de-uso','SiteController@terms');
+  Route::get('sobre','SiteController@about');
+  Route::get('perguntas-frequentes','SiteController@faq');
+  Route::get('contato','SiteController@contact')->name('site.contact');
+
+  Route::view('planos','site.pages.home.prices')->name('site.prices');
+  Route::view('oferta','site.pages.home.oferta');
+
 });
 
 

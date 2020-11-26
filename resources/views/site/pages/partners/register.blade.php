@@ -27,18 +27,12 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="page-title">
-            <h3>Registre-se como Associado</h3>
+            <h3>Registre-se como Parceiro</h3>
         </div>
         <div class="col-md-12">
             <div class="page-text">
-                {!! Form::open(['route'=>'store.affiliates']) !!}
-                <div class="form-group">
-                    <label>Sindicato</label>
-                    {!! Form::select('syndicate_id',$syndicates,null,['class'=>'form-control','placeholder'=>'Escolha um Sindicato']) !!}
-                    @error('syndicate_id')
-                    <span class="text-danger">{{ $message ?? '' }}</span>
-                    @enderror
-                </div>
+                {!! Form::open(['route'=>'store.partners']) !!}
+
 
                 <div class="form-group">
                     <label>Email</label>

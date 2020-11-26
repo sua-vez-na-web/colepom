@@ -58,6 +58,8 @@ class LoginController extends Controller
             return redirect()->to($this->redirectTo);
         }
 
-        return redirect()->route('login');
+        return redirect()->route('login')->withErrors([
+            'error' => 'Usuário ou Senha inválida'
+        ]);
     }
 }

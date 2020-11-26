@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateAffiliate;
@@ -67,14 +68,23 @@ class SiteController extends Controller
         return view('site.pages.promotions.show', compact('promotion'));
     }
 
-    public function showRegistrationForm()
+    public function AffiliateRegister()
     {
         $syndicates = Syndicate::pluck('name', 'id');
-
         return view('site.pages.affiliate.register', compact('syndicates'));
     }
 
-    public function registerAffiliate(StoreUpdateAffiliate $request)
+    public function PartnerRegister()
+    {
+        return view('site.pages.partners.register');
+    }
+
+    public function SyndicateRegister()
+    {
+        return view('site.pages.syndicates.register');
+    }
+
+    public function storeAffiliate(StoreUpdateAffiliate $request)
     {
         $data = $request->all();
 
@@ -91,11 +101,21 @@ class SiteController extends Controller
         }
     }
 
+    public function storePartner(Request $request)
+    {
+        return $request->all();
+    }
+
+    public function storeSyndicate(Request $request)
+    {
+        return $request->all();
+    }
+
     public function showPartner($id)
     {
         $partner = Partner::find($id);
         $stores = $partner->stores()->pluck('id');
-        $promotions = Promotion::whereIn('store_id',$stores)->get();
+        $promotions = Promotion::whereIn('store_id', $stores)->get();
 
         return view('site.pages.partners.partner', [
             'partner' => $partner,
@@ -106,8 +126,32 @@ class SiteController extends Controller
 
     public function showSyndicate($id)
     {
-        return view('site.pages.syndicates.syndicate',[
+        return view('site.pages.syndicates.syndicate', [
             'syndicate' => Syndicate::find($id)
         ]);
+    }
+
+
+    public function about()
+    {
+        $data = Setting::select('value')->where('param', Setting::ABOUT_TEXT)->first();
+        return view('site.pages.about', compact('data'));
+    }
+
+    public function policy()
+    {
+        $data = Setting::select('value')->where('param', Setting::PRIVACY_POLICY_TEXT)->first();
+        return view('site.pages.policy', compact('data'));
+    }
+
+    public function terms()
+    {
+        $data = Setting::select('value')->where('param', Setting::USE_TERMS_TEXT)->first();
+        return view('site.pages.terms', compact('data'));
+    }
+
+    public function contact()
+    {
+        return view('site.pages.contact');
     }
 }

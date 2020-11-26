@@ -23,52 +23,57 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-colored">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-colored">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <a class="navbar-brand" href="{{ route('site.index') }}">
-                <img src="{{ asset('img/colepom_logo.png') }}" alt="colepom_logo">
-            </a>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <a class="navbar-brand" href="{{ route('site.index') }}">
+            <img src="{{ asset('img/colepom_logo.png') }}" alt="colepom_logo">
+        </a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                <ul class="navbar-nav ml-md-auto">
+            <ul class="navbar-nav ml-md-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('site.promotions') }}">Explorar Cupons
+                        <span class="sr-only">Promoções</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('site.partners')}}">Parceiros
+                        <span class="sr-only">Parceiros</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('site.syndicates') }}">Sindicatos/Associações
+                        <span class="sr-only">Sindicatos/Associações</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mr-3" href="{{ route('site.prices') }}">Planos
+                        <span class="sr-only">Planos</span>
+                    </a>
+                </li>
+                @Guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('site.promotions') }}">Explorar Cupons
-                            <span class="sr-only">Promoções</span>
+                        <a class="btn light-colored" data-toggle="modal" data-target=".modal-login">ENTRAR
+                            <span class="sr-only">Login</span>
                         </a>
                     </li>
+                @endGuest
+                @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('site.partners')}}">Parceiros
-                            <span class="sr-only">Parceiros</span>
+                        <a class="nav-link" href="{{ route('affiliates.dashboard') }}">Minha Conta
+                            <span class="sr-only">Minha Conta</span>
                         </a>
                     </li>
-                    <li class="nav-item" style="margin-right: 20px;">
-                        <a class="nav-link" href="{{ route('site.syndicates') }}">Sindicatos/Associações
-                            <span class="sr-only">Sindicatos/Associações</span>
-                        </a>
-                    </li>
-                    @Guest
-                        <li class="nav-item">
-                            <a class="btn light-colored" data-toggle="modal" data-target=".modal-login">ENTRAR
-                                <span class="sr-only">Login</span>
-                            </a>
-                        </li>
-                    @endGuest
-                    @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('affiliates.dashboard') }}">Minha Conta
-                                <span class="sr-only">Minha Conta</span>
-                            </a>
-                        </li>
-                    @endauth
-                </ul>
-            </div>
+                @endauth
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 <main>
     @yield('content')
 </main>
@@ -76,38 +81,30 @@
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 text-center">
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a href="#">Sobre nós</a>
-                    </li>
-                    <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item">
-                        <a href="#">Contato</a>
-                    </li>
-                    <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item">
-                        <a href="#">Termo de Uso</a>
-                    </li>
-                    <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item">
-                        <a href="#">Politica de Privacidade</a>
-                    </li>
-                </ul>
-                <p class="text-muted small">© Colepom 2020. Todos os direitos reservados.</p>
-                <p class="text-muted small">Made by
-                    <a href="https://suaveznaweb.com.br">SuaVezNaWeb</a>.</p>
+            <div class="col-lg-3 text-center">
+                <img src="{{ asset('img/colepom_logo.png') }}" alt="" height="100px">
             </div>
-            <div class="col-lg-6 text-center text-lg-right my-auto">
+            <div class="col-lg-3 text-center text-lg-right my-auto">
+                <ul class="list list-group">
+                    <a href="{{route('partners.register')}}" class="list-group text-white">Seja um Parceiro</a>
+                    <a href="{{route('syndicates.register')}}" class="list-group text-white">Cadastre seu Sindicato</a>
+                    <a href="{{route('syndicates.register')}}" class="list-group text-white">Cadastre sua Associação</a>
+                    <a href="#" class="list-group text-white">Perguntas Frequentes</a>
+                </ul>
+            </div>
+            <div class="col-lg-3 text-center text-lg-right my-auto">
+                <ul class="list list-group">
+                    <a href="#" class="list-group text-white">Sobre nós</a>
+                    <a href="{{route('site.contact')}}" class="list-group text-white">Contato</a>
+                    <a href="#" class="list-group text-white">Termo de Uso</a>
+                    <a href="#" class="list-group text-white">Politicas de Privacidade</a>
+                </ul>
+            </div>
+            <div class="col-lg-3 text-center text-lg-right my-auto">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item mr-3">
                         <a href="#">
                             <i class="fab fa-facebook-f fa-2x fa-fw"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item mr-3">
-                        <a href="#">
-                            <i class="fab fa-twitter fa-2x fa-fw"></i>
                         </a>
                     </li>
                     <li class="list-inline-item">

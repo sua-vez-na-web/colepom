@@ -5,6 +5,7 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-md-6">
             <div class="card-body">
+                @include('admin.layouts.partials._messages')
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group row">
