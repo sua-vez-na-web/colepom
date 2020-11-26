@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Auth::routes(['login', 'logout']);
+Auth::routes();
 
 /**
  * Site Routes
@@ -28,15 +28,14 @@ Route::group(['namespace' => 'Site'], function () {
   Route::post('parceiro', 'SiteController@storePartner')->name('store.partners');
   Route::post('sindicato', 'SiteController@storeSyndicate')->name('store.syndicates');
 
-  Route::get('politica-de-privacidade','SiteController@policy');
-  Route::get('termos-de-uso','SiteController@terms');
-  Route::get('sobre','SiteController@about');
-  Route::get('perguntas-frequentes','SiteController@faq');
-  Route::get('contato','SiteController@contact')->name('site.contact');
+  Route::get('politica-de-privacidade', 'SiteController@policy');
+  Route::get('termos-de-uso', 'SiteController@terms');
+  Route::get('sobre', 'SiteController@about');
+  Route::get('perguntas-frequentes', 'SiteController@faq');
+  Route::get('contato', 'SiteController@contact')->name('site.contact');
 
-  Route::view('planos','site.pages.home.prices')->name('site.prices');
-  Route::view('oferta','site.pages.home.oferta');
-
+  Route::view('planos', 'site.pages.home.prices')->name('site.prices');
+  Route::view('oferta', 'site.pages.home.oferta');
 });
 
 

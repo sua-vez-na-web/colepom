@@ -33,17 +33,8 @@
             <div class="page-text">
                 {!! Form::open(['route'=>'store.partners']) !!}
 
-
-                <div class="form-group">
-                    <label>Email</label>
-                    {{form::email('email',null,['class'=>'form-control']) }}
-                    @error('email')
-                    <span class="text-danger">{{ $message ?? '' }}</span>
-                    @enderror
-                </div>
-
                 <div class="row">
-                    <div class="form-group col-sm-12 col-md-6">
+                    <div class="form-group col-sm-12 col-md-4">
                         <label>Nome</label>
                         {{form::text('first_name',null,['class'=>'form-control']) }}
                         @error('first_name')
@@ -51,63 +42,54 @@
                         @enderror
                     </div>
 
-                    <div class="form-group col-sm-12 col-md-6">
-                        <label>Sobrenome</label>
-                        {{form::text('last_name',null,['class'=>'form-control']) }}
-                        @error('last_name')
+                    <div class="form-group col-sm-12 col-md-4">
+                        <label>Email</label>
+                        {{form::email('email',null,['class'=>'form-control']) }}
+                        @error('email')
                         <span class="text-danger">{{ $message ?? '' }}</span>
                         @enderror
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Nome da Sua Empresa</label>
+                    {{form::text('name',null,['class'=>'form-control']) }}
+                    @error('name')
+                    <span class="text-danger">{{ $message ?? '' }}</span>
+                    @enderror
                 </div>
 
                 <div class="row">
-                    <div class="form-group col-sm-12 col-md-6">
-                        <label>Nascimento</label>
-                        {{form::date('birth_of_date',null,['class'=>'form-control']) }}
-                        @error('birth_of_date')
+                    <div class="form-group col-sm-12 col-md-3">
+                        <label>CNPJ</label>
+                        {{form::text('cpf_cnpj',null,['class'=>'form-control']) }}
+                        @error('cpf_cnpj')
                         <span class="text-danger">{{ $message ?? '' }}</span>
                         @enderror
                     </div>
 
-                    <div class="form-group col-sm-12 col-md-6">
-                        <label>Genero</label>
-                        <div class="input-group">
-                            <label class="radio-inline">
-                                <input name="genre" type="radio" value="M" required checked> Masculino
-                            </label>
-
-                            <label class="radio-inline mx-4">
-                                <input name="genre" type="radio" value="F" required> Feminino
-                            </label>
-                        </div>
-                        @error('genre')
+                    <div class="form-group col-sm-12 col-md-3">
+                        <label>Site</label>
+                        {{form::text('site',null,['class'=>'form-control']) }}
+                        @error('site')
                         <span class="text-danger">{{ $message ?? '' }}</span>
                         @enderror
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label>Empresa</label>
-                    {{form::text('company',null,['class'=>'form-control']) }}
-                    @error('company')
-                    <span class="text-danger">{{ $message ?? '' }}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label>Função</label>
-                    {{form::text('job_post',null,['class'=>'form-control']) }}
-                    @error('job_post')
-                    <span class="text-danger">{{ $message ?? '' }}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label>CPF</label>
-                    {{form::text('document',null,['class'=>'form-control']) }}
-                    @error('document')
-                    <span class="text-danger">{{ $message ?? '' }}</span>
-                    @enderror
+                    <div class="form-group col-sm-12 col-md-3">
+                        <label>Telefone</label>
+                        {{form::text('phone',null,['class'=>'form-control']) }}
+                        @error('phone')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-sm-12 col-md-3">
+                        <label>Celular</label>
+                        {{form::text('mobile_phone',null,['class'=>'form-control']) }}
+                        @error('mobile_phone')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="row">

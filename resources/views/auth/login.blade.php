@@ -41,6 +41,9 @@
                             <button type="submit" class="btn btn-lg btn-block full_colored ">Entrar</button>
                             <!-- </div> -->
                         </div>
+                        <div class="col-md-8 offset-6 pull-right mt-2">
+                            <a href="{{ route('password.request') }}">esqueceu a senha?</a>
+                        </div>
                     </div>
                 </form>
             </div>

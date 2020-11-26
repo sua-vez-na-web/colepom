@@ -58,7 +58,7 @@
         </div>
 
         <div class="chamada-box">
-            <a href="#" class="btn colored">CADASTRE-SE AGORA</a>
+            <a href="{{route('syndicates.register')}}" class="btn colored">CADASTRE-SE AGORA</a>
         </div>
     </div>
 

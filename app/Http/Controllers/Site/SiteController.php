@@ -13,6 +13,7 @@ use App\Models\Promotion;
 use App\Models\Role;
 use App\Models\Syndicate;
 use App\Models\User;
+use App\Notifications\NewUserRegistration;
 use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
@@ -81,6 +82,7 @@ class SiteController extends Controller
 
     public function SyndicateRegister()
     {
+
         return view('site.pages.syndicates.register');
     }
 
@@ -103,12 +105,36 @@ class SiteController extends Controller
 
     public function storePartner(Request $request)
     {
-        return $request->all();
+        $user = User::create([
+            'name' => $request->first_name,
+            'email' => $request->email,
+            'password' => bcrypt('colepom'),
+            'role_id' => Role::PARTNER,
+
+        ]);
+
+        $user->partner()->create($request->all());
+
+        $user->notify(new NewUserRegistration($user));
+
+        return redirect()->route('site.index')->with('success', 'Obrigago pelo cadastro, em breve entraremos em contato');
     }
 
     public function storeSyndicate(Request $request)
     {
-        return $request->all();
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt('colepom'),
+            'role_id' => Role::SYNDICATE,
+
+        ]);
+
+        $user->syndicate()->create($request->all());
+
+        $user->notify(new NewUserRegistration($user));
+
+        return redirect()->route('site.index')->with('success', 'Obrigago pelo cadastro, em breve entraremos em contato');
     }
 
     public function showPartner($id)
