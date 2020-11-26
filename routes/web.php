@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Auth::routes(['login', 'logout']);
+Auth::routes();
 
 /**
  * Site Routes
@@ -20,8 +20,22 @@ Route::group(['namespace' => 'Site'], function () {
   Route::get('sindicatos/{id}', 'SiteController@showSyndicate')->name('site.syndicate');
   Route::get('sindicatos', 'SiteController@syndicates')->name('site.syndicates');
 
-  Route::get('/associado/cadastro', 'SiteController@showRegistrationForm')->name('affiliates.register');
-  Route::post('/associado', 'SiteController@registerAffiliate')->name('register.affiliates');
+  Route::get('associado/cadastro', 'SiteController@AffiliateRegister')->name('affiliates.register');
+  Route::get('parceiro/cadastro', 'SiteController@PartnerRegister')->name('partners.register');
+  Route::get('sindicato/cadastro', 'SiteController@SyndicateRegister')->name('syndicates.register');
+
+  Route::post('associado', 'SiteController@storeAffiliate')->name('store.affiliates');
+  Route::post('parceiro', 'SiteController@storePartner')->name('store.partners');
+  Route::post('sindicato', 'SiteController@storeSyndicate')->name('store.syndicates');
+
+  Route::view('politica-de-privacidade', 'site.pages.politica-privacidade')->name("page.politica");
+  Route::view('termos-de-uso', 'site.pages.termos-de-uso')->name('page.termos-de-uso');
+  Route::view('sobre', 'site.pages.sobre')->name('page.sobre');
+  Route::view('perguntas-frequentes', 'site.pages.faq')->name('page.faq');
+  Route::view('contato', 'site.pages.contato')->name('page.contato');
+
+  Route::view('planos', 'site.pages.home.prices')->name('site.prices');
+  Route::view('oferta', 'site.pages.home.oferta');
 });
 
 

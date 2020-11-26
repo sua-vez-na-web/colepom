@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateAffiliate;
@@ -12,6 +13,7 @@ use App\Models\Promotion;
 use App\Models\Role;
 use App\Models\Syndicate;
 use App\Models\User;
+use App\Notifications\NewUserRegistration;
 use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
@@ -67,14 +69,24 @@ class SiteController extends Controller
         return view('site.pages.promotions.show', compact('promotion'));
     }
 
-    public function showRegistrationForm()
+    public function AffiliateRegister()
     {
         $syndicates = Syndicate::pluck('name', 'id');
-
         return view('site.pages.affiliate.register', compact('syndicates'));
     }
 
-    public function registerAffiliate(StoreUpdateAffiliate $request)
+    public function PartnerRegister()
+    {
+        return view('site.pages.partners.register');
+    }
+
+    public function SyndicateRegister()
+    {
+
+        return view('site.pages.syndicates.register');
+    }
+
+    public function storeAffiliate(StoreUpdateAffiliate $request)
     {
         $data = $request->all();
 
@@ -91,11 +103,45 @@ class SiteController extends Controller
         }
     }
 
+    public function storePartner(Request $request)
+    {
+        $user = User::create([
+            'name' => $request->first_name,
+            'email' => $request->email,
+            'password' => bcrypt('colepom'),
+            'role_id' => Role::PARTNER,
+
+        ]);
+
+        $user->partner()->create($request->all());
+
+        $user->notify(new NewUserRegistration($user));
+
+        return redirect()->route('site.index')->with('success', 'Obrigago pelo cadastro, em breve entraremos em contato');
+    }
+
+    public function storeSyndicate(Request $request)
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt('colepom'),
+            'role_id' => Role::SYNDICATE,
+
+        ]);
+
+        $user->syndicate()->create($request->all());
+
+        $user->notify(new NewUserRegistration($user));
+
+        return redirect()->route('site.index')->with('success', 'Obrigago pelo cadastro, em breve entraremos em contato');
+    }
+
     public function showPartner($id)
     {
         $partner = Partner::find($id);
         $stores = $partner->stores()->pluck('id');
-        $promotions = Promotion::whereIn('store_id',$stores)->get();
+        $promotions = Promotion::whereIn('store_id', $stores)->get();
 
         return view('site.pages.partners.partner', [
             'partner' => $partner,
@@ -106,7 +152,7 @@ class SiteController extends Controller
 
     public function showSyndicate($id)
     {
-        return view('site.pages.syndicates.syndicate',[
+        return view('site.pages.syndicates.syndicate', [
             'syndicate' => Syndicate::find($id)
         ]);
     }

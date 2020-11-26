@@ -11,29 +11,86 @@
 			</div>
 			<div class="container nav-container">
 				<h1 class="nav-caption">
-					Sindicatos e Associações
+					Explorar Parceiros
 				</h1>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="container my-3">
-	<div class="card p-2">
-{{--		<div class="form">--}}
-{{--			<form class="form-inline">--}}
-{{--				<label class="sr-only" for="inlineFormInputName2">Name</label>--}}
-{{--				<input type="text" class="form-control mb-2 mr-sm-2 col-6" id="inlineFormInputName2" placeholder="Pequisar um Sindicato/Associacão">--}}
-{{--				<button type="submit" class="btn btn-default mb-2">Pesquisar</button>--}}
-{{--			</form>--}}
-{{--		</div>--}}
-		<ul class="list-group list-group-flush mt-2">
-			@foreach($syndicates as $syndicate)
-			<div class="partner">
-				<a href="{{route('site.syndicate',$syndicate->id)}}" class="list-group-item list-group-item-action">{{$syndicate->name}}</a>
+<div class="container">
+	<div class="row align-items-center my-4">
+		<!-- <div class="col-md-8">
+            <div class="form-row">
+                <div class="form-group col-8">
+                    <input type="text" class="form-control " placeholder="Digite para pesquisar...">
+                </div>
+                <div class="form-group col">
+                    <button type="submit" class="btn btn-outline-dark">
+                        <i class="fas fa-search"></i>
+                        Pesquisar
+                    </button>
+                </div>
+            </div>
+        </div> -->
+		<div class="col-md-12">
+			<div class="text-right">
+				<div class="ordenador">
+					<select>
+						<option value="0" selected="selected" disabled>Ordenar por:</option>
+						<option value="1">Maior desconto</option>
+						<option value="2">Menor desconto</option>
+						<option value="3">De A até Z</option>
+						<option value="4">De Z até A</option>
+					</select>
+				</div>
 			</div>
-			@endforeach
-		</ul>
+		</div>
+	</div>
+	<div class="section pesquisa-section row">
+		<div class="col-md-3">
+			<div class="pesquisa-box">
+				<div class="form-group">
+					<label for="checkbox" class="control-label">Categorias</label>
+					<div class="colored-checkbox-list">
+						@foreach($categories as $category)
+						<label class="checkbox-block">{{$category->name}}
+							<input type="checkbox" name="{{$category->name}}[]" class="form-check-input" value="{{$category->id}}">
+							<span class="checkmark"></span>
+						</label>
+						@endforeach
+					</div>
+				</div>
+				<div class="form-group submit-box">
+					<button type="submit" class="btn btn-block btn-light-colored">
+						Filtrar
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				@foreach ($syndicates as $syndicate)
+				<div class="col-md-4 col-sm-6 my-1">
+					<a class="cupom-click" href="{{route('site.syndicate',$syndicate->id)}}">
+						<div class="card p-2">
+							<div class="tasfa"></div>
+							<div class="black-canvas">
+								<img class="cupom-img-top" alt="Parceiro" src="{{$syndicate->image}}" width="450" height="600">
+							</div>
+							<!-- <div class="cupom-desconto">{{$syndicate->discount}}%</div> -->
+							<div class="cupom-block">
+								<h5 class="cupom-title" data-toggle="tooltip" title="{{ $syndicate->title }}">
+									{{$syndicate->name}}
+								</h5>
+							</div>
+						</div>
+					</a>
+				</div>
+				@endforeach
+			</div>
+		</div>
 	</div>
 </div>
+
 @endsection

@@ -11,10 +11,9 @@
     <meta name="description" content="">
     <meta name="author" content="MatthausNawan">
     <meta name="_token" content="{{csrf_token()}}">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.png') }}"/>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.png') }}" />
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto:300,400,700|Sunflower:300,500,700"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto:300,400,700|Sunflower:300,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
@@ -25,8 +24,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-colored">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -46,89 +44,86 @@
                             <span class="sr-only">Parceiros</span>
                         </a>
                     </li>
-                    <li class="nav-item" style="margin-right: 20px;">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('site.syndicates') }}">Sindicatos/Associações
                             <span class="sr-only">Sindicatos/Associações</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link mr-3" href="{{ route('site.prices') }}">Planos
+                            <span class="sr-only">Planos</span>
+                        </a>
+                    </li>
                     @Guest
-                        <li class="nav-item">
-                            <a class="btn light-colored" data-toggle="modal" data-target=".modal-login">ENTRAR
-                                <span class="sr-only">Login</span>
-                            </a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="btn light-colored" data-toggle="modal" data-target=".modal-login">ENTRAR
+                            <span class="sr-only">Login</span>
+                        </a>
+                    </li>
                     @endGuest
                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('affiliates.dashboard') }}">Minha Conta
-                                <span class="sr-only">Minha Conta</span>
-                            </a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('affiliates.dashboard') }}">Minha Conta
+                            <span class="sr-only">Minha Conta</span>
+                        </a>
+                    </li>
                     @endauth
                 </ul>
             </div>
         </div>
     </nav>
-<main>
-    @yield('content')
-</main>
+    <main>
+        @yield('content')
+    </main>
 
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 text-center">
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a href="#">Sobre nós</a>
-                    </li>
-                    <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item">
-                        <a href="#">Contato</a>
-                    </li>
-                    <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item">
-                        <a href="#">Termo de Uso</a>
-                    </li>
-                    <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item">
-                        <a href="#">Politica de Privacidade</a>
-                    </li>
-                </ul>
-                <p class="text-muted small">© Colepom 2020. Todos os direitos reservados.</p>
-                <p class="text-muted small">Made by
-                    <a href="https://suaveznaweb.com.br">SuaVezNaWeb</a>.</p>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right my-auto">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item mr-3">
-                        <a href="#">
-                            <i class="fab fa-facebook-f fa-2x fa-fw"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item mr-3">
-                        <a href="#">
-                            <i class="fab fa-twitter fa-2x fa-fw"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <i class="fab fa-instagram fa-2x fa-fw"></i>
-                        </a>
-                    </li>
-                </ul>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 text-center">
+                    <img src="{{ asset('img/colepom_logo.png') }}" alt="" height="100px">
+                </div>
+                <div class="col-lg-3 text-center text-lg-right my-auto">
+                    <ul class="list list-group">
+                        <a href="{{route('partners.register')}}" class="list-group text-white">Seja um Parceiro</a>
+                        <a href="{{route('syndicates.register')}}" class="list-group text-white">Cadastre seu Sindicato</a>
+                        <a href="{{route('syndicates.register')}}" class="list-group text-white">Cadastre sua Associação</a>
+                        <a href="{{ route('page.faq') }}" class="list-group text-white">Perguntas Frequentes</a>
+                    </ul>
+                </div>
+                <div class="col-lg-3 text-center text-lg-right my-auto">
+                    <ul class="list list-group">
+                        <a href="{{route('page.sobre') }}" class="list-group text-white">Sobre nós</a>
+                        <a href="{{route('page.contato')}}" class="list-group text-white">Contato</a>
+                        <a href="{{ route('page.termos-de-uso') }}" class="list-group text-white">Termo de Uso</a>
+                        <a href="{{ route('page.politica') }}" class="list-group text-white">Politicas de Privacidade</a>
+                    </ul>
+                </div>
+                <div class="col-lg-3 text-center text-lg-right my-auto">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item mr-3">
+                            <a href="#">
+                                <i class="fab fa-facebook-f fa-2x fa-fw"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-instagram fa-2x fa-fw"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
-@include('site.layouts._partials._modal-login')
+    </footer>
+    @include('site.layouts._partials._modal-login')
 
 
-<script src="{{asset('js/app.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/jquery.mask.min.js') }}"></script>
-<!-- <script src="{{ asset('js/scripts.js') }}"></script> -->
-@yield('js')
+    <script src="{{asset('js/app.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+    <!-- <script src="{{ asset('js/scripts.js') }}"></script> -->
+    @yield('js')
 </body>
 
 </html>

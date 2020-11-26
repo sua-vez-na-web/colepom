@@ -588,16 +588,16 @@ h4 {
 }
 
 .oferta-title {
-    font-size: 36px;
+    font-size: 26px;
 }
 
 .oferta-price {
-    font-size: 72px;
+    font-size: 26px;
     font-weight: bold;
 }
 
 .oferta-period {
-    font-size: 36px;
+    font-size: 16px;
     font-weight: lighter;
 }
 

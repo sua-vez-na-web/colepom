@@ -47,4 +47,10 @@ class Partner extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getImageAttribute()
+    {
+        $defaultImage = asset('/img/colepom_bg_white.png');
+        return $this->attributes['brand'] ? $this->attributes['brand'] : $defaultImage;
+    }
 }
