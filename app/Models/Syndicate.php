@@ -44,4 +44,10 @@ class Syndicate extends Model
     {
         return $this->hasMany(Affiliate::class);
     }
+
+    public function getImageAttribute()
+    {
+        $defaultImage = asset('/img/colepom_bg_white.png');
+        return $this->attributes['brand'] ? $this->attributes['brand'] : $defaultImage;
+    }
 }
