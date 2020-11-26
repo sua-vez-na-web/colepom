@@ -156,28 +156,4 @@ class SiteController extends Controller
             'syndicate' => Syndicate::find($id)
         ]);
     }
-
-
-    public function about()
-    {
-        $data = Setting::select('value')->where('param', Setting::ABOUT_TEXT)->first();
-        return view('site.pages.about', compact('data'));
-    }
-
-    public function policy()
-    {
-        $data = Setting::select('value')->where('param', Setting::PRIVACY_POLICY_TEXT)->first();
-        return view('site.pages.policy', compact('data'));
-    }
-
-    public function terms()
-    {
-        $data = Setting::select('value')->where('param', Setting::USE_TERMS_TEXT)->first();
-        return view('site.pages.terms', compact('data'));
-    }
-
-    public function contact()
-    {
-        return view('site.pages.contact');
-    }
 }

@@ -28,11 +28,11 @@ Route::group(['namespace' => 'Site'], function () {
   Route::post('parceiro', 'SiteController@storePartner')->name('store.partners');
   Route::post('sindicato', 'SiteController@storeSyndicate')->name('store.syndicates');
 
-  Route::get('politica-de-privacidade', 'SiteController@policy');
-  Route::get('termos-de-uso', 'SiteController@terms');
-  Route::get('sobre', 'SiteController@about');
-  Route::get('perguntas-frequentes', 'SiteController@faq');
-  Route::get('contato', 'SiteController@contact')->name('site.contact');
+  Route::view('politica-de-privacidade', 'site.pages.politica-privacidade')->name("page.politica");
+  Route::view('termos-de-uso', 'site.pages.termos-de-uso')->name('page.termos-de-uso');
+  Route::view('sobre', 'site.pages.sobre')->name('page.sobre');
+  Route::view('perguntas-frequentes', 'site.pages.faq')->name('page.faq');
+  Route::view('contato', 'site.pages.contato')->name('page.contato');
 
   Route::view('planos', 'site.pages.home.prices')->name('site.prices');
   Route::view('oferta', 'site.pages.home.oferta');
