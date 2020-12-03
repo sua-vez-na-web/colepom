@@ -13,7 +13,7 @@
                 <h3>Sindicatos</h3>
                 <div class="number" style="display:flex; justify-content:space-between">
                     <i class="fa fa-user fa-4x"></i>
-                    <h2>{{rand(150,200)}}</h2>
+                    <h2>{{$syndicates}}</h2>
                 </div>
             </div>
             <div class="panel-body">
@@ -26,7 +26,7 @@
                 <h3>Affiliados</h3>
                 <div class="number" style="display:flex; justify-content:space-between">
                     <i class="fa fa-user fa-4x"></i>
-                    <h2>{{rand(500,700)}}</h2>
+                    <h2>{{$affiliates}}</h2>
                 </div>
             </div>
             <div class="panel-body">
@@ -39,7 +39,7 @@
                 <h3>Parceiros</h3>
                 <div class="number" style="display:flex; justify-content:space-between">
                     <i class="fa fa-user fa-4x"></i>
-                    <h2>{{rand(70,150)}}</h2>
+                    <h2>{{$partners}}</h2>
                 </div>
             </div>
             <div class="panel-body">
@@ -49,10 +49,10 @@
     <div class="col-md-3 col-sm-12">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3>Promoçoes</h3>
+                <h3>Cupons</h3>
                 <div class="number" style="display:flex; justify-content:space-between">
                     <i class="fa fa-user fa-4x"></i>
-                    <h2>{{rand(40,80)}}</h2>
+                    <h2>{{$promotions ?? 0}}</h2>
                 </div>
             </div>
             <div class="panel-body">

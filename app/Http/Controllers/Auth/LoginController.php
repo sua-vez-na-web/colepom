@@ -55,6 +55,11 @@ class LoginController extends Controller
                 return redirect()->route('affiliates.dashboard');
             }
 
+            if (!$user->is_active) {
+                Auth::logout();
+                return redirect()->route('site.index')->with('warning', 'Seu cadastro ainda não foi aprovado, por favor aguarde!');
+            }
+
             return redirect()->to($this->redirectTo);
         }
 

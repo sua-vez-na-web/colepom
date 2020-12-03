@@ -62,34 +62,20 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
   Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
 
-  /**
-   * Syndicats Routes
-   */
+  //Syndicates
   Route::resource('syndicates', 'SyndicatesController');
-
-  /**
-   * Categories Routes
-   */
+  //Categories
   Route::resource('categories', 'CategoriesController');
-
-  /**
-   * Partners Routes
-   */
+  //Partners
   Route::resource('partners', 'PartnersController');
-
-  /**
-   * Stores Routes
-   */
+  //Stores
   Route::resource('stores', 'StoresController');
-
-  /**
-   * Affiliates Routes
-   */
+  //Affiliates
   Route::resource('affiliates', 'AffiliatesController');
 
-  /**
-   * Promotions Routes
-   */
+  //Users
+  Route::resource('users', 'UsersController');
+
   Route::get('promotions/generate-code', 'PromotionsController@generateCode')->name('promotion.generate-code');
   Route::resource('promotions', 'PromotionsController');
 });

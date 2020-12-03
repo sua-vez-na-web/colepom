@@ -73,6 +73,7 @@
         </div>
     </nav>
     <main>
+        @include('site.layouts._partials.messages')
         @yield('content')
     </main>
 

@@ -8,10 +8,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-        <a class="navbar-brand" href="#">Colepom - Administração</a>
-        </div>      
+            <a class="navbar-brand" href="#">Colepom - Administração</a>
+        </div>
 
-        <ul class="nav navbar-top-links navbar-right">          
+        <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     {{Auth::user()->name ?? 'Develop'}}
@@ -28,9 +28,9 @@
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
                             <i class="fa fa-sign-out fa-fw"></i> Logout
                         </a>
-                    </li>                    
-                </ul>                
-            </li>           
+                    </li>
+                </ul>
+            </li>
         </ul>
 
         <form action="{{ route('logout') }}" id="logout-form" style="display:none" method="post">
@@ -40,33 +40,38 @@
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
-                    @can('administrator')     
-                        <li>
-                            <a href="{{route('categories.index')}}">Categorias/Subcategorias</a>
-                        </li>
-                        <li>
-                            <a href="{{route('syndicates.index')}}">Sindicatos</a>
-                        </li>
+                    @can('administrator')
+                    <li>
+                        <a href="{{route('categories.index')}}">Categorias/Subcategorias</a>
+                    </li>
+                    <li>
+                        <a href="{{route('syndicates.index')}}">Sindicatos</a>
+                    </li>
                     @endcan
                     @can('administrator')
-                        <li>
-                            <a href="{{route('partners.index')}}">Parceiros</a>
-                        </li>
+                    <li>
+                        <a href="{{route('partners.index')}}">Parceiros</a>
+                    </li>
                     @endcan
                     @can('partner','administrator')
-                        <li>
-                            <a href="{{route('stores.index')}}">Estabelecimentos</a>
-                        </li>
+                    <li>
+                        <a href="{{route('stores.index')}}">Estabelecimentos</a>
+                    </li>
                     @endcan
                     @can('syndicate','administrator')
-                        <li>
-                            <a href="{{route('affiliates.index')}}">Associados</a>
-                        </li>
+                    <li>
+                        <a href="{{route('affiliates.index')}}">Associados</a>
+                    </li>
                     @endcan
                     @can('partner','administrator')
-                        <li>
-                            <a href="{{route('promotions.index')}}">Promoções</a>
-                        </li>
+                    <li>
+                        <a href="{{route('promotions.index')}}">Cupons</a>
+                    </li>
+                    @endcan
+                    @can('administrator')
+                    <li>
+                        <a href="{{route('users.index')}}">Usuários</a>
+                    </li>
                     @endcan
                     <!-- <li>
                         <a href="#">
@@ -81,9 +86,9 @@
                                 <a href="#">Categorias/Subcategorias</a>
                             </li>
                         </ul>
-                    </li> -->                   
+                    </li> -->
                 </ul>
-            </div>          
-        </div>        
+            </div>
+        </div>
     </nav>
 </div>
