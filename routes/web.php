@@ -54,7 +54,7 @@ Route::group(['namespace' => 'Affiliates', 'prefix' => 'associado'], function ()
 /**
  * Admin Routes
  */
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin',  'middleware' => ['auth']], function () {
 
   /**
    * Dashboard Routes

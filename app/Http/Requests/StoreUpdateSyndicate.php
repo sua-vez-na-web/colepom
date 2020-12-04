@@ -29,7 +29,7 @@ class StoreUpdateSyndicate extends FormRequest
             'address_number' => "required",
             'city' => "required",
             'province' => "required",
-            'username' => "required|min:3|max:10|unique:users,name"
+            // 'username' => "required|min:3|max:10|unique:users,name"
         ];
     }
 
@@ -39,7 +39,7 @@ class StoreUpdateSyndicate extends FormRequest
             'required' => 'O campo :attribute é obrigatório',
             'min'      => 'O campo :attribute é muito curto',
             'max'      => 'O campo :attribute exedeu a quantidade de caracteres',
-            'unique'      => 'O campo :attribute já está sendo usado',
+            'unique'   => 'O campo :attribute já está sendo usado',
         ];
     }
 

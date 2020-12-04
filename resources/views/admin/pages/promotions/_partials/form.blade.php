@@ -23,19 +23,6 @@
     @enderror
 </div>
 
-<div class="form-group  @error('code') has-error @enderror">
-    <label>Codigo</label>
-    <div class="input-group">
-        <input class="form-control" name="code" type="text" value="{{ $promotion->code ?? @old('code') }}">
-        <span class="input-group-btn">
-            <button class="btn btn-primary" type="button" id="btnGerarCodigo">Gerar Codigo!</button>
-        </span>
-    </div>
-    @error('code')
-    <span class="text-danger">{{ $message ?? '' }}</span>
-    @enderror
-</div>
-
 <div class="form-group  @error('title') has-error @enderror">
     <label>Titulo</label>
     <input class="form-control" name="title" type="text" value="{{ $promotion->title ?? @old('title') }}">
@@ -76,16 +63,9 @@
     @enderror
 </div>
 
-<div class="form-group  @error('qty_available') has-error @enderror">
-    <label>Quantidade Disponível</label>
-    <input class="form-control" name="qty_available" type="text" value="{{ $promotion->qty_available ?? @old('qty_available') }}">
-    @error('qty_available')
-    <span class="text-danger">{{ $message ?? '' }}</span>
-    @enderror
-</div>
 
 <div class="form-group  @error('qty_remaining') has-error @enderror">
-    <label>Quantidade Restante</label>
+    <label>Quantidades</label>
     <input class="form-control" name="qty_remaining" type="text" value="{{ $promotion->qty_remaining ?? @old('qty_remaining') }}">
     @error('qty_remaining')
     <span class="text-danger">{{ $message ?? '' }}</span>
@@ -104,23 +84,3 @@
 
 <a href="{{route('promotions.index')}}" type="reset" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar</button>
-
-@section('js')
-<script>
-    $('#btnGerarCodigo').on('click', function(e) {
-        e.preventDefault();
-
-        $.ajax({
-            type: "GET",
-            url: "{{route('promotion.generate-code')}}",
-            success: (response) => {
-                $("input[name='code']").val(response);
-            },
-            error: (error) => {
-                console.log(error)
-            }
-        })
-    })
-</script>
-
-@endsection

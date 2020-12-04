@@ -1,22 +1,24 @@
 @extends('admin.layouts.admin')
 
 @section('content')
-<div class="row">
-    <h3 class="page-header">
-        Editar Promocao {{$promotion->title}}
-    </h3>
-</div>
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
 
-<div class="row">
-    <ol class="breadcrumb">
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="{{ route('promotions.index') }}">Promocaos</a></li>
-        <li class="active">Editar de Promocaos</li>
-    </ol>
-</div>
+            <h3 class="page-header">
+                Editar Promocao {{$promotion->title}}
+            </h3>
 
-<div class="row">
-    <div class="col-lg-10">
+
+
+            <ol class="breadcrumb">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="{{ route('promotions.index') }}">Promocaos</a></li>
+                <li class="active">Editar de Promocaos</li>
+            </ol>
+        </div>
+
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h1 class="panel-header">Editar Promocao</h1>
@@ -32,4 +34,5 @@
         </div>
     </div>
 </div>
+
 @endsection

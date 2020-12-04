@@ -1,94 +1,87 @@
-<div id="wrapper">
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Colepom - Administração</a>
-        </div>
-
-        <ul class="nav navbar-top-links navbar-right">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    {{Auth::user()->name ?? 'Develop'}}
-                    <i class="fa fa-user fa-fw"></i>
-                    <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-user fa-fw"></i> Minha Conta
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
-                            <i class="fa fa-sign-out fa-fw"></i> Logout
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <form action="{{ route('logout') }}" id="logout-form" style="display:none" method="post">
-            @csrf
-        </form>
-
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    @can('administrator')
-                    <li>
-                        <a href="{{route('categories.index')}}">Categorias/Subcategorias</a>
-                    </li>
-                    <li>
-                        <a href="{{route('syndicates.index')}}">Sindicatos</a>
-                    </li>
-                    @endcan
-                    @can('administrator')
-                    <li>
-                        <a href="{{route('partners.index')}}">Parceiros</a>
-                    </li>
-                    @endcan
-                    @can('partner','administrator')
-                    <li>
-                        <a href="{{route('stores.index')}}">Estabelecimentos</a>
-                    </li>
-                    @endcan
-                    @can('syndicate','administrator')
-                    <li>
-                        <a href="{{route('affiliates.index')}}">Associados</a>
-                    </li>
-                    @endcan
-                    @can('partner','administrator')
-                    <li>
-                        <a href="{{route('promotions.index')}}">Cupons</a>
-                    </li>
-                    @endcan
-                    @can('administrator')
-                    <li>
-                        <a href="{{route('users.index')}}">Usuários</a>
-                    </li>
-                    @endcan
-                    <!-- <li>
-                        <a href="#">
-                            <i class="fa fa-money fa-fw"></i> Promoções
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Promoções</a>
-                            </li>
-                            <li>
-                                <a href="#">Categorias/Subcategorias</a>
-                            </li>
-                        </ul>
-                    </li> -->
-                </ul>
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <!-- <img src="{{asset('assets/images/avatar.png')}}" class="img-circle" alt="User Image"> -->
+                <i class="fa fa-user-o fa-3x"></i>
+            </div>
+            <div class="pull-left info">
+                <p>{{Auth::user()->name ?? 'Developer'}}</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
-    </nav>
-</div>
+
+        <ul class="sidebar-menu" data-widget="tree">
+            @can('administrator')
+            <li class="{{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'active' : ''  }}">
+                <a href="{{ route('categories.index') }}">
+                    <i class="fas fa-list">
+                    </i>
+                    <span>Categories</span>
+                </a>
+            </li>
+
+            <li class="{{ request()->is('admin/syndicates') || request()->is('admin/syndicates/*') ? 'active' : ''  }}">
+                <a href="{{ route('syndicates.index') }}">
+                    <i class="fas fa-bullhorn">
+                    </i>
+                    <span>Sindicatos</span>
+                </a>
+            </li>
+            @endcan
+            @can('administrator')
+            <li class="{{ request()->is('admin/partners') || request()->is('admin/partners/*') ? 'active' : ''  }}">
+                <a href="{{ route('partners.index') }}">
+                    <i class="fas fa-handshake-o">
+                    </i>
+                    <span>Parceiros</span>
+                </a>
+            </li>
+            @endcan
+            @can('partner','administrator')
+            <li class="{{ request()->is('admin/stores') || request()->is('admin/stores/*') ? 'active' : ''  }}">
+                <a href="{{ route('stores.index') }}">
+                    <i class="fas fa-shopping-basket">
+                    </i>
+                    <span>Estabelecimentos</span>
+                </a>
+            </li>
+            @endcan
+            @can('syndicate','administrator')
+            <li class="{{ request()->is('admin/affiliates') || request()->is('admin/affiliates/*') ? 'active' : ''  }}">
+                <a href="{{ route('affiliates.index') }}">
+                    <i class="fas fa-users">
+                    </i>
+                    <span>Associados</span>
+                </a>
+            </li>
+            @endcan
+            @can('partner','administrator')
+            <li class="{{ request()->is('admin/promotions') || request()->is('admin/promotions/*') ? 'active' : ''  }}">
+                <a href="{{ route('promotions.index') }}">
+                    <i class="fa fa-dollar">
+                    </i>
+                    <span>Promções</span>
+                </a>
+            </li>
+            @endcan
+            @can('administrator')
+
+            <li class="{{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : ''  }}">
+                <a href="{{ route('users.index') }}">
+                    <i class="fa fa-user-circle-o">
+                    </i>
+                    <span>Usuários</span>
+                </a>
+            </li>
+            @endcan
+            <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"><i class="fa fa-sign-out"></i> <span>Sair</span></a></li>
+        </ul>
+    </section>
+    <form action="{{route('logout')}}" sytle="display:none" id="logout-form" method="POST">
+        @csrf
+    </form>
+    <!-- /.sidebar -->
+</aside>
