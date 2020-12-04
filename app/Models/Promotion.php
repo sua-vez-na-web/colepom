@@ -60,4 +60,9 @@ class Promotion extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function coupons()
+    {
+        return $this->hasMany(Coupon::class);
+    }
 }

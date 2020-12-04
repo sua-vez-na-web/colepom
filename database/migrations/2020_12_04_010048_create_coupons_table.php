@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSettingsTable extends Migration
+class CreateCouponsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('coupons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('param');
-            $table->longText('value');
+            $table->unsignedBigInteger('promotion_id');
+            $table->string('code')->unique();
+            $table->integer('discount');
+            $table->boolean('is_used')->default(false);
+            $table->dateTime('used_at')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('coupons');
     }
 }

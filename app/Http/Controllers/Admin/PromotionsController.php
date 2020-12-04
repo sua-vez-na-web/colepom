@@ -10,6 +10,7 @@ use App\Models\Promotion;
 use App\Models\Role;
 use Illuminate\Support\Str;
 use App\Models\Store;
+use App\Services\Promotion\CreateCoupons;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -59,7 +60,9 @@ class PromotionsController extends Controller
             $data['partner_id'] = $user->partner->id;
         }
 
-        Promotion::create($data);
+        $promotion = Promotion::create($data);
+
+        CreateCoupons::execute($promotion);
 
         return redirect()->route('promotions.index');
     }

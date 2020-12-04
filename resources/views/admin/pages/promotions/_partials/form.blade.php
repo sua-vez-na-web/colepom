@@ -64,10 +64,10 @@
 </div>
 
 
-<div class="form-group  @error('qty_remaining') has-error @enderror">
+<div class="form-group  @error('qty_available') has-error @enderror">
     <label>Quantidades</label>
-    <input class="form-control" name="qty_remaining" type="text" value="{{ $promotion->qty_remaining ?? @old('qty_remaining') }}">
-    @error('qty_remaining')
+    <input class="form-control" name="qty_available" type="text" value="{{ $promotion->qty_available ?? @old('qty_available') }}">
+    @error('qty_available')
     <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>
@@ -77,7 +77,7 @@
     <textarea name="redemption_rules" id="" cols="30" rows="10" class="form-control">
 
     </textarea>
-    @error('qty_remaining')
+    @error('redemption_rules')
     <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror
 </div>

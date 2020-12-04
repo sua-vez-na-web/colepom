@@ -17,7 +17,7 @@ class StoreUpdatePromotion extends FormRequest
         $id = $this->segment(3);
 
         return [
-            'code'  => "required|unique:promotions,code,{$id},id",
+            // 'code'  => "required|unique:promotions,code,{$id},id",
             'title' => "required|min:3|max:100",
             'expiration_date' => "required|date|",
             'original_value' => "required|numeric",
