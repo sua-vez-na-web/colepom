@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
+use App\Notifications\NewUserActivated;
 
 class UsersController extends Controller
 {
@@ -28,7 +29,12 @@ class UsersController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
 
-        User::create($data);
+
+        $user = User::create($data);
+
+        if ($user->is_active == 1) {
+            $user->notify(new NewUserActivated($user));
+        }
 
         return redirect()->route('users.index');
     }
@@ -67,6 +73,10 @@ class UsersController extends Controller
         }
 
         $user->update($data);
+
+        if ($user->is_active == 1) {
+            $user->notify(new NewUserActivated($user));
+        }
 
         return redirect()->route('users.index');
     }
