@@ -14,7 +14,8 @@ use App\Models\Role;
 use App\Models\Syndicate;
 use App\Models\User;
 use App\Notifications\NewUserRegistration;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class SiteController extends Controller
 {
@@ -97,6 +98,8 @@ class SiteController extends Controller
 
         $affiliate = Affiliate::create($data);
 
+        $user->notify(new NewUserRegistration($user));
+
         if ($affiliate) {
             //TODO: send email to affiliate
             return view('site.pages.affiliate.thank-you');
@@ -155,5 +158,49 @@ class SiteController extends Controller
         return view('site.pages.syndicates.syndicate', [
             'syndicate' => Syndicate::find($id)
         ]);
+    }
+
+    public function redeemCoupon($promotion_id)
+    {
+        if (!Auth::check()) {
+            return response()->json([
+                'success' => false,
+                'message' => "Faça Login pra Resgatar",
+                'code' => null
+            ], 200);
+        }
+
+        if (!$promotion = Promotion::find($promotion_id)) {
+            return response()->json([
+                'success' => false,
+                'message' => "Promoção Não Disponível",
+                'code' => null
+            ], 200);
+        }
+
+        $coupon = Promotion::getCouponAvailable($promotion);
+
+        if ($coupon) {
+            $user = Auth::user();
+            if (User::redeemCuponToUser($user, $coupon)) {
+                return response()->json([
+                    'success' => true,
+                    'message' => "Cupom Revelado",
+                    'code' => Str::upper($coupon->code),
+                ], 200);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => "Você já resgatou esse cupom",
+                    'code' => "********",
+                ], 200);
+            }
+        } else {
+            return response()->json([
+                'success' => true,
+                'message' => "Desculpe, Nenhum Cupom Disponível",
+                'code' => "*******",
+            ], 200);
+        }
     }
 }

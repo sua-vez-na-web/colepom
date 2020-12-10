@@ -11,4 +11,9 @@ class Coupon extends Model
         'code',
         'discount'
     ];
+
+    public function promotion()
+    {
+        return $this->belongsTo(Promotion::class);
+    }
 }

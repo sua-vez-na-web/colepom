@@ -65,4 +65,9 @@ class Promotion extends Model
     {
         return $this->hasMany(Coupon::class);
     }
+
+    public static function getCouponAvailable($promotion)
+    {
+        return $promotion->coupons()->where('is_used', 0)->first();
+    }
 }
