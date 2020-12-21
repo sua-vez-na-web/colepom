@@ -11,7 +11,9 @@ Auth::routes();
 Route::group(['namespace' => 'Site'], function () {
   Route::get('/', 'SiteController@index')->name('site.index');
 
-  Route::get('promocoes/resgatar/{id}', 'SiteController@showPromotion')->name('promotions.redeem');
+  Route::get('promocoes/{id}', 'SiteController@showPromotion')->name('promotions.redeem');
+  Route::get('coupon/{promotion}/redeem', 'SiteController@redeemCoupon')->name('coupon.redeem');
+
   Route::get('promocoes', 'SiteController@promotions')->name('site.promotions');
 
   Route::get('parceiros/{id}', 'SiteController@showPartner')->name('site.partner');
@@ -70,8 +72,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',  'middleware' => ['au
   Route::resource('partners', 'PartnersController');
   //Stores
   Route::resource('stores', 'StoresController');
+
   //Affiliates
   Route::resource('affiliates', 'AffiliatesController');
+  Route::get('affiliates/{id}/aproove', 'AffiliatesController@aproove')->name('affiliates.aproove');
 
   //Users
   Route::resource('users', 'UsersController');

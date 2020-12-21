@@ -19,7 +19,6 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Imagem</th>
-                                <th>Code</th>
                                 <th>Title</th>
                                 <th>Estabelecimento</th>
                                 <th>Categoria</th>
@@ -34,7 +33,6 @@
                             <tr>
                                 <td></td>
                                 <td><img src="{{ Storage::url($promotion->image) }}" alt="" widtd="50" height="50"></td>
-                                <td>{{$promotion->code}}</td>
                                 <td>{{$promotion->title}}</td>
                                 <td>{{$promotion->store->name}}</td>
                                 <td>{{$promotion->category->name}}</td>

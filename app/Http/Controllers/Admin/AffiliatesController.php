@@ -8,6 +8,7 @@ use App\Models\Affiliate;
 use App\Models\Role;
 use App\Models\Syndicate;
 use App\Models\User;
+use App\Notifications\NewAffiliateAproovedBySyndicate;
 use Illuminate\Support\Facades\Auth;
 
 class AffiliatesController extends Controller
@@ -103,5 +104,21 @@ class AffiliatesController extends Controller
         $affiliate->delete();
 
         return redirect()->route('affiliates.index');
+    }
+
+    public function aproove($id)
+    {
+        $affiliate = Affiliate::find($id);
+
+        $affiliate->is_aprooved = 1;
+        $affiliate->save();
+
+        $admins = User::where('role_id', Role::ADMINISTRATOR)->get();
+
+        foreach ($admins as $admin) {
+            $admin->notify(new NewAffiliateAproovedBySyndicate($admin));
+        }
+
+        return redirect()->back()->with('msg', 'Associado Aprovado!');
     }
 }

@@ -45,15 +45,20 @@
                         <dt class="col-sm-2">Email</dt>
                         <dd class="col-sm-10">{{$affiliate->email}}</dd>
                     </dl>
+                    <dl class="row">
+                        <dt class="col-sm-2">APROVADO</dt>
+                        <dd class="col-sm-10">{{$affiliate->is_aprooved ? "SIM" : "NAO"}}</dd>
+                    </dl>
                 </div>
             </div>
 
 
-
-            <form action="#" od="post" class="form-inline">
+            @if(!$affiliate->is_aprooved)
+            <form action="{{route('affiliates.aproove',$affiliate->id)}}" od="post" class="form-inline">
                 @csrf
-                <button type="button" class="btn btn-success"><i class="fa fa-check"></i> Aprovar: <strong>{{ $affiliate->first_name }}</strong></button>
+                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Aprovar: <strong>{{ $affiliate->first_name }}</strong></button>
             </form>
+            @endif
         </div>
     </div>
 </div>

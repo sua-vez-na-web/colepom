@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\UserRedeemCoupon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -51,5 +52,35 @@ class User extends Authenticatable
         ]);
 
         return $newUser;
+    }
+
+    public function coupons()
+    {
+        return $this->belongsTo(AffiliateCoupom::class, 'user_id');
+    }
+
+    public static function redeemCuponToUser($user, $coupon): bool
+    {
+
+        $couponHasRedeem = AffiliateCoupom::where('user_id', $user->id)
+            ->where('coupon_id', $coupon->id)
+            ->first();
+        if (!$couponHasRedeem) {
+            AffiliateCoupom::create(
+                [
+                    'user_id' => $user->id,
+                    'coupon_id' => $coupon->id,
+                    'partner_id' => $coupon->promotion->partner->id,
+                    'redeem_at' => now(),
+                    'is_used' => 0,
+                    'is_active' => 0
+                ]
+            );
+
+            $user->notify(new UserRedeemCoupon($user, $coupon));
+
+            return true;
+        }
+        return false;
     }
 }
