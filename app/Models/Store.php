@@ -46,4 +46,19 @@ class Store extends Model
     {
         return $this->hasMany(Promotion::class);
     }
+
+    public static function searchStores($uf = null, $city = null, $categories = null)
+    {
+
+        if ($uf == null || $city == null) {
+
+            return self::all();
+        } else {
+            return self::when($uf, function ($query) use ($uf) {
+                $query->orWhere('uf_code', $uf);
+            })->when($city, function ($query) use ($city) {
+                $query->orWhere('city_code', $city);
+            })->get();
+        }
+    }
 }

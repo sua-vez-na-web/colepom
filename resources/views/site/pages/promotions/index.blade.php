@@ -18,8 +18,8 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row align-items-center my-4">
+<div class="container mt-5">
+    <!-- <div class="row align-items-center my-4">
         <div class="col-md-8">
             <div class="form-row">
                 <div class="form-group col-8">
@@ -46,31 +46,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="section pesquisa-section row">
-        <div class="col-md-4">
-            <div class="pesquisa-box">
-                <div class="form-group">
-                    <label for="checkbox" class="control-label">Categorias</label>
-                    <div class="colored-checkbox-list">
-                        @foreach($categories as $category)
-                        <label class="checkbox-block">{{$category->name}}
-                            <input type="checkbox" name="{{$category->name}}[]" class="form-check-input" value="{{$category->id}}">
-                            <span class="checkmark"></span>
-                        </label>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="form-group submit-box">
-                    <button type="submit" class="btn btn-block btn-light-colored">
-                        Filtrar
-                    </button>
-                </div>
-            </div>
+        <div class="col-md-3">
+            @include('site.layouts._partials._filters')
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="row">
-                @foreach ($promotions as $promotion)
+                @forelse ($promotions as $promotion)
                 <div class="col-md-4 col-sm-6">
                     <a class="cupom-click" href="{{route('promotions.redeem',$promotion->id)}}">
                         <div class="cupom">
@@ -87,7 +70,9 @@
                         </div>
                     </a>
                 </div>
-                @endforeach
+                @empty
+                <p>Nenhum registro encontrado.</p>
+                @endforelse
             </div>
         </div>
     </div>

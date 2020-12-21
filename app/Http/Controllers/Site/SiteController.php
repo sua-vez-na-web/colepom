@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateAffiliate;
 use App\Models\Affiliate;
 use App\Models\AffiliateCoupom;
 use App\Models\Category;
-use App\Models\Coupon;
 use App\Models\Partner;
 use App\Models\Promotion;
 use App\Models\Role;
+use App\Models\State;
+use App\Models\Store;
 use App\Models\Syndicate;
 use App\Models\User;
 use App\Notifications\NewUserRegistration;
@@ -38,30 +38,31 @@ class SiteController extends Controller
 
         return view('site.pages.promotions.index', [
             'promotions' => $promotions,
-            'categories' => $categories
+            'categories' => $categories,
+            'states' => State::all(),
+            'table' => 'stores'
         ]);
     }
 
 
-    public function partners()
+    public function partners(Request $request)
     {
-        $partners = Partner::all();
-        $categories = Category::all();
-
         return view('site.pages.partners.index', [
-            'partners' => $partners,
-            'categories' => $categories
+            'partners' => Partner::all(),
+            'categories' => Category::all(),
+            'states' => State::all(),
+            'table' => 'partner'
         ]);
     }
 
     public function syndicates()
     {
         $syndicates = Syndicate::all();
-        $categories = Category::all();
 
         return view('site.pages.syndicates.index', [
             'syndicates' => $syndicates,
-            'categories' => $categories
+            'states' => State::all(),
+            'table' => 'syndicate'
         ]);
     }
 
@@ -229,5 +230,47 @@ class SiteController extends Controller
         $profile->update($request->all());
 
         return redirect()->back()->with('msg', 'Seus Dados Foram Atualizados!');
+    }
+
+    public function partersSearch(Request $request)
+    {
+
+        $partners = Partner::searchPartners($request->estado, $request->cidade, $request->category);
+
+        return view('site.pages.partners.index', [
+            'partners' => $partners,
+            'categories' => Category::all(),
+            'states' => State::all(),
+            'table' => 'partner'
+        ]);
+    }
+
+    public function syndicateSearch(Request $request)
+    {
+
+        $syndicates = Syndicate::searchSyndicates($request->estado, $request->cidade);
+
+        return view('site.pages.partners.index', [
+            'partners' => $syndicates,
+            'states' => State::all(),
+            'table' => 'syndicate'
+        ]);
+    }
+
+    public function promotionSearch(Request $request)
+    {
+        $stores = Store::searchStores($request->estado, $request->cidade);
+
+        $promotions = Promotion::whereIn('store_id', $stores->pluck('id'))
+            ->when($request->has('category'), function ($query) use ($request) {
+                $query->whereIn('category_id', $request->category);
+            })->get();
+
+        return view('site.pages.promotions.index', [
+            'promotions' => $promotions,
+            'categories' => Category::all(),
+            'states' => State::all(),
+            'table' => 'stores'
+        ]);
     }
 }

@@ -15,12 +15,15 @@ Route::group(['namespace' => 'Site'], function () {
   Route::get('coupon/{promotion}/redeem', 'SiteController@redeemCoupon')->name('coupon.redeem');
 
   Route::get('promocoes', 'SiteController@promotions')->name('site.promotions');
+  Route::get('busca-promocoes', 'SiteController@promotionSearch')->name('promotions.search');
 
   Route::get('parceiros/{id}', 'SiteController@showPartner')->name('site.partner');
   Route::get('parceiros', 'SiteController@partners')->name('site.partners');
+  Route::get('busca-parceiros', 'SiteController@partersSearch')->name('partners.search');
 
   Route::get('sindicatos/{id}', 'SiteController@showSyndicate')->name('site.syndicate');
   Route::get('sindicatos', 'SiteController@syndicates')->name('site.syndicates');
+  Route::get('busca-sindicatos', 'SiteController@syndicateSearch')->name('syndicates.search');
 
   Route::get('associado/cadastro', 'SiteController@AffiliateRegister')->name('affiliates.register');
   Route::get('parceiro/cadastro', 'SiteController@PartnerRegister')->name('partners.register');
@@ -38,6 +41,8 @@ Route::group(['namespace' => 'Site'], function () {
 
   Route::view('planos', 'site.pages.home.prices')->name('site.prices');
   Route::view('oferta', 'site.pages.home.oferta');
+
+  Route::get('/ajaxCidades', 'AjaxController@ajaxCidades');
 });
 
 

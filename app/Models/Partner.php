@@ -53,4 +53,15 @@ class Partner extends Model
         $defaultImage = asset('/img/colepom_bg_white.png');
         return $this->attributes['brand'] ? $this->attributes['brand'] : $defaultImage;
     }
+
+    public static function searchPartners($uf = null, $city = null, $categories = null)
+    {
+        return self::when($categories, function ($query) use ($categories) {
+            $query->WhereIn('category_id', $categories);
+        })->when($uf, function ($query) use ($uf) {
+            $query->orWhere('uf_code', $uf);
+        })->when($city, function ($query) use ($city) {
+            $query->orWhere('city_code', $city);
+        })->get();
+    }
 }
