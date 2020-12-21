@@ -28,7 +28,9 @@ class Affiliate extends Model
         'address_complement',
         'city',
         'province',
-        'zipcode'
+        'zipcode',
+        'uf_code',
+        'city_code'
     ];
 
     /**

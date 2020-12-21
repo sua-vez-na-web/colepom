@@ -163,7 +163,7 @@
                         @enderror
                     </div>
                 </div>
-
+                <input type="hidden" name="ibge" value="" id="ibge">
                 <div class="text-center">
                     <button type="submit" class="btn full_colored">
                         Registrar

@@ -28,6 +28,8 @@ class Partner extends Model
         'observations',
         'user_id',
         'is_aprooved',
+        'uf_code',
+        'city_code'
     ];
 
     /**

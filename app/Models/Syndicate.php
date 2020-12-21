@@ -31,6 +31,8 @@ class Syndicate extends Model
         'state_inscription',
         'observations',
         'is_aprooved',
+        'uf_code',
+        'city_code'
     ];
     /**
      * Relations

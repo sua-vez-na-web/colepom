@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="form-group col-md-4 col-sm-12">
                         <label>UF</label>
-                        {{form::text('state',null,['class'=>'form-control','readonly'=>"true",'id'=>"uf"]) }}
+                        {{form::text('state',null,['class'=>'form-control','id'=>"uf"]) }}
                     </div>
 
 
@@ -125,7 +125,7 @@
                         @enderror
                     </div>
                 </div>
-
+                <input type="hidden" name="ibge" value="" id="ibge">
                 <div class="text-center">
                     <button type="submit" class="btn full_colored">
                         Registrar

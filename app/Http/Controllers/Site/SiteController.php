@@ -8,6 +8,7 @@ use App\Http\Requests\StoreUpdateAffiliate;
 use App\Models\Affiliate;
 use App\Models\AffiliateCoupom;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Partner;
 use App\Models\Promotion;
 use App\Models\Role;
@@ -104,7 +105,6 @@ class SiteController extends Controller
         $user->notify(new NewUserRegistration($user));
 
         if ($affiliate) {
-            //TODO: send email to affiliate
             return view('site.pages.affiliate.thank-you');
         }
     }
@@ -119,7 +119,11 @@ class SiteController extends Controller
 
         ]);
 
-        $user->partner()->create($request->all());
+        $data = $request->all();
+        $data['uf_code'] = $request->state ? State::getCodeByUf($request->state) : null;
+        $data['city_code'] = City::getCodeByIbge($request->ibge);
+
+        $user->partner()->create($data);
 
         $user->notify(new NewUserRegistration($user));
 
@@ -128,6 +132,7 @@ class SiteController extends Controller
 
     public function storeSyndicate(Request $request)
     {
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -136,7 +141,12 @@ class SiteController extends Controller
 
         ]);
 
-        $user->syndicate()->create($request->all());
+        $data = $request->all();
+        $data['uf_code'] = $request->state ? State::getCodeByUf($request->state) : null;
+        $data['city_code'] = City::getCodeByIbge($request->ibge);
+
+
+        $user->syndicate()->create($data);
 
         $user->notify(new NewUserRegistration($user));
 
