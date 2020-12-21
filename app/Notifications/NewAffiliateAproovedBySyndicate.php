@@ -19,9 +19,11 @@ class NewAffiliateAproovedBySyndicate extends Notification
      */
 
     private $admin;
-    public function __construct(User $admin)
+    private $user;
+    public function __construct(User $admin, User $user)
     {
         $this->admin = $admin;
+        $this->user = $user;
     }
 
     /**
@@ -46,7 +48,9 @@ class NewAffiliateAproovedBySyndicate extends Notification
 
         return (new MailMessage)
             ->subject('Colepom - Aprovação de Cadastro')
-            ->line('Um Associado/Affiliado foi Aprovado Pelo Sindicato/Associação');
+            ->line('Um Associado/Affiliado foi Aprovado Pelo Sindicato/Associação')
+            ->line("Email: {$this->user->email}")
+            ->line("Nome: {$this->user->name}");
     }
 
     /**

@@ -45,23 +45,25 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
-        $credentals = $request->only(['email', 'password']);
+        $credentials = $request->only(['email', 'password']);
 
-        if (Auth::attempt($credentals)) {
+
+        if (Auth::attempt($credentials)) {
 
             $user = Auth::user();
-
-            if ($user->role_id == Role::AFFILIATE) {
-                return redirect()->route('affiliates.dashboard');
-            }
 
             if (!$user->is_active) {
                 Auth::logout();
                 return redirect()->route('site.index')->with('warning', 'Seu cadastro ainda não foi aprovado, por favor aguarde!');
             }
 
+            if ($user->role_id == Role::AFFILIATE) {
+                return redirect()->route('affiliates.dashboard');
+            }
+
             return redirect()->to($this->redirectTo);
         }
+
 
         return redirect()->route('login')->withErrors([
             'error' => 'Usuário ou Senha inválida'

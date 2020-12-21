@@ -108,15 +108,21 @@ class AffiliatesController extends Controller
 
     public function aproove($id)
     {
-        $affiliate = Affiliate::find($id);
 
+        #active affiliate
+        $affiliate = Affiliate::find($id);
         $affiliate->is_aprooved = 1;
         $affiliate->save();
 
-        $admins = User::where('role_id', Role::ADMINISTRATOR)->get();
+        #active user
+        $user = User::find($affiliate->user_id);
+        $user->is_active = 1;
+        $user->save();
 
+        #notify Admins
+        $admins = User::where('role_id', Role::ADMINISTRATOR)->get();
         foreach ($admins as $admin) {
-            $admin->notify(new NewAffiliateAproovedBySyndicate($admin));
+            $admin->notify(new NewAffiliateAproovedBySyndicate($admin, $user));
         }
 
         return redirect()->back()->with('msg', 'Associado Aprovado!');

@@ -45,10 +45,16 @@ Route::group(['namespace' => 'Site'], function () {
  * Affiliates Auth Routes
  */
 
-Route::group(['namespace' => 'Affiliates', 'prefix' => 'associado'], function () {
+Route::group(['namespace' => 'Site', 'prefix' => 'associado/minha-conta'], function () {
   Route::get('/', function () {
     return view('site.pages.affiliate.affiliate');
   })->name('affiliates.dashboard');
+
+  Route::get('/cupons', 'SiteController@affiliatesCupons')->name('affiliates.coupons');
+
+
+  Route::get('/meus-dados', 'SiteController@affiliatesGetProfile')->name('affiliates.profile');
+  Route::post('/meus-dados', 'SiteController@affiliatesUpdateProfile')->name('affiliates.update-profile');
 });
 
 

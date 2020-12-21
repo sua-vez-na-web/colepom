@@ -42,13 +42,13 @@
 				<a href="#" class="list-group-item list-group-item-action">
 					<i class="fa fa-user"></i>
 					Minha Conta</a>
-				<a href="#" class="list-group-item list-group-item-action">
+				<a href="{{route('affiliates.coupons') }}" class="list-group-item list-group-item-action">
 					<i class="fas fa-ticket-alt"></i>
-					Promoções</a>
+					Meus Cupons</a>
 			</div>
 		</div>
 		<div class="col-md-8">
-			<p>Seu cadastro será aprovado em breve, aguarde.</p>
+
 		</div>
 	</div>
 </div>

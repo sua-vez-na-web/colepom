@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateAffiliate;
 use App\Models\Affiliate;
+use App\Models\AffiliateCoupom;
 use App\Models\Category;
+use App\Models\Coupon;
 use App\Models\Partner;
 use App\Models\Promotion;
 use App\Models\Role;
@@ -202,5 +204,30 @@ class SiteController extends Controller
                 'code' => "*******",
             ], 200);
         }
+    }
+
+    public function affiliatesCupons()
+    {
+        $user = Auth::user();
+        $coupons = AffiliateCoupom::where("user_id", $user->id)->get();
+
+        return view('site.pages.affiliate.coupons', compact('coupons'));
+    }
+
+    public function affiliatesGetProfile()
+    {
+        $user = Auth::user();
+        $profile = Affiliate::where('user_id', $user->id)->first();
+
+        return view('site.pages.affiliate.profile', compact('profile'));
+    }
+
+    public function affiliatesUpdateProfile(Request $request)
+    {
+        $user = Auth::user();
+        $profile = Affiliate::where('user_id', $user->id)->first();
+        $profile->update($request->all());
+
+        return redirect()->back()->with('msg', 'Seus Dados Foram Atualizados!');
     }
 }

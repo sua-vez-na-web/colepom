@@ -25,11 +25,9 @@
 </div>
 
 <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="page-title">
-            <h3>Registre-se como Associado</h3>
-        </div>
-        <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <h3 class="text-center">Registre-se como Associado</h3>
             <div class="page-text">
                 {!! Form::open(['route'=>'store.affiliates']) !!}
                 <div class="form-group">

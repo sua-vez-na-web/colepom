@@ -73,7 +73,13 @@
         </div>
     </nav>
     <main>
-        @include('site.layouts._partials.messages')
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mt-2">
+                    @include('site.layouts._partials.messages')
+                </div>
+            </div>
+        </div>
         @yield('content')
     </main>
 
