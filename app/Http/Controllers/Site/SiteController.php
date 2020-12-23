@@ -82,7 +82,8 @@ class SiteController extends Controller
 
     public function PartnerRegister()
     {
-        return view('site.pages.partners.register');
+        $categories = Category::pluck("name", "id");
+        return view('site.pages.partners.register', compact('categories'));
     }
 
     public function SyndicateRegister()
@@ -105,7 +106,7 @@ class SiteController extends Controller
         $user->notify(new NewUserRegistration($user));
 
         if ($affiliate) {
-            return view('site.pages.affiliate.thank-you');
+            return redirect()->route('site.index')->with('msg', 'Obrigago pelo cadastro, em breve entraremos em contato');
         }
     }
 
@@ -127,7 +128,7 @@ class SiteController extends Controller
 
         $user->notify(new NewUserRegistration($user));
 
-        return redirect()->route('site.index')->with('success', 'Obrigago pelo cadastro, em breve entraremos em contato');
+        return redirect()->route('site.index')->with('msg', 'Obrigago pelo cadastro, em breve entraremos em contato');
     }
 
     public function storeSyndicate(Request $request)
@@ -150,7 +151,7 @@ class SiteController extends Controller
 
         $user->notify(new NewUserRegistration($user));
 
-        return redirect()->route('site.index')->with('success', 'Obrigago pelo cadastro, em breve entraremos em contato');
+        return redirect()->route('site.index')->with('msg', 'Obrigago pelo cadastro, em breve entraremos em contato');
     }
 
     public function showPartner($id)

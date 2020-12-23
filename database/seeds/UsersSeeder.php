@@ -18,10 +18,20 @@ class UsersSeeder extends Seeder
                 [
                     'name' => 'Administrador',
                     'email' => 'uallas@colepom.com.br',
-                    'password' => bcrypt('colepom2020'),
+                    'password' => bcrypt('colepomadmin'),
                     'role_id' => Role::ADMINISTRATOR,
                     'created_at' => now(),
-                    'updated_at' => now()
+                    'updated_at' => now(),
+                    'is_active' => 1,
+                ],
+                [
+                    'name' => 'SVW',
+                    'email' => 'admin@admin',
+                    'password' => bcrypt('password'),
+                    'role_id' => Role::ADMINISTRATOR,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                    'is_active' => 1
                 ],
 
             ]

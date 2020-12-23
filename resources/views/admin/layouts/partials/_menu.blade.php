@@ -63,7 +63,7 @@
                 <a href="{{ route('promotions.index') }}">
                     <i class="fa fa-dollar">
                     </i>
-                    <span>Promções</span>
+                    <span>Promoções</span>
                 </a>
             </li>
             @endcan
