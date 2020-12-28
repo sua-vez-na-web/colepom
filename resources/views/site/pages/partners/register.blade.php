@@ -49,6 +49,16 @@
                         <span class="text-danger">{{ $message ?? '' }}</span>
                         @enderror
                     </div>
+
+                    <div class="form-group col-sm-12 col-md-4">
+                        <div class="form-group">
+                            <label>Categoria</label>
+                            {!! Form::select('category_id',$categories,null,['class'=>'form-control','placeholder'=>'Escolha uma Categoria']) !!}
+                            @error('category_id')
+                            <span class="text-danger">{{ $message ?? '' }}</span>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
