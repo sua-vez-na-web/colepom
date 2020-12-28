@@ -67,7 +67,7 @@
                 <div class="row mt-2">
                     <div class="col-md-12">
                         <p class="instructions d-none text-dark">
-                            <i> Seu Cupom foi Revelado, salve o código ou tire um print para aprasentar na loja participante.
+                            <i> Seu Cupom foi Resgatado, salve o código ou tire um print para aprasentar na loja participante.
                             </i>
                         </p>
                     </div>

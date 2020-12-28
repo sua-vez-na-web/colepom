@@ -21,6 +21,7 @@ class StoreUpdatePromotion extends FormRequest
             'title' => "required|min:3|max:100",
             'expiration_date' => "required|date|",
             'original_value' => "required|numeric",
+            'store_id' => "required",
         ];
     }
 
@@ -42,7 +43,8 @@ class StoreUpdatePromotion extends FormRequest
             'code' => 'Codigo',
             'title' => 'Título',
             'expiration_date' => 'Data da Expiração',
-            'original_value' => 'Valor Original'
+            'original_value' => 'Valor Original',
+            'store_id' => 'Estabelecimento'
         ];
     }
 }

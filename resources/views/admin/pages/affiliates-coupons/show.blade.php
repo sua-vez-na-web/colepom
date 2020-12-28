@@ -9,7 +9,7 @@
                 Detalhe do Cupom {{$affiliatesCoupon->coupon->code?? ''}}
             </h3>
             @if(!$usable)
-            <p class="text text-danger">A data limite para resgate do Cupom Expirou.</p>
+            <h4 class="text text-danger">A data limite para resgate do Cupom Expirou.</h4>
             @endif
 
             <ol class="breadcrumb">

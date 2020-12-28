@@ -47,8 +47,7 @@
                         <th>Codigo</th>
                         <th>Promoção</th>
                         <th>Validade</th>
-                        <th>Data Resgate</th>
-
+                        <th>Data do Resgate</th>
                         <th>Data Uso</th>
                     </tr>
                 </thead>
@@ -59,7 +58,7 @@
                         <td>{{$coupon->coupon->promotion->title ?? ''}}</td>
                         <td>{{ date('d/m/Y',strToTime($coupon->coupon->promotion->redeem_expiration_date)) ?? ''}}</td>
                         <td>{{date('d/m/Y',strToTime($coupon->redeem_at)) ?? ''}}</td>
-                        <td>{{date('d/m/Y',strToTime($coupon->used_at)) ?? '--'}}</td>
+                        <td>{{$coupon->used_at ?? '--'}}</td>
                     </tr>
                     @endforeach
                 </tbody>
