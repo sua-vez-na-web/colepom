@@ -68,7 +68,7 @@ class UsersController extends Controller
 
         $data = $request->all();
 
-        if ($request->has('password')) {
+        if ($request->has('password') && $request->password != null) {
             $data['password'] = bcrypt($request->password);
         }
 

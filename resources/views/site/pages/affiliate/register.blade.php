@@ -97,13 +97,22 @@
                     <span class="text-danger">{{ $message ?? '' }}</span>
                     @enderror
                 </div>
+                <div class="row">
 
-                <div class="form-group">
-                    <label>CPF</label>
-                    {{form::text('document',null,['class'=>'form-control']) }}
-                    @error('document')
-                    <span class="text-danger">{{ $message ?? '' }}</span>
-                    @enderror
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label>CPF</label>
+                        {{form::text('document',null,['class'=>'form-control']) }}
+                        @error('document')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6">
+                        <label>Telefone</label>
+                        {{form::text('mobile_phone',null,['class'=>'form-control']) }}
+                        @error('mobile_phone')
+                        <span class="text-danger">{{ $message ?? '' }}</span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="row">

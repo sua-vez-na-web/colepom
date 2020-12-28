@@ -18,6 +18,7 @@ class CreateAffiliatesTable extends Migration
             $table->unsignedBigInteger('syndicate_id');
             $table->unsignedBigInteger('user_id');
             $table->string('email')->unique();
+            $table->string('mobile_phone')->nulable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->date('birth_of_date')->nullable();

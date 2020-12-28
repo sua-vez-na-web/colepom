@@ -22,6 +22,7 @@ class Affiliate extends Model
         'company',
         'job_post',
         'email',
+        'mobile_phone',
         'document',
         'address',
         'address_number',
