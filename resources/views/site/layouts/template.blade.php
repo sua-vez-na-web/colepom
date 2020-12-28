@@ -114,7 +114,7 @@
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#">
+                            <a href="https://www.instagram.com/colepomoficial/?hl=pt-br" target="_blank">
                                 <i class="fab fa-instagram fa-2x fa-fw"></i>
                             </a>
                         </li>

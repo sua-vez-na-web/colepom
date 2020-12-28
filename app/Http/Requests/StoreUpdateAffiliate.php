@@ -29,7 +29,8 @@ class StoreUpdateAffiliate extends FormRequest
             'address' => 'required',
             'address_number' => 'required',
             'city' => 'required',
-            "province" => 'required'
+            'province' => 'required',
+            'password' => 'required|confirmed|min:6'
         ];
     }
 

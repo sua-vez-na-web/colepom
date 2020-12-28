@@ -56,7 +56,7 @@
                     @endguest
                     @auth
                     <button type="button" class="btn btn-lg full_colored" id="btnRedeemCoupon">
-                        <span id="loading-text">Clique para revelar</span>
+                        <span id="loading-text">Clique para resgatar</span>
                     </button>
                     <button type="button" class="btn btn-lg btn-outline-default"><span class="code-text" id="code">*******</span></button>
                     @endauth

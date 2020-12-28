@@ -38,14 +38,6 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <label>Email</label>
-                    {{form::email('email',null,['class'=>'form-control']) }}
-                    @error('email')
-                    <span class="text-danger">{{ $message ?? '' }}</span>
-                    @enderror
-                </div>
-
                 <div class="row">
                     <div class="form-group col-sm-12 col-md-6">
                         <label>Nome</label>
@@ -163,6 +155,31 @@
                         @enderror
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    {{form::email('email',null,['class'=>'form-control']) }}
+                    @error('email')
+                    <span class="text-danger">{{ $message ?? '' }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" name="password" class="form-control">
+                    @error('password')
+                    <span class="text-danger">{{ $message ?? '' }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label>Repetir Senha</label>
+                    <input type="password" name="password_confirmation" class="form-control">
+                    @error('password_confirmation')
+                    <span class="text-danger">{{ $message ?? '' }}</span>
+                    @enderror
+                </div>
+
                 <input type="hidden" name="ibge" value="" id="ibge">
                 <div class="text-center">
                     <button type="submit" class="btn full_colored">

@@ -18,9 +18,9 @@ class StoreUpdatePartner extends FormRequest
 
         return [
             'name'  => "required|min:3|max:100|unique:partners,name,{$id},id",
-            'social_reason' => "required|min:3|max:100|unique:partners,social_reason,{$id},id",
+            // 'social_reason' => "required|min:3|max:100|unique:partners,social_reason,{$id},id",
             'email' => "required|min:3|max:100|unique:partners,email,{$id},id",
-            'phone' => 'required',
+            // 'phone' => 'required',
             'mobile_phone' => 'required',
             'cpf_cnpj' => "required|min:3|max:100|unique:partners,cpf_cnpj,{$id},id",
             'zipcode' => "required",
@@ -28,7 +28,8 @@ class StoreUpdatePartner extends FormRequest
             'address_number' => "required",
             'city' => "required",
             'province' => "required",
-            'username' => "required|min:3|max:10|unique:users,name"
+            // 'username' => "required|min:3|max:10|unique:users,name",
+            'password' => "confirmed|required|min:8"
         ];
     }
 

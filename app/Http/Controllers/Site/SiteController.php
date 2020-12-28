@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateAffiliate;
+use App\Http\Requests\StoreUpdatePartner;
+use App\Http\Requests\StoreUpdateSyndicate;
 use App\Models\Affiliate;
 use App\Models\AffiliateCoupom;
 use App\Models\Category;
@@ -97,7 +99,7 @@ class SiteController extends Controller
         $data = $request->all();
 
         $username = $request->first_name . "-" . $request->last_name;
-        $user = User::createUserAccount($request->email, $username, Role::AFFILIATE);
+        $user = User::createUserAccount($request->email, $username, Role::AFFILIATE, $request->password);
 
         $data['user_id'] = $user->id;
 
@@ -106,16 +108,16 @@ class SiteController extends Controller
         $user->notify(new NewUserRegistration($user));
 
         if ($affiliate) {
-            return redirect()->route('site.index')->with('msg', 'Obrigago pelo cadastro, em breve entraremos em contato');
+            return redirect()->route('site.index')->with('msg', 'Obrigado pelo cadastro, em breve entraremos em contato');
         }
     }
 
-    public function storePartner(Request $request)
+    public function storePartner(StoreUpdatePartner $request)
     {
         $user = User::create([
             'name' => $request->first_name,
             'email' => $request->email,
-            'password' => bcrypt('colepom'),
+            'password' => bcrypt($request->password),
             'role_id' => Role::PARTNER,
 
         ]);
@@ -128,16 +130,16 @@ class SiteController extends Controller
 
         $user->notify(new NewUserRegistration($user));
 
-        return redirect()->route('site.index')->with('msg', 'Obrigago pelo cadastro, em breve entraremos em contato');
+        return redirect()->route('site.index')->with('msg', 'Obrigado pelo cadastro, em breve entraremos em contato');
     }
 
-    public function storeSyndicate(Request $request)
+    public function storeSyndicate(StoreUpdateSyndicate $request)
     {
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt('colepom'),
+            'password' => bcrypt($request->password),
             'role_id' => Role::SYNDICATE,
 
         ]);
@@ -151,7 +153,7 @@ class SiteController extends Controller
 
         $user->notify(new NewUserRegistration($user));
 
-        return redirect()->route('site.index')->with('msg', 'Obrigago pelo cadastro, em breve entraremos em contato');
+        return redirect()->route('site.index')->with('msg', 'Obrigado pelo cadastro, em breve entraremos em contato');
     }
 
     public function showPartner($id)
@@ -199,7 +201,7 @@ class SiteController extends Controller
             if (User::redeemCuponToUser($user, $coupon)) {
                 return response()->json([
                     'success' => true,
-                    'message' => "Cupom Revelado",
+                    'message' => "Cupom Resgatado",
                     'code' => Str::upper($coupon->code),
                 ], 200);
             } else {

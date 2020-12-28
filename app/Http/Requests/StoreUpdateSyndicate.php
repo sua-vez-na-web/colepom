@@ -21,7 +21,7 @@ class StoreUpdateSyndicate extends FormRequest
             'name'  => "required|min:3|max:100|unique:syndicates,name,{$id},id",
             'president_name' => "required|min:3|max:100|unique:syndicates,president_name,{$id},id",
             'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
-            'phone' => 'required',
+            // 'phone' => 'required',
             'mobile_phone' => 'required',
             'cpf_cnpj' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
             'zipcode' => "required",
@@ -29,7 +29,7 @@ class StoreUpdateSyndicate extends FormRequest
             'address_number' => "required",
             'city' => "required",
             'province' => "required",
-            // 'username' => "required|min:3|max:10|unique:users,name"
+            'password' => 'required|confirmed|min:6'
         ];
     }
 
