@@ -12,22 +12,22 @@ class Promotion extends Model
         'partner_id',
         'store_id',
         'category_id',
-        'code',
         'title',
         'description',
         'image',
         'expiration_date',
+        'redeem_expiration_date',
         'original_value',
         'discount',
-        'qty_available',
-        'qty_remaining',
-        'redemption_rules',
+        'quantity',
+        'rules',
         'image',
-        'is_active'
+        'is_aprooved'
     ];
 
     protected $dates = [
-        'expiration_date'
+        'expiration_date',
+        'redeem_expiration_date'
     ];
 
     /**
