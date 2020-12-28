@@ -40,6 +40,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('site.prices') }}">Associado
+                            <span class="sr-only">Associado</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('site.partners')}}">Parceiros
                             <span class="sr-only">Parceiros</span>
                         </a>
@@ -49,11 +54,7 @@
                             <span class="sr-only">Sindicatos/Associações</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link mr-3" href="{{ route('site.prices') }}">Planos
-                            <span class="sr-only">Planos</span>
-                        </a>
-                    </li>
+
                     @Guest
                     <li class="nav-item">
                         <a class="btn light-colored" data-toggle="modal" data-target=".modal-login">ENTRAR

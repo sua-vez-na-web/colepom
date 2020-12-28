@@ -284,4 +284,9 @@ class SiteController extends Controller
             'table' => 'stores'
         ]);
     }
+
+    public function syndicateSubscribe(Request $request)
+    {
+        dd($request->all());
+    }
 }

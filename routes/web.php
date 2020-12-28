@@ -21,9 +21,12 @@ Route::group(['namespace' => 'Site'], function () {
   Route::get('parceiros', 'SiteController@partners')->name('site.partners');
   Route::get('busca-parceiros', 'SiteController@partersSearch')->name('partners.search');
 
+  #sindicatos
   Route::get('sindicatos/{id}', 'SiteController@showSyndicate')->name('site.syndicate');
   Route::get('sindicatos', 'SiteController@syndicates')->name('site.syndicates');
   Route::get('busca-sindicatos', 'SiteController@syndicateSearch')->name('syndicates.search');
+  Route::view('escolha-um-plano', 'site.pages.syndicates.plans-select');
+  Route::post('sindicato/gerar-boleto', 'SiteController@syndicateSubscribe')->name('syndicate.subscribe');
 
   Route::get('associado/cadastro', 'SiteController@AffiliateRegister')->name('affiliates.register');
   Route::get('parceiro/cadastro', 'SiteController@PartnerRegister')->name('partners.register');
