@@ -101,4 +101,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',  'middleware' => ['au
 
   Route::get('promotions/generate-code', 'PromotionsController@generateCode')->name('promotion.generate-code');
   Route::resource('promotions', 'PromotionsController');
+
+  //Cupons
+  Route::resource('coupons', 'CouponsController');
+  Route::get('coupons/{id}/aproove', 'CouponsController@aproove')->name('coupons.aproove');
+
+  //AfiliatesCoupons
+  Route::get('affiliates-coupons', 'AffiliatesCouponsController@index')->name('affiliates-coupons.index');
+  Route::get('affiliates-coupons/{id}', 'AffiliatesCouponsController@show')->name('affiliates-coupons.show');
+  Route::get('affiliates-coupons/{id}/comfirm', 'AffiliatesCouponsController@confirm')->name('affiliates-coupons.confirm');
 });

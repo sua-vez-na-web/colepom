@@ -5,34 +5,37 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <div class="promotion-image p-2 my-2">
+            <div class="promotion-image p-2">
                 <div class="card p-1 shadow">
-                    <img src="{{$promotion->image}}" alt="{{$promotion->title}}" height="300px">
+                    <img src="{{Storage::url($promotion->image)}}" alt="{{$promotion->title}}" height="300px">
                 </div>
             </div>
 
             <div class="store-informations">
-                <div class="card p-2 my-4 d-flex flex-column">
-                    <div class="small">Estabelecimento</div>
+                <div class="card p-2 d-flex flex-column">
+                    <div class="small font-weight-bold">Estabelecimento</div>
                     <div class="partner-link">{{$promotion->store->name}}</div>
-                    <div class="small">Parceiro</div>
+
+                </div>
+                <div class="card p-2 my-2 d-flex flex-column">
+                    <div class="small font-weight-bold">Parceiro</div>
                     <div class="">{{ $promotion->store->partner->name }}</div>
                 </div>
                 <div class="card p-2 my-2">
-                    <div class="small">Categoria</div>
+                    <div class="small font-weight-bold">Categoria</div>
                     <div>{{$promotion->store->category->name}}</div>
                 </div>
                 <div class="card p-2 my-2 location d-flex flex-column">
-                    <div class="small">Localização</div>
+                    <div class="small font-weight-bold">Localização</div>
                     <div class="partner-link">
                         Rua: {{$promotion->store->address}},{{$promotion->store->address_number}}
                         - {{$promotion->store->city}}
                     </div>
-                    <div class="icons d-flex flex-row justify-content-between p-3">
+                    <!-- <div class="icons d-flex flex-row justify-content-between p-3">
                         <i class="fa fa-map-marker fa-2x"></i>
                         <i class="fa fa-phone fa-2x"></i>
                         <i class="fa fa-envelope fa-2x"></i>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -65,7 +68,7 @@
                     <div class="col-md-12">
                         <p class="instructions d-none text-dark">
                             <i> Seu Cupom foi Revelado, salve o código ou tire um print para aprasentar na loja participante.
-                                Você tem 7 dias para realizar o resgate do cupom.</i>
+                            </i>
                         </p>
                     </div>
                 </div>
@@ -79,7 +82,7 @@
                 </div>
             </div>
             <div class="obs">
-                <p class="small">Termina em: {{ date('d/m/Y',strtotime($promotion->expiration_date)) }} | Cupons Disponiveis {{$promotion->coupons()->count()}}</p>
+                <p class="small">Termina em: {{ date('d/m/Y',strtotime($promotion->expiration_date)) }} | Cupons Disponiveis {{$promotion->coupons()->count() ?? '0'}}</p>
             </div>
         </div>
     </div>
@@ -101,10 +104,12 @@
         $.get("{{ route('coupon.redeem',$promotion->id) }}", {
 
         }, function(res) {
+
             loadingBtn.prop('disabled', false);
             loadingBtn.html(`${res.message}`);
             $('#code').html(`${res.code}`);
-            $('.instructions').toggleClass('d-none');
+            if (res.success)
+                $('.instructions').toggleClass('d-none');
         });
 
 

@@ -206,14 +206,14 @@ class SiteController extends Controller
                 ], 200);
             } else {
                 return response()->json([
-                    'success' => true,
+                    'success' => false,
                     'message' => "Você já resgatou esse cupom",
                     'code' => "********",
                 ], 200);
             }
         } else {
             return response()->json([
-                'success' => true,
+                'success' => false,
                 'message' => "Desculpe, Nenhum Cupom Disponível",
                 'code' => "*******",
             ], 200);

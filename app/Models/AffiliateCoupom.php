@@ -12,13 +12,16 @@ class AffiliateCoupom extends Model
         'user_id',
         'coupon_id',
         'partner_id',
+        'promotion_id',
         'redeem_at',
         'is_used',
+        'used_at',
         'is_active',
     ];
 
     protected $dates = [
-        'redeem_at'
+        'redeem_at',
+        'used_at'
     ];
 
     public function user()

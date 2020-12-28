@@ -20,6 +20,7 @@ class CreateCouponsTable extends Migration
             $table->integer('discount');
             $table->boolean('is_used')->default(false);
             $table->dateTime('used_at')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

@@ -18,7 +18,9 @@ class CreateAffiliateCoupomsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('coupon_id');
             $table->unsignedBigInteger('partner_id');
-            $table->dateTime('redeem_at');
+            $table->unsignedBigInteger('promotion_id');
+            $table->dateTime('redeem_at')->nullable();
+            $table->dateTime('used_at')->nullable();
             $table->boolean('is_used')->default(false);
             $table->boolean('is_active')->default(false);
             $table->timestamps();

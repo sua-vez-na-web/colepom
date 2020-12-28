@@ -66,6 +66,20 @@
                     <span>Promoções</span>
                 </a>
             </li>
+            <li class="{{ request()->is('admin/affiliates-coupons') || request()->is('admin/affiliates-coupons/*') ? 'active' : ''  }}">
+                <a href="{{ route('affiliates-coupons.index') }}">
+                    <i class="fa fa-tag">
+                    </i>
+                    <span>Cupons Resgatados</span>
+                </a>
+            </li>
+            <li class="{{ request()->is('admin/coupons') || request()->is('admin/coupons/*') ? 'active' : ''  }}">
+                <a href="{{ route('coupons.index') }}">
+                    <i class="fa fa-tag">
+                    </i>
+                    <span>Cupons</span>
+                </a>
+            </li>
             @endcan
             @can('administrator')
 

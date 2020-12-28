@@ -59,7 +59,7 @@
                         <div class="cupom">
                             <div class="tesoura"></div>
                             <div class="black-canvas">
-                                <img class="cupom-img-top" alt="Parceiro" src="{{$promotion->image}}" width="450" height="600">
+                                <img class="cupom-img-top" alt="Parceiro" src="{{Storage::url($promotion->image)}}" width="450" height="600">
                             </div>
                             <div class="cupom-desconto">{{$promotion->discount}}%</div>
                             <div class="cupom-block">
