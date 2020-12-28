@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Role;
 use App\Models\Syndicate;
 use App\Models\User;
+use App\Notifications\NewAffiliateAproovedBySyndicate;
 use App\Services\AsaasService;
 
 
@@ -90,5 +91,27 @@ class SyndicatesController extends Controller
         $syndicate->delete();
 
         return redirect()->route('syndicates.index');
+    }
+
+    public function aproove($id)
+    {
+
+        #active affiliate
+        $syndicate = Syndicate::find($id);
+        $syndicate->is_aprooved = 1;
+        $syndicate->save();
+
+        #active user
+        $user = User::find($syndicate->user_id);
+        $user->is_active = 1;
+        $user->save();
+
+        #notify Admins
+        $admins = User::where('role_id', Role::ADMINISTRATOR)->get();
+        foreach ($admins as $admin) {
+            $admin->notify(new NewAffiliateAproovedBySyndicate($admin, $user));
+        }
+
+        return redirect()->back()->with('msg', 'Sindicato Aprovado!');
     }
 }

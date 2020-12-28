@@ -26,7 +26,7 @@ class UsersSeeder extends Seeder
                 ],
                 [
                     'name' => 'SVW',
-                    'email' => 'admin@admin',
+                    'email' => 'admin@admin.com',
                     'password' => bcrypt('password'),
                     'role_id' => Role::ADMINISTRATOR,
                     'created_at' => now(),

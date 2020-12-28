@@ -22,6 +22,7 @@ class Store extends Model
         'city',
         'lat',
         'lng',
+        'brand',
         'is_aprooved',
     ];
     /**

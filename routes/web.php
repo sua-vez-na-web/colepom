@@ -80,10 +80,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',  'middleware' => ['au
 
   //Syndicates
   Route::resource('syndicates', 'SyndicatesController');
+  Route::get('syndicates/{id}/aproove', 'SyndicatesController@aproove')->name('syndicates.aproove');
+
   //Categories
   Route::resource('categories', 'CategoriesController');
+
   //Partners
   Route::resource('partners', 'PartnersController');
+  Route::get('partners/{id}/aproove', 'PartnersController@aproove')->name('partners.aproove');
+
   //Stores
   Route::resource('stores', 'StoresController');
 

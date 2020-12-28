@@ -121,6 +121,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="{{asset('js/viaCep.js')}}"></script>
+    <script src="{{asset('js/jquery.mask.min.js')}}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script>
         $(function() {

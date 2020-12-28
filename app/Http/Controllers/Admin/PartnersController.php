@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Partner;
 use App\Models\Role;
 use App\Models\User;
+use App\Notifications\NewAffiliateAproovedBySyndicate;
 
 class PartnersController extends Controller
 {
@@ -89,5 +90,27 @@ class PartnersController extends Controller
         $partner->delete();
 
         return redirect()->route('partners.index');
+    }
+
+    public function aproove($id)
+    {
+
+        #active affiliate
+        $partner = Partner::find($id);
+        $partner->is_aprooved = 1;
+        $partner->save();
+
+        #active user
+        $user = User::find($partner->user_id);
+        $user->is_active = 1;
+        $user->save();
+
+        #notify Admins
+        $admins = User::where('role_id', Role::ADMINISTRATOR)->get();
+        foreach ($admins as $admin) {
+            $admin->notify(new NewAffiliateAproovedBySyndicate($admin, $user));
+        }
+
+        return redirect()->back()->with('msg', 'Parceiro Aprovado!');
     }
 }

@@ -38,14 +38,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4">
-			<div class="list-group">
-				<a href="#" class="list-group-item list-group-item-action">
-					<i class="fa fa-user"></i>
-					Minha Conta</a>
-				<a href="{{route('affiliates.coupons') }}" class="list-group-item list-group-item-action">
-					<i class="fas fa-ticket-alt"></i>
-					Meus Cupons</a>
-			</div>
+			@include('site.pages.affiliate.partials.side_menu')
 		</div>
 		<div class="col-md-8">
 

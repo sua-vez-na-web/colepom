@@ -26,6 +26,10 @@
                 <div class="panel-body">
                     <dl class="row">
                         <dt class="col-sm-2">Nome</dt>
+                        <dd class="col-sm-10"><img src="{{Storage::url($store->brand) }}" alt="{{$store->name}}" / width="200px" height="200px"></dd>
+                    </dl>
+                    <dl class=" row">
+                        <dt class="col-sm-2">Nome</dt>
                         <dd class="col-sm-10">{{$store->name}}</dd>
                     </dl>
                     <dl class="row">
@@ -33,8 +37,8 @@
                         <dd class="col-sm-10">{{$store->city}}</dd>
                     </dl>
                     <dl class="row">
-                        <dt class="col-sm-2">Bairro</dt>
-                        <dd class="col-sm-10">{{$store->neighborhood}}</dd>
+                        <dt class="col-sm-2">Endereço</dt>
+                        <dd class="col-sm-10">{{$store->address}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Telfone</dt>

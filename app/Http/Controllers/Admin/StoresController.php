@@ -6,8 +6,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateStore;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Partner;
 use App\Models\Role;
+use App\Models\State;
 use App\Models\Store;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -46,11 +48,14 @@ class StoresController extends Controller
 
     public function store(StoreUpdateStore $request)
     {
-        $data = $request->all();
 
+        $data = $request->all();
+        $data['uf_code'] = $request->province ? State::getCodeByUf($request->state) : null;
+        $data['city_code'] = City::getCodeByIbge($request->ibge);
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->image->store('stores');
+
+            $data['brand'] = $request->image->store('stores');
         }
 
         Store::create($data);
@@ -96,11 +101,12 @@ class StoresController extends Controller
         };
 
         $data = $request->all();
+        $data['uf_code'] = $request->province ? State::getCodeByUf($request->state) : null;
+        $data['city_code'] = City::getCodeByIbge($request->ibge);
 
         if ($request->hasFile('image')) {
             Storage::delete($store->image);
-
-            $data['image'] = $request->image->store('stores');
+            $data['brand'] = $request->image->store('stores');
         }
 
         $store->update($data);

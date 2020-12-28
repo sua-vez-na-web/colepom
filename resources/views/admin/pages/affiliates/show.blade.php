@@ -46,6 +46,10 @@
                         <dd class="col-sm-10">{{$affiliate->email}}</dd>
                     </dl>
                     <dl class="row">
+                        <dt class="col-sm-2">Telefone</dt>
+                        <dd class="col-sm-10">{{$affiliate->mobile_phone}}</dd>
+                    </dl>
+                    <dl class="row">
                         <dt class="col-sm-2">APROVADO</dt>
                         <dd class="col-sm-10">{{$affiliate->is_aprooved ? "SIM" : "NAO"}}</dd>
                     </dl>

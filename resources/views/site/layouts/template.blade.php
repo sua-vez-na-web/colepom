@@ -40,7 +40,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('site.prices') }}">Associado
+                        <a class="nav-link" href="{{ route('affiliates.register') }}">Associado
                             <span class="sr-only">Associado</span>
                         </a>
                     </li>

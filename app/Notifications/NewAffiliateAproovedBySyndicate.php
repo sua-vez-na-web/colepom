@@ -48,7 +48,8 @@ class NewAffiliateAproovedBySyndicate extends Notification
 
         return (new MailMessage)
             ->subject('Colepom - Aprovação de Cadastro')
-            ->line('Um Associado/Affiliado foi Aprovado Pelo Sindicato/Associação')
+            ->line('Um Cadastro foi Aprovado no Sistema')
+            ->line("Tipo: {$this->user->role->name}")
             ->line("Email: {$this->user->email}")
             ->line("Nome: {$this->user->name}");
     }
