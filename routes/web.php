@@ -110,4 +110,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',  'middleware' => ['au
   Route::get('affiliates-coupons', 'AffiliatesCouponsController@index')->name('affiliates-coupons.index');
   Route::get('affiliates-coupons/{id}', 'AffiliatesCouponsController@show')->name('affiliates-coupons.show');
   Route::get('affiliates-coupons/{id}/comfirm', 'AffiliatesCouponsController@confirm')->name('affiliates-coupons.confirm');
+
+  //Subscriptions
+  Route::resource('subscriptions', 'SubscriptionsController');
+
+  //Plans
+  Route::resource('plans', 'PlansController');
 });

@@ -22,4 +22,14 @@ class Subscription extends Model
         'a_billing_type',
 
     ];
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Syndicate::class, 'syndicate_id');
+    }
 }

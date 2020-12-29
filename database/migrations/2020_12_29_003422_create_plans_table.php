@@ -18,7 +18,7 @@ class CreatePlansTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->double('amount', 10, 2)->default(0);
-            $table->enum('cycle', ['MONTLHY', 'SEMIANUALLY', 'YEARLY']);
+            $table->enum('cycle', ['MONTHLY', 'SEMIANUALLY', 'YEARLY']);
             $table->timestamps();
         });
     }

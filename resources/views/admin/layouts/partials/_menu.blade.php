@@ -90,6 +90,20 @@
                     <span>Usuários</span>
                 </a>
             </li>
+            <li class="{{ request()->is('admin/subscriptions') || request()->is('admin/subscriptions/*') ? 'active' : ''  }}">
+                <a href="{{ route('subscriptions.index') }}">
+                    <i class="fa fa-dollar">
+                    </i>
+                    <span>Assinaturas</span>
+                </a>
+            </li>
+            <li class="{{ request()->is('admin/plans') || request()->is('admin/plans/*') ? 'active' : ''  }}">
+                <a href="{{ route('plans.index') }}">
+                    <i class="fa fa-list">
+                    </i>
+                    <span>Planos</span>
+                </a>
+            </li>
             @endcan
             <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"><i class="fa fa-sign-out"></i> <span>Sair</span></a></li>
         </ul>
