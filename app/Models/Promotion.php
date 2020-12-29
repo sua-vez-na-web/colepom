@@ -30,6 +30,7 @@ class Promotion extends Model
         'redeem_expiration_date'
     ];
 
+
     /**
      * Relations
      */

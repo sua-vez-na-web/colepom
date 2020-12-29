@@ -41,7 +41,7 @@
 
 <div class="form-group  @error('expiration_date') has-error @enderror">
     <label>Data Expiração:</label>
-    <input class="form-control" name="expiration_date" type="date" value="{{ $promotion->expiration_date ?? @old('expiration_date') }}">
+    <input class="form-control" name="expiration_date" type="date" value="{{ $promotion->expiration_date->format('Y-m-d') ?? @old('expiration_date') }}">
     <p class="help-block">Data limite que a promoção estará disponível.</p>
     @error('expiration_date')
     <span class="text-danger">{{ $message ?? '' }}</span>
@@ -50,7 +50,7 @@
 
 <div class="form-group  @error('redeem_expiration_date') has-error @enderror">
     <label>Data Limite para Resgate:</label>
-    <input class="form-control" name="redeem_expiration_date" type="date" value="{{ $promotion->redeem_expiration_date ?? @old('redeem_expiration_date') }}">
+    <input class="form-control" name="redeem_expiration_date" type="date" value="{{ $promotion->redeem_expiration_date->format('Y-m-d') ?? @old('redeem_expiration_date') }}">
     <p class="help-block">Data Limite que o Associado poderá resgatar.</p>
     @error('redeem_expiration_date')
     <span class="text-danger">{{ $message ?? '' }}</span>
@@ -85,7 +85,7 @@
 <div class="form-group  @error('rules') has-error @enderror">
     <label>Regras de Resgate</label>
     <textarea name="rules" id="" cols="30" rows="10" class="form-control">
-
+    {{$promotion->rules ?? @old('rules')}}
     </textarea>
     @error('rules')
     <span class="text-danger">{{ $message ?? '' }}</span>

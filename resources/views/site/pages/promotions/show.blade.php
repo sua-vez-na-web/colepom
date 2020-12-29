@@ -75,9 +75,9 @@
             </div>
             <div class="rules">
                 <div class="card p-4">
-                    <div class="small">Regras</div>
+                    <div class="small">Regras da Promoção</div>
                     <p>
-                        {{$promotion->redemption_rules}}
+                        {{$promotion->rules}}
                     </p>
                 </div>
             </div>

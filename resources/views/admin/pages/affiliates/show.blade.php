@@ -31,7 +31,7 @@
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Data Nasc.</dt>
-                        <dd class="col-sm-10">{{$affiliate->birth_of_date}}</dd>
+                        <dd class="col-sm-10">{{$affiliate->birth_of_date->format('d/m/Y')}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Empresa</dt>

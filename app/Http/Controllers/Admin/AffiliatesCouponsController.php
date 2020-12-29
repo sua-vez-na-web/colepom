@@ -18,6 +18,7 @@ class AffiliatesCouponsController extends Controller
 
         if ($user->role_id == Role::ADMINISTRATOR) {
             $affiliatesCoupons = AffiliateCoupom::all();
+            return view('admin.pages.affiliates-coupons.index', compact('affiliatesCoupons'));
         } else {
 
             $affiliatesCoupons = AffiliateCoupom::where('partner_id', $user->partner->id)->get();

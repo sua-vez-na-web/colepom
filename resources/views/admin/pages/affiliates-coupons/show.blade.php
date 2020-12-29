@@ -36,7 +36,7 @@
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Data do Cadastro</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->user->created_at}}</dd>
+                        <dd class="col-sm-10">{{$affiliatesCoupon->user->created_at->format('d/m/Y H:m')}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Empresa</dt>
@@ -57,11 +57,11 @@
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Data do Resgate</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->redeem_at}}</dd>
+                        <dd class="col-sm-10">{{$affiliatesCoupon->redeem_at->format('d/m/Y H:m')}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Data do Limite de Resgate</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->redeem_expiration_date}}</dd>
+                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->redeem_expiration_date->format('d/m/Y H:m')}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Promoção</dt>
@@ -77,7 +77,7 @@
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Data de Expiração</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->expiration_date}}</dd>
+                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->expiration_date->format('d/m/Y H:m')}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Regras</dt>

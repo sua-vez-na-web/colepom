@@ -24,6 +24,7 @@ class AffiliateCoupom extends Model
         'used_at'
     ];
 
+
     public function user()
     {
         return $this->belongsTo(User::class);
