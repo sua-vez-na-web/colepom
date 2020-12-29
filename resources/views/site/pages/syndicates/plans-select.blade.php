@@ -25,36 +25,43 @@
 </div>
 
 <div class="container mt-5">
+
+
+	<h5 class="text-center"> Para finalizar seu processo de ativação na plataforma, selecione um dos planos abaixo:</h5>
+
+
 	<div class="row justify-content-center">
-		<div class="page-title">
-			<h3>Selecão de Plano</h3>
+		<div class="col-md-3 oferta bg-white">
+			<div class="oferta-title text-dark">Mensal</div>
+			<div class="oferta-price text-dark">R$ 499,99</div>
 		</div>
-		<div class="col-md-12">
-			<form action="{{ route('syndicate.subscribe') }}" method="POST">
-				@csrf
-				<div class="form-group">
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="plan" id="month-plan" value="montlhy">
-						<label class="form-check-label" for="month-plan">
-							Plano Mensal R$ 499,00
-						</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="plan" id="semiannually" value="semiannually">
-						<label class="form-check-label" for="semiannually">
-							Plano Semestral R$ 2.399,96
-						</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="plan" id="yearly" value="yearly">
-						<label class="form-check-label" for="yearly">
-							Plano Anual R$4.199,89.
-						</label>
-					</div>
-					<input type="hidden" name="syndicate_id" value="{{$syndicate_id ?? ''}}">
-				</div>
-			</form>
+		<div class="col-md-3 oferta">
+			<div class="oferta-title">Semestral</div>
+			<div class="oferta-price">20% Off</div>
+			<div class="oferta-period"> R$2.399,96</div>
 		</div>
+		<div class="col-md-3 oferta bg-dark">
+			<div class="oferta-title">Anual</div>
+			<div class="oferta-price">30% Off</div>
+			<div class="oferta-period">R$4.199,89.</div>
+		</div>
+
+	</div>
+	<div class="col-md-6 col-sm-12 offset-md-3 mt-3">
+		<form action="{{ route('syndicate.subscribe') }}" method="POST">
+			@csrf
+			<div class="form-group">
+				<label for="plans">Plano Escolhido</label>
+				<select name="plan_id" id="" class="form-control">
+					@foreach($plans as $plan)
+					<option value="{{$plan->id}}">{{ $plan->name }} - {{ $plan->description }}</option>
+					@endforeach
+				</select>
+
+				<input type="hidden" name="syndicate_id" value="{{$syndicate->id ?? ''}}">
+			</div>
+			<button type="submit" class="btn btn-dark btn-block">Finalizar</button>
+		</form>
 	</div>
 </div>
 @endsection
