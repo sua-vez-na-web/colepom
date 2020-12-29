@@ -69,10 +69,10 @@
         @include('admin.layouts.partials._menu')
 
         <div class="content-wrapper" style="min-height: 960px;">
-            @if(session('message'))
+            @if(session('msg'))
             <div class="row" style='padding:20px 20px 0 20px;'>
                 <div class="col-lg-12">
-                    <div class="alert alert-success" role="alert">{{ session('message') }}</div>
+                    <div class="alert alert-success" role="alert">{{ session('msg') }}</div>
                 </div>
             </div>
             @endif

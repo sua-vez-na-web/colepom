@@ -24,6 +24,7 @@
                                 <th>CNPJ</th>
                                 <th>Categoria</th>
                                 <th>Email</th>
+                                <th>Aprovado</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                                 <td>{{$partner->cpf_cnpj}}</td>
                                 <td>{{ $partner->category->name ?? '' }}</td>
                                 <td>{{$partner->email}}</td>
+                                <td>{{$partner->is_aprooved ?'SIM':'NÃO'}}</td>
                                 <th>
                                     <a href="{{ route('partners.edit',$partner->id) }}" class="btn btn-primary btn-xs">
                                         <i class="fa fa-pencil"></i> Editar

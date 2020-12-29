@@ -29,6 +29,7 @@
                                         <th>Presidente</th>
                                         <th>CNPJ</th>
                                         <th>Email</th>
+                                        <th>Aprovado</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
@@ -40,7 +41,7 @@
                                         <td>{{$syndicate->president_name}}</td>
                                         <td>{{$syndicate->cpf_cnpj}}</td>
                                         <td>{{$syndicate->email}}</td>
-
+                                        <td>{{$syndicate->is_aprooved ?'SIM':'NÃO'}}</td>
                                         <td>
                                             <a href="{{ route('syndicates.edit',$syndicate->id) }}" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i> Editar

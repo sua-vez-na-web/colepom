@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Models\Syndicate;
 use App\Models\User;
 use App\Notifications\NewAffiliateAproovedBySyndicate;
+use App\Notifications\UserActivated;
 use Illuminate\Support\Facades\Auth;
 
 class AffiliatesController extends Controller
@@ -118,6 +119,9 @@ class AffiliatesController extends Controller
         $user = User::find($affiliate->user_id);
         $user->is_active = 1;
         $user->save();
+
+        #notify user
+        $user->notify(new UserActivated($user));
 
         #notify Admins
         $admins = User::where('role_id', Role::ADMINISTRATOR)->get();

@@ -10,6 +10,7 @@ use App\Models\Partner;
 use App\Models\Role;
 use App\Models\User;
 use App\Notifications\NewAffiliateAproovedBySyndicate;
+use App\Notifications\UserActivated;
 
 class PartnersController extends Controller
 {
@@ -104,6 +105,9 @@ class PartnersController extends Controller
         $user = User::find($partner->user_id);
         $user->is_active = 1;
         $user->save();
+
+        #notify user        
+        $user->notify(new UserActivated($user));
 
         #notify Admins
         $admins = User::where('role_id', Role::ADMINISTRATOR)->get();
