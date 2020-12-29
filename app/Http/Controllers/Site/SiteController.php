@@ -12,6 +12,7 @@ use App\Models\AffiliateCoupom;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Partner;
+use App\Models\Plan;
 use App\Models\Promotion;
 use App\Models\Role;
 use App\Models\State;
@@ -149,11 +150,11 @@ class SiteController extends Controller
         $data['city_code'] = City::getCodeByIbge($request->ibge);
 
 
-        $user->syndicate()->create($data);
+        $syndicate = $user->syndicate()->create($data);
 
         $user->notify(new NewUserRegistration($user));
 
-        return redirect()->route('site.index')->with('msg', 'Obrigado pelo cadastro, em breve entraremos em contato');
+        return redirect()->route('plans.select', $syndicate->id);
     }
 
     public function showPartner($id)
@@ -206,14 +207,14 @@ class SiteController extends Controller
                 ], 200);
             } else {
                 return response()->json([
-                    'success' => true,
+                    'success' => false,
                     'message' => "Você já resgatou esse cupom",
                     'code' => "********",
                 ], 200);
             }
         } else {
             return response()->json([
-                'success' => true,
+                'success' => false,
                 'message' => "Desculpe, Nenhum Cupom Disponível",
                 'code' => "*******",
             ], 200);
@@ -287,8 +288,32 @@ class SiteController extends Controller
         ]);
     }
 
+    public function plansSelect($syndicate)
+    {
+        $syndicate = Syndicate::find($syndicate);
+        $plans = Plan::all();
+
+        return view('site.pages.syndicates.plans-select', compact('plans', 'syndicate'));
+    }
+
     public function syndicateSubscribe(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+
+        $syndicate = Syndicate::find($request->syndicate_id);
+
+        if ($syndicate) {
+            $plan = Plan::find($request->plan_id);
+            $syndicate->subscription()->create(
+                [
+                    'cycle' => $plan->cycle,
+                    'plan_id' => $plan->id,
+                    'description' => $plan->description,
+                    'a_value' => $plan->amount
+                ]
+            );
+
+            return redirect()->route('site.index')->with('msg', 'Obrigado pelo cadastro, em breve entraremos em contato');
+        }
     }
 }

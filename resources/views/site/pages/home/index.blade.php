@@ -82,7 +82,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 card-box">
-                        <img src="{{ asset('img/icone1.png') }}" alt="" height="130px">
+                    <img src="{{ asset('img/icone1.png') }}" alt="" height="130px">
                     <div class="card-block">
                         <h5 class="card-title">
                             Cadastre-se
@@ -145,7 +145,7 @@
                         <div class="cupom">
                             <div class="tesoura"></div>
                             <div class="black-canvas">
-                                <img class="cupom-img-top" alt="Parceiro" src="{{$promotion->image}}" width="450" height="600">
+                                <img class="cupom-img-top" alt="Parceiro" src="{{Storage::url($promotion->image)}}" width="450" height="600">
                             </div>
                             <div class="cupom-desconto">{{ $promotion->discount }}%</div>
                             <div class="cupom-block">

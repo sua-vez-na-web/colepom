@@ -10,13 +10,11 @@ class CreateCoupons
 
     public static function execute(Promotion $promotion)
     {
-        for ($i = 0; $i < $promotion->qty_available; $i++) {
-            info("generatin coupon");
+        for ($i = 0; $i < $promotion->quantity; $i++) {
             $promotion->coupons()->create(
                 [
-                    'code' => Str::random(6),
+                    'code' => strtoupper(Str::random(6)),
                     'discount' => $promotion->discount
-
                 ]
             );
         }

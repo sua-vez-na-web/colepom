@@ -66,6 +66,20 @@
                     <span>Promoções</span>
                 </a>
             </li>
+            <li class="{{ request()->is('admin/affiliates-coupons') || request()->is('admin/affiliates-coupons/*') ? 'active' : ''  }}">
+                <a href="{{ route('affiliates-coupons.index') }}">
+                    <i class="fa fa-tag">
+                    </i>
+                    <span>Cupons Resgatados</span>
+                </a>
+            </li>
+            <li class="{{ request()->is('admin/coupons') || request()->is('admin/coupons/*') ? 'active' : ''  }}">
+                <a href="{{ route('coupons.index') }}">
+                    <i class="fa fa-tag">
+                    </i>
+                    <span>Cupons</span>
+                </a>
+            </li>
             @endcan
             @can('administrator')
 
@@ -74,6 +88,20 @@
                     <i class="fa fa-user-circle-o">
                     </i>
                     <span>Usuários</span>
+                </a>
+            </li>
+            <li class="{{ request()->is('admin/subscriptions') || request()->is('admin/subscriptions/*') ? 'active' : ''  }}">
+                <a href="{{ route('subscriptions.index') }}">
+                    <i class="fa fa-dollar">
+                    </i>
+                    <span>Assinaturas</span>
+                </a>
+            </li>
+            <li class="{{ request()->is('admin/plans') || request()->is('admin/plans/*') ? 'active' : ''  }}">
+                <a href="{{ route('plans.index') }}">
+                    <i class="fa fa-list">
+                    </i>
+                    <span>Planos</span>
                 </a>
             </li>
             @endcan

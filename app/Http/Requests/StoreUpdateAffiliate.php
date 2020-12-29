@@ -59,6 +59,7 @@ class StoreUpdateAffiliate extends FormRequest
             'address_number' => 'Número',
             'city' => 'Cidade',
             'province' => 'Bairro',
+            'password' => "Senha"
         ];
     }
 }

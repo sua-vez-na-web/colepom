@@ -24,6 +24,7 @@
                             <th>Empresa</th>
                             <th>Cargo</th>
                             <th>Cidade</th>
+                            <th>Aprovado</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -37,6 +38,7 @@
                             <td>{{$affiliate->company}}</td>
                             <td>{{$affiliate->job_post}}</td>
                             <td>{{$affiliate->city}}</td>
+                            <td>{{$affiliate->is_aprooved ? 'SIM':'NÃO'}}</td>
                             <td>
                                 <!-- <a href="#" class="btn btn-primary btn-xs">
                                     <i class="fa fa-pencil"></i> Dependentes

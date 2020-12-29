@@ -10,6 +10,7 @@ use App\Models\Role;
 use App\Models\Syndicate;
 use App\Models\User;
 use App\Notifications\NewAffiliateAproovedBySyndicate;
+use App\Notifications\UserActivated;
 use App\Services\AsaasService;
 
 
@@ -105,6 +106,9 @@ class SyndicatesController extends Controller
         $user = User::find($syndicate->user_id);
         $user->is_active = 1;
         $user->save();
+
+        #notify user
+        $user->notify(new UserActivated($user));
 
         #notify Admins
         $admins = User::where('role_id', Role::ADMINISTRATOR)->get();

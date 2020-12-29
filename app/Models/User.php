@@ -61,21 +61,29 @@ class User extends Authenticatable
 
     public static function redeemCuponToUser($user, $coupon): bool
     {
-
+        #check if user already have this coupom;
         $couponHasRedeem = AffiliateCoupom::where('user_id', $user->id)
-            ->where('coupon_id', $coupon->id)
+            ->where('promotion_id', $coupon->promotion->id)
             ->first();
+
+
         if (!$couponHasRedeem) {
             AffiliateCoupom::create(
                 [
                     'user_id' => $user->id,
                     'coupon_id' => $coupon->id,
+                    'promotion_id' => $coupon->promotion->id,
                     'partner_id' => $coupon->promotion->partner->id,
                     'redeem_at' => now(),
                     'is_used' => 0,
                     'is_active' => 0
                 ]
             );
+
+            $coupon->is_used = 1;
+            $coupon->used_at = now();
+            $coupon->user_id = $user->id;
+            $coupon->save();
 
             $user->notify(new UserRedeemCoupon($user, $coupon));
 

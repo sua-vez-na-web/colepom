@@ -49,8 +49,9 @@ class UserRedeemCoupon extends Notification
     {
         $url = env('APP_URL');
         return (new MailMessage)
+            ->subject("COLEPOM - Cupom {$this->coupon->code} foi Resgatado")
             ->greeting("Olá, {$this->user->name}")
-            ->line('Parabens!Você Resgatou um Cupom')
+            ->line('Parabens! Você Resgatou um Cupom')
             ->line('Vá até o parceio e realize o resgate')
             ->line("Parceiro: {$this->coupon->promotion->partner->name}")
             ->line("Estabelecmento: {$this->coupon->promotion->store->name}")

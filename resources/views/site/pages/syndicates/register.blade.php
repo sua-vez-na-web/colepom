@@ -56,14 +56,14 @@
         <div class="row">
             <div class="form-group col-sm-12 col-md-6">
                 <label>CNPJ</label>
-                {{form::text('cpf_cnpj',null,['class'=>'form-control']) }}
+                {{form::text('cpf_cnpj',null,['class'=>'form-control cnpj']) }}
                 @error('cpf_cnpj')
                 <span class="text-danger">{{ $message ?? '' }}</span>
                 @enderror
             </div>
             <div class="form-group col-sm-12 col-md-6">
                 <label>Telefone</label>
-                {{form::text('mobile_phone',null,['class'=>'form-control']) }}
+                {{form::text('mobile_phone',null,['class'=>'form-control phone']) }}
                 @error('mobile_phone')
                 <span class="text-danger">{{ $message ?? '' }}</span>
                 @enderror

@@ -101,14 +101,14 @@
 
                     <div class="form-group col-sm-12 col-md-6">
                         <label>CPF</label>
-                        {{form::text('document',null,['class'=>'form-control']) }}
+                        {{form::text('document',null,['class'=>'form-control cpf']) }}
                         @error('document')
                         <span class="text-danger">{{ $message ?? '' }}</span>
                         @enderror
                     </div>
                     <div class="form-group col-sm-12 col-md-6">
                         <label>Telefone</label>
-                        {{form::text('mobile_phone',null,['class'=>'form-control']) }}
+                        {{form::text('mobile_phone',null,['class'=>'form-control mobile-phone']) }}
                         @error('mobile_phone')
                         <span class="text-danger">{{ $message ?? '' }}</span>
                         @enderror
@@ -118,7 +118,7 @@
                 <div class="row">
                     <div class="form-group col-sm-12 col-md-2">
                         <label>CEP</label>
-                        {{form::text('zipcode',null,['class'=>'form-control','id'=>"cep"]) }}
+                        {{form::text('zipcode',null,['class'=>'form-control cep','id'=>"cep"]) }}
                         @error('zipcode')
                         <span class="text-danger">{{ $message ?? '' }}</span>
                         @enderror
@@ -204,4 +204,5 @@
 
 @section('js')
 <script src="{{ asset('js/viaCep.js') }}"></script>
+
 @endsection

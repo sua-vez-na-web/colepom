@@ -29,6 +29,7 @@
                                         <th>Email</th>
                                         <th>Cadastro</th>
                                         <th>Data Cadastro</th>
+                                        <th>Ativo</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
@@ -39,8 +40,8 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->role->name}}</td>
-                                        <td>{{$user->created_at}}</td>
-
+                                        <td>{{$user->created_at->format('d/m/Y H:m')}}</td>
+                                        <td>{{$user->is_active ? 'SIM' : 'NÃO'}}</td>
                                         <td>
                                             <a href="{{ route('users.edit',$user->id) }}" class="btn btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i> Editar

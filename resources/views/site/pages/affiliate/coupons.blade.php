@@ -37,29 +37,32 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             @include('site.pages.affiliate.partials.side_menu')
         </div>
-        <div class="col-md-8">
-            @foreach($coupons as $coupon)
-            <div class="col-md-4 col-sm-6">
-                <a class="cupom-click" href="#">
-                    <div class="cupom">
-                        <div class="tesoura"></div>
-                        <div class="black-canvas">
-                            <img class="cupom-img-top" alt="Parceiro" src="{{$coupon->coupon->promotion->image}}" width="450" height="600">
-                        </div>
-                        <div class="cupom-desconto">{{$coupon->coupon->promotion->discount}}%</div>
-                        <div class="cupom-block">
-                            <h5 class="cupom-title" data-toggle="tooltip" title="{{ $coupon->coupon->promotion->title }}">
-                                {{$coupon->coupon->promotion->title}}
-                            </h5>
-                            <span class="font-weight-bold">{{$coupon->coupon->code ??''}}</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            @endforeach
+        <div class="col-md-9">
+            <table class="table table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Promoção</th>
+                        <th>Validade</th>
+                        <th>Data do Resgate</th>
+                        <th>Data Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($coupons as $coupon)
+                    <tr>
+                        <th>{{$coupon->coupon->code?? '' }}</th>
+                        <td>{{$coupon->coupon->promotion->title ?? ''}}</td>
+                        <td>{{ $coupon->coupon->promotion->redeem_expiration_date->format('d/m/Y H:m') ?? ''}}</td>
+                        <td>{{ $coupon->redeem_at->format('d/m/Y H:m') ?? ''}}</td>
+                        <td>{{ $coupon->used_at->format('d/m/Y H:m') ?? '--'}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

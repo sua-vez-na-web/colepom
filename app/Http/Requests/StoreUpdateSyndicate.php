@@ -56,7 +56,8 @@ class StoreUpdateSyndicate extends FormRequest
             'address_number' => "numero do endereco",
             'city' => "cidade",
             'province' => "bairro",
-            "username" => 'Usuário'
+            "username" => 'Usuário',
+            'password' => "Senha"
         ];
     }
 }

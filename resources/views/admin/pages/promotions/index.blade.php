@@ -18,13 +18,14 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Imagem</th>
-                                <th>Title</th>
+                                <th>Foto</th>
+                                <th>Titulo</th>
                                 <th>Estabelecimento</th>
                                 <th>Categoria</th>
-                                <th>Validade</th>
+                                <th>Disponivel até</th>
                                 <th>Valor Original</th>
                                 <th>Desconto</th>
+                                <th>Quantidades</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -36,12 +37,10 @@
                                 <td>{{$promotion->title}}</td>
                                 <td>{{$promotion->store->name}}</td>
                                 <td>{{$promotion->category->name}}</td>
-                                <td>{{ date('d/m/Y h:m:s',strToTime($promotion->expiration_date))}}</td>
-                                <td>
-                                    R$ {{$promotion->original_value}}</td>
-                                <td><span class="badge">{{$promotion->discount}}%</span>
-                                </td>
-
+                                <td>{{ $promotion->expiration_date->format('d/m/Y')}}</td>
+                                <td>R$ {{$promotion->original_value}}</td>
+                                <td><span class="badge">{{$promotion->discount}}%</span></td>
+                                <td>{{ $promotion->quantity ?? ''}}</td>
                                 <td>
                                     <a href="{{ route('promotions.edit',$promotion->id) }}" class="btn btn-primary btn-xs">
                                         <i class="fa fa-pencil"></i> Editar

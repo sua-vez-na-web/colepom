@@ -66,17 +66,21 @@ class UsersController extends Controller
             return redirect()->back();
         };
 
-        $data = $request->all();
+        $notify = $user->is_active == 0;
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role_id = $request->role_id;
+        $user->is_active = $request->is_active;
 
         if ($request->has('password') && $request->password != null) {
-            $data['password'] = bcrypt($request->password);
+            $user->password = bcrypt($request->password);
         }
 
-        $user->update($data);
+        $user->save();
 
-        if ($user->is_active == 1) {
+        if ($notify)
             $user->notify(new NewUserActivated($user));
-        }
 
         return redirect()->route('users.index');
     }

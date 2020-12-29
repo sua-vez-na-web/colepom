@@ -34,6 +34,10 @@ class Affiliate extends Model
         'city_code'
     ];
 
+    protected $dates =
+    [
+        'birth_of_date',
+    ];
     /**
      * Relations
      */

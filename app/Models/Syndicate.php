@@ -61,4 +61,9 @@ class Syndicate extends Model
             $query->orWhere('city_code', $city);
         })->get();
     }
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
+    }
 }
