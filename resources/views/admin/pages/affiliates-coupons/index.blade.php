@@ -33,10 +33,10 @@
                                     @foreach($affiliatesCoupons as $coupons)
                                     <tr>
                                         <th></th>
-                                        <td>{{$coupons->coupon->code}}</td>
-                                        <td>{{$coupons->redeem_at->format('d/m/Y H:m')}}</td>
-                                        <td>{{$coupons->promotion->redeem_expiration_date->format('d/m/Y H:m')}}</td>
-                                        <td>{{$coupons->used_at->format('d/m/Y H:m') ?? '---'}}</td>
+                                        <td>{{ $coupons->coupon->code }}</td>
+                                        <td>{{ $coupons->redeem_at->format('d/m/Y H:m') }}</td>
+                                        <td>{{ $coupons->promotion->redeem_expiration_date->format('d/m/Y H:m') }}</td>
+                                        <td>{{ $coupons->used_at ? $coupons->used_at->format('d/m/Y H:m') : '---' }}</td>
                                         <td>
                                             <a href="{{ route('affiliates-coupons.show',$coupons->id) }}" class="btn btn-primary btn-xs">Ver</a>
                                         </td>
