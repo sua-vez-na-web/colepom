@@ -57,8 +57,8 @@
                         <th>{{$coupon->coupon->code?? '' }}</th>
                         <td>{{$coupon->coupon->promotion->title ?? ''}}</td>
                         <td>{{ $coupon->coupon->promotion->redeem_expiration_date->format('d/m/Y H:m') ?? ''}}</td>
-                        <td>{{ $coupon->redeem_at->format('d/m/Y H:m') ?? ''}}</td>
-                        <td>{{ $coupon->used_at->format('d/m/Y H:m') ?? '--'}}</td>
+                        <td>{{ $coupon->redeem_at ? $coupon->redeem_at->format('d/m/Y H:m') : ''}}</td>
+                        <td>{{ $coupon->used_at ? $coupon->used_at->format('d/m/Y H:m') : '--'}}</td>
                     </tr>
                     @endforeach
                 </tbody>
