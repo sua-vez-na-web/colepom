@@ -14,7 +14,7 @@ class CreateSubscriptionsTable extends Migration
     public function up()
     {
         Schema::create('subscriptions', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('syndicate_id');
             $table->enum('cycle', ['MONTLHY', 'SEMIANUALLY', 'YEARLY']);
             $table->unsignedBigInteger('plan_id');
