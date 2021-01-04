@@ -21,7 +21,7 @@ class PromotionsController extends Controller
         $user = Auth::user();
 
         if ($user->role_id == Role::ADMINISTRATOR) {
-            $promotions = Promotion::all();
+            $promotions = Promotion::latest()->get();
         } else {
             $promotions = Promotion::where('partner_id', $user->partner->id)->get();
         }

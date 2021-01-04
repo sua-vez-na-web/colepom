@@ -20,7 +20,7 @@ class AffiliatesController extends Controller
         $user = Auth::user();
 
         if ($user->role_id == Role::ADMINISTRATOR) {
-            $affiliates = Affiliate::all();
+            $affiliates = Affiliate::latest()->get();
         } else {
             $affiliates = Affiliate::where('syndicate_id', $user->syndicate->id)->get();
         }

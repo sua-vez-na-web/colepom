@@ -10,7 +10,7 @@ class SubscriptionsController extends Controller
 {
     public function index()
     {
-        $subscriptions = Subscription::all();
+        $subscriptions = Subscription::latest()->get();
 
         return view('admin.pages.subscriptions.index', compact('subscriptions'));
     }

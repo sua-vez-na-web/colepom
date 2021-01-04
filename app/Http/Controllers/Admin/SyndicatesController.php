@@ -18,7 +18,7 @@ class SyndicatesController extends Controller
 {
     public function index()
     {
-        $syndicates = Syndicate::paginate();
+        $syndicates = Syndicate::latest()->get();
         return view('admin.pages.syndicates.index', compact('syndicates'));
     }
 

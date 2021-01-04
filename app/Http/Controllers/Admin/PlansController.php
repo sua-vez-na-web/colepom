@@ -10,7 +10,7 @@ class PlansController extends Controller
 {
     public function index()
     {
-        $plans = Plan::all();
+        $plans = Plan::latest()->get();
 
         return view('admin.pages.plans.index', compact('plans'));
     }
