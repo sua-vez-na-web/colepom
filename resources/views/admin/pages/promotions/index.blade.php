@@ -33,7 +33,7 @@
                             @foreach($promotions as $promotion)
                             <tr>
                                 <td></td>
-                                <td><img src="{{ Storage::url($promotion->image) }}" alt="" widtd="50" height="50"></td>
+                                <td><img src="{{ $promotion->image }}" alt="" widtd="50" height="50"></td>
                                 <td>{{$promotion->title}}</td>
                                 <td>{{$promotion->store->name}}</td>
                                 <td>{{$promotion->category->name}}</td>

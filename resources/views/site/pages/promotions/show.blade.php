@@ -7,7 +7,7 @@
         <div class="col-md-4">
             <div class="promotion-image p-2">
                 <div class="card p-1 shadow">
-                    <img src="{{Storage::url($promotion->image)}}" alt="{{$promotion->title}}" height="300px">
+                    <img src="{{$promotion->image}}" alt="{{$promotion->title}}" height="300px">
                 </div>
             </div>
 

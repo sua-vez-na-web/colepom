@@ -9,7 +9,7 @@
             </div>
             <div class="pull-left info">
                 <p>{{Auth::user()->name ?? 'Developer'}}</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <a href="#"><i class="fa fa-circle text-success"></i> Ativo</a>
             </div>
         </div>
 
@@ -105,6 +105,7 @@
                 </a>
             </li>
             @endcan
+            <li><a href="{{route('profile.edit')}}"><i class="fa fa-user"></i>Minha Conta</a></li>
             <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"><i class="fa fa-sign-out"></i> <span>Sair</span></a></li>
         </ul>
     </section>

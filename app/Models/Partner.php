@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Partner extends Model
 {
@@ -53,7 +54,7 @@ class Partner extends Model
     public function getImageAttribute()
     {
         $defaultImage = asset('/img/colepom_bg_white.png');
-        return $this->attributes['brand'] ? $this->attributes['brand'] : $defaultImage;
+        return $this->attributes['brand'] ? Storage::url($this->attributes['brand']) : $defaultImage;
     }
 
     public static function searchPartners($uf = null, $city = null, $categories = null)

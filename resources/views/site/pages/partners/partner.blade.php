@@ -12,7 +12,7 @@
                 <div class="header-perfil">
                     <div class="row">
                         <div class="col-md-3 col-sm-4">
-                            <img class="cupom-img-top" alt="Parceiro" src="{{asset('img/colepom_bg_white.png')}}" width="450" height="600">
+                            <img class="cupom-img-top" alt="Parceiro" src="{{$partner->image}}" width="450" height="600">
                         </div>
                         <div class="col-md-9 col-sm-8">
                             <h1 class="nav-nome">

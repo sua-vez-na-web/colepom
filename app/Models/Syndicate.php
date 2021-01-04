@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Syndicate extends Model
 {
@@ -50,7 +51,7 @@ class Syndicate extends Model
     public function getImageAttribute()
     {
         $defaultImage = asset('/img/colepom_bg_white.png');
-        return $this->attributes['brand'] ? $this->attributes['brand'] : $defaultImage;
+        return $this->attributes['brand'] ? Storage::url($this->attributes['brand']) : $defaultImage;
     }
 
     public static function searchSyndicates($uf = null, $city = null)
