@@ -41,12 +41,12 @@ class User extends Authenticatable
         return $this->hasOne(Affiliate::class);
     }
 
-    public static function createUserAccount($email, $username, $role, $password)
+    public static function createUserAccount($email, $username, $role, $password = null)
     {
         $newUser = User::create([
             'name' => $username,
             'email' => $email,
-            'password' => bcrypt($password),
+            'password' => $password ? bcrypt($password) : bcrypt('colepom'),
             'role_id' => $role,
             'is_active' => 0
         ]);

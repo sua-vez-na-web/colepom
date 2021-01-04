@@ -89,7 +89,7 @@
 
                         <div class="form-group  @error('original_value') has-error @enderror">
                             <label>Valor Original (R$)</label>
-                            <input class="form-control" name="original_value" type="text" value="{{ @old('original_value') ?? '' }}">
+                            <input class="form-control" name="original_value" type="number" value="{{ @old('original_value') ?? '' }}" step="0.01">
                             @error('original_value')
                             <span class="text-danger">{{ $message ?? '' }}</span>
                             @enderror
@@ -97,7 +97,7 @@
 
                         <div class="form-group  @error('discount') has-error @enderror">
                             <label>Desconto (%)</label>
-                            <input class="form-control" name="discount" type="text" value="{{  @old('discount') ?? '' }}">
+                            <input class="form-control" name="discount" type="number" value="{{  @old('discount') ?? '' }}" step="0.01">
                             @error('discount')
                             <span class="text-danger">{{ $message ?? '' }}</span>
                             @enderror

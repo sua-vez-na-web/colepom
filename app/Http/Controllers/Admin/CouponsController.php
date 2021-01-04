@@ -15,7 +15,7 @@ class CouponsController extends Controller
         $user = Auth::user();
 
         if ($user->role_id == Role::ADMINISTRATOR) {
-            $coupons = Coupon::all();
+            $coupons = Coupon::latest()->get();
         } else {
             $promotions = Promotion::where('partner_id', $user->partner->id)->pluck('id');
 

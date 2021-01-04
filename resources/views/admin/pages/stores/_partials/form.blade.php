@@ -46,15 +46,23 @@
 </div>
 
 
+<div class="row">
+    <div class="form-group col-md-6">
+        <label for="cep">Latitude</label>
+        <input type="text" name="lat" class="form-control" value="{{ $store->lat ?? @old('lat') }}">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="ru">Longitude</label>
+        <div class="input-group">
 
-<div class="form-group">
-    <label for="cep">Latitude</label>
-    <input type="text" name="lat" class="form-control" value="{{ $store->lat ?? @old('lat') }}">
+            <input type="text" name="lng" class="form-control" value="{{ $store->lng ?? @old('lng') }}">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-primary btn-flat" id="btnLocation">Minha Localização</button>
+            </span>
+        </div>
+    </div>
 </div>
-<div class="form-group">
-    <label for="ru">Longitude</label>
-    <input type="text" name="lng" class="form-control" value="{{ $store->lng ?? @old('lng') }}">
-</div>
+
 
 
 <h4>Localização</h4>

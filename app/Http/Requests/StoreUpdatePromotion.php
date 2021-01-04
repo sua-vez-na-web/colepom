@@ -19,8 +19,8 @@ class StoreUpdatePromotion extends FormRequest
         return [
             // 'code'  => "required|unique:promotions,code,{$id},id",
             'title' => "required|min:3|max:100",
-            'expiration_date' => "required|date|",
-            'original_value' => "required|numeric",
+            'expiration_date' => "required|date",
+            'original_value' => "required",
             'store_id' => "required",
         ];
     }

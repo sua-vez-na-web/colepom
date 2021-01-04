@@ -17,7 +17,7 @@ class AffiliatesCouponsController extends Controller
         $user = Auth::user();
 
         if ($user->role_id == Role::ADMINISTRATOR) {
-            $affiliatesCoupons = AffiliateCoupom::all();
+            $affiliatesCoupons = AffiliateCoupom::latest()->get();
             return view('admin.pages.affiliates-coupons.index', compact('affiliatesCoupons'));
         } else {
 

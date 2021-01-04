@@ -116,4 +116,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',  'middleware' => ['au
 
   //Plans
   Route::resource('plans', 'PlansController');
+
+  //Profile
+  Route::get('profile', 'ProfileController@edit')->name('profile.edit');
+  Route::post('profile', 'ProfileController@update')->name('profile.update');
+  Route::post('profile/update-password', 'ProfileController@updatePassword')->name('profile.update-password');
 });

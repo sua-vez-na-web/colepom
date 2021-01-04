@@ -19,7 +19,7 @@ class StoreUpdateSyndicate extends FormRequest
 
         return [
             'name'  => "required|min:3|max:100|unique:syndicates,name,{$id},id",
-            'president_name' => "required|min:3|max:100|unique:syndicates,president_name,{$id},id",
+            // 'president_name' => "required|min:3|max:100|unique:syndicates,president_name,{$id},id",
             'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
             // 'phone' => 'required',
             'mobile_phone' => 'required',

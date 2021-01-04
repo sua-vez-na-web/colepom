@@ -8,7 +8,7 @@
 
             <h2>Bem Vindo, {{Auth::user()->name ?? 'Develop' }}</h2>
 
-            @if(Auth::user()->role_id == \App\Models\Role::ADMINISTRATOR)
+            @can('administrator')
 
             <div class="col-md-3 col-sm-12">
                 <div class="panel panel-success">
@@ -23,10 +23,12 @@
                     </div>
                 </div>
             </div>
+            @endcan
+            @can('syndicate','administrator')
             <div class="col-md-3 col-sm-12">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
-                        <h3>Affiliados</h3>
+                        <h3>Associados</h3>
                         <div class="number" style="display:flex; justify-content:space-between">
                             <i class="fa fa-user fa-4x"></i>
                             <h2>{{$affiliates}}</h2>
@@ -36,6 +38,8 @@
                     </div>
                 </div>
             </div>
+            @endcan
+            @can('administrator')
             <div class="col-md-3 col-sm-12">
                 <div class="panel panel-danger">
                     <div class="panel-heading">
@@ -49,6 +53,8 @@
                     </div>
                 </div>
             </div>
+            @endcan
+            @can('partners','administrator')
             <div class="col-md-3 col-sm-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
@@ -62,7 +68,7 @@
                     </div>
                 </div>
             </div>
-            @endif
+            @endcan
         </div>
     </div>
 </div>

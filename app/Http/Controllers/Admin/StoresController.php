@@ -22,7 +22,7 @@ class StoresController extends Controller
         $user = Auth::user();
 
         if ($user->role_id == Role::ADMINISTRATOR) {
-            $stores = Store::all();
+            $stores = Store::latest()->get();
         } else {
             $stores = Store::where('partner_id', $user->partner->id)->get();
         }

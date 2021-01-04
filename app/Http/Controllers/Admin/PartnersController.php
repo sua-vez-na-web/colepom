@@ -24,7 +24,7 @@ class PartnersController extends Controller
 
     public function index()
     {
-        $partners = $this->partnerRepository->paginate();
+        $partners = $this->partnerRepository->latest()->get();
         return view('admin.pages.partners.index', compact('partners'));
     }
 

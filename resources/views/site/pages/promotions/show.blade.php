@@ -7,7 +7,7 @@
         <div class="col-md-4">
             <div class="promotion-image p-2">
                 <div class="card p-1 shadow">
-                    <img src="{{Storage::url($promotion->image)}}" alt="{{$promotion->title}}" height="300px">
+                    <img src="{{$promotion->image}}" alt="{{$promotion->title}}" height="300px">
                 </div>
             </div>
 
@@ -67,7 +67,7 @@
                 <div class="row mt-2">
                     <div class="col-md-12">
                         <p class="instructions d-none text-dark">
-                            <i> Seu Cupom foi Resgatado, salve o código ou tire um print para aprasentar na loja participante.
+                            <i> Seu Cupom foi Resgatado, salve o código ou tire um print dessa página para apresentar na loja participante.
                             </i>
                         </p>
                     </div>

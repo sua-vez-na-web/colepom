@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use App\Traits\PartnerTrait;
+
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Promotion extends Model
 {
@@ -44,7 +45,7 @@ class Promotion extends Model
     public function getImageAttribute()
     {
         $defaultImage = asset('/img/colepom_bg_white.png');
-        return $this->attributes['image'] ? $this->attributes['image'] : $defaultImage;
+        return $this->attributes['image'] ? Storage::url($this->attributes['image']) : $defaultImage;
     }
 
     public function partner()

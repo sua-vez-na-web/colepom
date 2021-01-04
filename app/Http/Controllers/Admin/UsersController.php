@@ -13,7 +13,7 @@ class UsersController extends Controller
     public function index(Request $request)
     {
 
-        $users = User::all();
+        $users = User::latest()->get();
 
         return view('admin.pages.users.index', compact('users'));
     }
