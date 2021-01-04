@@ -139,7 +139,7 @@
             <div class="row">
                 @foreach ($promotions as $promotion)
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a class="cupom-click" href="{{route('promotions.show',$promotion->id)}}">
+                    <a class="cupom-click" href="{{route('promotions.redeem',$promotion->id)}}">
                         <div class="cupom">
                             <div class="tesoura"></div>
                             <div class="black-canvas">
