@@ -6,42 +6,40 @@
     <div class="row">
         <div class="carousel slide" id="carousel-868212">
             <ol class="carousel-indicators">
-                <li data-slide-to="0" data-target="#carousel-868212">
+                <li data-slide-to="0" data-target="#carousel-868212" class="active">
                 </li>
-                <li data-slide-to="1" data-target="#carousel-868212" class="active">
+                <li data-slide-to="1" data-target="#carousel-868212">
                 </li>
-                <li data-slide-to="2" data-target="#carousel-868212">
-                </li>
+                {{-- <li data-slide-to="2" data-target="#carousel-868212">
+                </li> --}}
             </ol>
 
             <div class="carousel-inner">
-                <div class="carousel-item">
-                    <img class="d-block w-100" alt="Carousel Bootstrap First" src="https://images.unsplash.com/photo-1510130315046-1e47cc196aa0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=42549827c6ab513e2e0d86208749e05e&auto=format&fit=crop&w=1050&q=80">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" alt="Carousel Bootstrap First" src="{{ asset('img/banner_1.jpg')}}">
                     <div class="carousel-shadow index"></div>
                     <div class="carousel-caption">
                         <h4>
-                            First Thumbnail label
+                            Resgate Seu Cupom
                         </h4>
                         <p>
-                            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-                            dolor id nibh ultricies vehicula ut id elit.
+                            Se você é associado de um dos sindicatos cadastrados em nossa plataforma. Então aproveite pra explorar as ofertas cadastradas, e resgate seu cupom de desconto, garantia de economia.
                         </p>
                     </div>
                 </div>
-                <div class="carousel-item active">
+                <div class="carousel-item">
                     <img class="d-block w-100" alt="Carousel Bootstrap Second" src="https://images.unsplash.com/photo-1464979681340-bdd28a61699e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9962230a1213bfd754ed20ae96114c04&auto=format&fit=crop&w=1050&q=80">
                     <div class="carousel-shadow index"></div>
                     <div class="carousel-caption">
                         <h4>
-                            Second Thumbnail label
+                            Diversos Estabelecimentos
                         </h4>
                         <p>
-                            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id
-                            dolor id nibh ultricies vehicula ut id elit.
+                            De diferentes segmentos e regiões, contamos com uma rede de parceiros que tem as melhores ofertas.
                         </p>
                     </div>
                 </div>
-                <div class="carousel-item">
+                {{--<div class="carousel-item">
                     <img class="d-block w-100" alt="Carousel Bootstrap Third" src="https://images.unsplash.com/photo-1511733897353-5b04f82435a8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=00f1f8fe0951b340878a85747b68b9c1&auto=format&fit=crop&w=1050&q=80">
                     <div class="carousel-shadow index"></div>
                     <div class="carousel-caption">
@@ -53,7 +51,7 @@
                             dolor id nibh ultricies vehicula ut id elit.
                         </p>
                     </div>
-                </div>
+                </div>--}}
             </div>
 
             <a class="carousel-control-prev" href="#carousel-868212" data-slide="prev">
