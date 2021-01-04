@@ -75,11 +75,9 @@
     </nav>
     <main>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 mt-2">
-                    @include('site.layouts._partials.messages')
-                </div>
-            </div>
+
+            @include('site.layouts._partials.messages')
+
         </div>
         @yield('content')
     </main>
