@@ -31,7 +31,7 @@
                             <tr>
                                 <td></td>
                                 <td>{{$store->name}}</td>
-                                <td>{{$store->partner->name}}</td>
+                                <td>{{$store->partner->name ?? '----'}}</td>
                                 <td>{{$store->phone}}</td>
                                 <td>{{$store->city}}</td>
                                 <td>

@@ -32,8 +32,8 @@
                                     <tr>
                                         <th></th>
                                         <td>{{$coupon->code}}</td>
-                                        <td>{{$coupon->promotion->store->name ?? '' }}</td>
-                                        <td>{{$coupon->promotion->title}}</td>
+                                        <td>{{$coupon->promotion->store->name ?? 'Promoção desse cupom foi Excluída' }}</td>
+                                        <td>{{$coupon->promotion->title ?? 'Promoção desse cupom foi Excluída'}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

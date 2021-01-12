@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
 class Syndicate extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'user_id',
         'name',
@@ -66,5 +69,10 @@ class Syndicate extends Model
     public function subscription()
     {
         return $this->hasOne(Subscription::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

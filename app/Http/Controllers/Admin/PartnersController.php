@@ -88,6 +88,8 @@ class PartnersController extends Controller
             return redirect()->back();
         };
 
+        $partner->user->delete();
+
         $partner->delete();
 
         return redirect()->route('partners.index');

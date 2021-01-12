@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
 class Partner extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'social_reason',
@@ -66,5 +69,10 @@ class Partner extends Model
         })->when($city, function ($query) use ($city) {
             $query->orWhere('city_code', $city);
         })->get();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -34,7 +34,7 @@
                             <td></td>
                             <td>{{$affiliate->first_name}}</td>
                             <td>{{$affiliate->email}}</td>
-                            <td>{{$affiliate->syndicate->name}}</td>
+                            <td>{{$affiliate->syndicate->name ?? 'Excluído do Sistema'}}</td>
                             <td>{{$affiliate->company}}</td>
                             <td>{{$affiliate->job_post}}</td>
                             <td>{{$affiliate->city}}</td>

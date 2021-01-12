@@ -4,12 +4,13 @@ namespace App\Models;
 
 use App\Traits\AffiliatesTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 
 class Affiliate extends Model
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     protected $fillable =
     [

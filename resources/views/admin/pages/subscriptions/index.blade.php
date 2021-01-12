@@ -36,7 +36,7 @@
                                     @foreach($subscriptions as $subscription)
                                     <tr>
                                         <th></th>
-                                        <td>{{$subscription->customer->name}}</td>
+                                        <td>{{$subscription->customer->name ?? 'Cliente Excluído do Sistema'}}</td>
                                         <td>{{$subscription->description}}</td>
                                         <td>{{ $subscription->plan->name }}</td>
                                         <td>{{ App\Models\Plan::CYCLE[$subscription->plan->cycle] }}</td>

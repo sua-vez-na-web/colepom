@@ -34,8 +34,8 @@ class CreateAffiliatesTable extends Migration
             $table->string('province')->nullable();
             $table->boolean('is_aprooved')->default(false);
 
-            $table->foreign('syndicate_id')->references('id')->on('syndicates');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('syndicate_id')->references('id')->on('syndicates')->onDelete(null);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete(null);
             $table->timestamps();
         });
     }
