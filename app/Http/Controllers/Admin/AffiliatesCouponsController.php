@@ -33,9 +33,10 @@ class AffiliatesCouponsController extends Controller
             return redirect()->back();
         }
 
-        $usable = !now()->greaterThan($affiliatesCoupon->coupon->promotion->redeem_expiration_date);
+        $usable = false;
+        if ($affiliatesCoupon->coupon->promotion)
+            $usable = !now()->greaterThan($affiliatesCoupon->coupon->promotion->redeem_expiration_date);
 
-        // dd($usable, $affiliatesCoupon->coupon->promotion->redeem_expiration_date);
         return view('admin.pages.affiliates-coupons.show', compact('affiliatesCoupon', 'usable'));
     }
 

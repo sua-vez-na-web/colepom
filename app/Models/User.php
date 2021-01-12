@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Notifications\UserRedeemCoupon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     protected $fillable = [
         'name', 'email', 'password', 'role_id', 'is_active'

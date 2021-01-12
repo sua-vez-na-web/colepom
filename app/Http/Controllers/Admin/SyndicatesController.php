@@ -89,6 +89,7 @@ class SyndicatesController extends Controller
             return redirect()->back();
         };
 
+        $syndicate->user->delete();
         $syndicate->delete();
 
         return redirect()->route('syndicates.index');

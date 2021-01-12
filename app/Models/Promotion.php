@@ -5,10 +5,13 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
 class Promotion extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'partner_id',
         'store_id',

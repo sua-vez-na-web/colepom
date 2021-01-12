@@ -34,7 +34,7 @@
                 <div class="panel-body">
                     <dl class="row">
                         <dt class="col-sm-2">Cliente</dt>
-                        <dd class="col-sm-10">{{$subscription->customer->name}}</dd>
+                        <dd class="col-sm-10">{{$subscription->customer->name ?? '----'}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Descricao</dt>

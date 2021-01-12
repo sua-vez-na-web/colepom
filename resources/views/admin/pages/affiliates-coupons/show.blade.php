@@ -6,10 +6,14 @@
         <div class="col-lg-12">
 
             <h3 class="page-header">
-                Detalhe do Cupom {{$affiliatesCoupon->coupon->code?? ''}}
+                Detalhe do Cupom {{$affiliatesCoupon->coupon->code ?? ''}}
             </h3>
             @if(!$usable)
             <h4 class="text text-danger">A data limite para resgate do Cupom Expirou.</h4>
+            @endif
+
+            @if(!$affiliatesCoupon->coupon->promotion)
+            <h4 class="text text-danger">Promoção Excluída do Sistema</h4>
             @endif
 
             <ol class="breadcrumb">
@@ -24,15 +28,15 @@
                 <div class="panel-body">
                     <dl class="row">
                         <dt class="col-sm-2">Associado</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->user->name}}</dd>
+                        <dd class="col-sm-10">{{$affiliatesCoupon->user->name ?? ''}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Email</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->user->email}}</dd>
+                        <dd class="col-sm-10">{{$affiliatesCoupon->user->email ?? ''}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Telefone</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->user->affiliate->mobile_phone}}</dd>
+                        <dd class="col-sm-10">{{$affiliatesCoupon->user->affiliate->mobile_phone ?? ''}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Data do Cadastro</dt>
@@ -48,7 +52,7 @@
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Sindicato/Associação</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->user->affiliate->syndicate->name}}</dd>
+                        <dd class="col-sm-10">{{$affiliatesCoupon->user->affiliate->syndicate->name ?? '---'}}</dd>
                     </dl>
                     <hr>
                     <dl class="row">
@@ -61,27 +65,27 @@
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Data do Limite de Resgate</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->redeem_expiration_date->format('d/m/Y H:m')}}</dd>
+                        <dd class="col-sm-10">{{ $affiliatesCoupon->coupon->promotion ? $affiliatesCoupon->coupon->promotion->redeem_expiration_date->format('d/m/Y H:m') : '---'}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Promoção</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->title}}</dd>
+                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->title ?? ''}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Desconto</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->discount}}%</dd>
+                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->discount ?? ''}}%</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Valor Original</dt>
-                        <dd class="col-sm-10">R$ {{$affiliatesCoupon->coupon->promotion->original_value}}</dd>
+                        <dd class="col-sm-10">R$ {{$affiliatesCoupon->coupon->promotion->original_value ?? ''}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Data de Expiração</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->expiration_date->format('d/m/Y H:m')}}</dd>
+                        <dd class="col-sm-10">{{ $affiliatesCoupon->coupon->promotion ? $affiliatesCoupon->coupon->promotion->expiration_date->format('d/m/Y H:m') : '---' }}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">Regras</dt>
-                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->rules}}</dd>
+                        <dd class="col-sm-10">{{$affiliatesCoupon->coupon->promotion->rules ?? ''}}</dd>
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2">CUPOM USADO</dt>

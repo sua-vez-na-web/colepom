@@ -35,7 +35,7 @@
                                 <td></td>
                                 <td><img src="{{ $promotion->image }}" alt="" widtd="50" height="50"></td>
                                 <td>{{$promotion->title}}</td>
-                                <td>{{$promotion->store->name}}</td>
+                                <td>{{$promotion->store->name ?? '---'}}</td>
                                 <td>{{$promotion->category->name}}</td>
                                 <td>{{ $promotion->expiration_date->format('d/m/Y')}}</td>
                                 <td>R$ {{$promotion->original_value}}</td>
