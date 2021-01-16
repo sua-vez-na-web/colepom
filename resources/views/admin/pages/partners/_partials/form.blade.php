@@ -1,4 +1,21 @@
 <div class="row">
+    <div class="form-group col-md-6 col-sm-12">
+        <div class="form-group">
+            <label for="brand">Logo</label>
+            <input type="file" class="form-control" name="brand">
+        </div>
+
+    </div>
+    @if(isset($partner))
+        <div class="form-group col-md-6">
+            <div class="col-md-6 col-sm-12">
+                <img src="{{ $partner->image }}" alt="" class="img-thumbnail">
+            </div>
+        </div>
+    @endif
+</div>
+
+<div class="row">
     <div class="form-group col-md-6 col-sm-12  @error('category_id') has-error @enderror">
         <label>Categoria</label>
         {!! Form::select('category_id',$categories,null,['class'=>'form-control','placeholder'=>'Selecione...']) !!}

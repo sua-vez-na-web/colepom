@@ -25,7 +25,7 @@
                 </div>
                 <div class="panel-body">
                     <!-- <form action="{{ route('partners.update',$partner->id) }}" method="post"> -->
-                    {!! Form::model($partner,['route' => ['partners.update',$partner->id]]) !!}
+                    {!! Form::model($partner,['route' => ['partners.update',$partner->id],'enctype'=>'multipart/form-data']) !!}
                     @method('PUT')
                     @csrf
                     @include('admin.pages.partners._partials.form')

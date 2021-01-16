@@ -126,4 +126,15 @@ class PromotionsController extends Controller
 
         return response()->json($code, 200);
     }
+
+    public function aproove($id)
+    {
+
+        $promotion = Promotion::find($id);
+        $promotion->is_aprooved = 1;
+        $promotion->save();
+
+        return redirect()->back()->with('msg', 'Promoção Aprovada!');
+    }
+
 }

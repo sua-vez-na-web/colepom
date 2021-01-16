@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Models\Syndicate;
 use App\Models\User;
 use App\Notifications\NewAffiliateAproovedBySyndicate;
+use App\Notifications\NewUserActivated;
 use App\Notifications\UserActivated;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,7 +49,7 @@ class AffiliatesController extends Controller
 
         $user = Auth::user();
 
-        $AffiliateUser = User::createUserAccount($request->email, $request->username, Role::AFFILIATE);
+        $AffiliateUser = User::createUserAccount($request->email, $request->first_name, Role::AFFILIATE);
 
         if ($user->role_id == Role::ADMINISTRATOR) {
             $syndicate = Syndicate::find($request->syndicate_id);
@@ -59,7 +60,9 @@ class AffiliatesController extends Controller
 
         $data['user_id'] = $AffiliateUser->id;
 
-        Affiliate::create($data);
+        $affiliate = Affiliate::create($data);
+
+        $affiliate->notify(new NewUserActivated($AffiliateUser));
 
         return redirect()->route('affiliates.index');
     }

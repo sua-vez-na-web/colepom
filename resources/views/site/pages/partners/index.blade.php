@@ -59,7 +59,7 @@
 						<div class="card p-2">
 							<div class="tasfa"></div>
 							<div class="black-canvas">
-								<img class="cupom-img-top" alt="Parceiro" src="{{$partner->image}}" width="450" height="600">
+								<img class="img-responsive cupom-img-top" alt="Parceiro" src="{{$partner->image}}">
 							</div>
 							<!-- <div class="cupom-desconto">{{$partner->discount}}%</div> -->
 							<div class="cupom-block">

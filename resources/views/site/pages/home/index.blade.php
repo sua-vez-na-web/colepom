@@ -137,7 +137,7 @@
                 </h4>
             </div>
             <div class="row">
-                @foreach ($promotions as $promotion)
+                @forelse ($promotions as $promotion)
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a class="cupom-click" href="{{route('promotions.redeem',$promotion->id)}}">
                         <div class="cupom">
@@ -163,7 +163,13 @@
                         </div>
                     </a>
                 </div>
-                @endforeach
+                @empty
+
+                        <div class="text-center">
+                            <p>Nenhuma promoção disponível</p>
+                        </div>
+
+                @endforelse
             </div>
             <div class="text-center">
                 <a href="{{route('site.promotions')}}" class="btn colored">Ver mais</a>

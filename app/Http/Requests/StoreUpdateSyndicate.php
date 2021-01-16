@@ -13,24 +13,43 @@ class StoreUpdateSyndicate extends FormRequest
     }
 
 
+
     public function rules()
     {
         $id = $this->segment(3);
 
-        return [
-            'name'  => "required|min:3|max:100|unique:syndicates,name,{$id},id",
-            // 'president_name' => "required|min:3|max:100|unique:syndicates,president_name,{$id},id",
-            'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
-            // 'phone' => 'required',
-            'mobile_phone' => 'required',
-            'cpf_cnpj' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
-            'zipcode' => "required",
-            'address' => "required",
-            'address_number' => "required",
-            'city' => "required",
-            'province' => "required",
-            'password' => 'required|confirmed|min:6'
-        ];
+        if ($this->segment(1)=='admin'){
+            return [
+                'name'  => "required|min:3|max:100|unique:syndicates,name,{$id},id",
+                // 'president_name' => "required|min:3|max:100|unique:syndicates,president_name,{$id},id",
+                'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
+                // 'phone' => 'required',
+                'mobile_phone' => 'required',
+                'cpf_cnpj' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
+                'zipcode' => "required",
+                'address' => "required",
+                'address_number' => "required",
+                'city' => "required",
+                'province' => "required",
+            ];
+        }else{
+            return [
+                'name'  => "required|min:3|max:100|unique:syndicates,name,{$id},id",
+                // 'president_name' => "required|min:3|max:100|unique:syndicates,president_name,{$id},id",
+                'email' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
+                // 'phone' => 'required',
+                'mobile_phone' => 'required',
+                'cpf_cnpj' => "required|min:3|max:100|unique:syndicates,email,{$id},id",
+                'zipcode' => "required",
+                'address' => "required",
+                'address_number' => "required",
+                'city' => "required",
+                'province' => "required",
+                'password' => 'required|confirmed|min:6'
+            ];
+        }
+
+
     }
 
     public function messages()

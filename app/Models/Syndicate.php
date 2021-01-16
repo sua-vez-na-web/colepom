@@ -54,6 +54,7 @@ class Syndicate extends Model
     public function getImageAttribute()
     {
         $defaultImage = asset('/img/colepom_bg_white.png');
+
         return $this->attributes['brand'] ? Storage::url($this->attributes['brand']) : $defaultImage;
     }
 

@@ -18,10 +18,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-header">Editar Sindicato</h4>
+
                 </div>
                 <div class="panel-body">
                     <!-- <form action="{{ route('syndicates.update',$syndicate->id) }}" method="post"> -->
-                    {!! Form::model($syndicate,['route'=>['syndicates.update',$syndicate->id]]) !!}
+                    {!! Form::model($syndicate,['route'=>['syndicates.update',$syndicate->id],'enctype'=>'multipart/form-data']) !!}
                     @method('PUT')
                     @csrf
                     @include('admin.pages.syndicates._partials.form')
