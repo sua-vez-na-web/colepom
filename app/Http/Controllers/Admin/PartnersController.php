@@ -11,6 +11,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Notifications\NewAffiliateAproovedBySyndicate;
 use App\Notifications\UserActivated;
+use Illuminate\Support\Facades\Storage;
 
 class PartnersController extends Controller
 {
@@ -77,7 +78,14 @@ class PartnersController extends Controller
             return redirect()->back();
         };
 
-        $partner->update($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('brand')) {
+            Storage::delete($partner->brand);
+            $data['brand'] = $request->brand->store('profiles');
+        }
+
+        $partner->update($data);
 
         return redirect()->route('partners.index');
     }

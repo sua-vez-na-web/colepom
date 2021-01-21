@@ -15,23 +15,43 @@ class StoreUpdateAffiliate extends FormRequest
     public function rules()
     {
         $id = $this->segment(3);
+        if($this->segment(1) == 'admin'){
+            return [
+                'syndicate_id' => 'required',
+                'first_name'  => "required|min:3|max:100",
+                'last_name'  => "required|min:3|max:100",
+                'company'  => "required|min:3|max:100",
+                'job_post'  => "required|min:3|max:100",
+                'mobile_phone' => "required",
+                'birth_of_date' => "required|date",
+                'document' => "required|min:3|max:100|unique:affiliates,document,id",
+                'email' => 'required|email|unique:affiliates',
+                'zipcode' => 'required',
+                'address' => 'required',
+                'address_number' => 'required',
+                'city' => 'required',
+                'province' => 'required',
+//                'password' => 'required|confirmed|min:6'
+            ];
+        }else{
+            return [
+                'syndicate_id' => 'required',
+                'first_name'  => "required|min:3|max:100",
+                'last_name'  => "required|min:3|max:100",
+                'company'  => "required|min:3|max:100",
+                'job_post'  => "required|min:3|max:100",
+                'birth_of_date' => "required|date",
+                'document' => "required|min:3|max:100|unique:affiliates,document,{$id},id",
+                'email' => 'required|email|unique:affiliates',
+                'zipcode' => 'required',
+                'address' => 'required',
+                'address_number' => 'required',
+                'city' => 'required',
+                'province' => 'required',
+                'password' => 'required|confirmed|min:6'
+            ];
+        }
 
-        return [
-            'syndicate_id' => 'required',
-            'first_name'  => "required|min:3|max:100",
-            'last_name'  => "required|min:3|max:100",
-            'company'  => "required|min:3|max:100",
-            'job_post'  => "required|min:3|max:100",
-            'birth_of_date' => "required|date",
-            'document' => "required|min:3|max:100|unique:affiliates,document,{$id},id",
-            'email' => 'required|email|unique:affiliates',
-            'zipcode' => 'required',
-            'address' => 'required',
-            'address_number' => 'required',
-            'city' => 'required',
-            'province' => 'required',
-            'password' => 'required|confirmed|min:6'
-        ];
     }
 
     public function messages()

@@ -25,7 +25,8 @@
                                 <th>Disponivel até</th>
                                 <th>Valor Original</th>
                                 <th>Desconto</th>
-                                <th>Quantidades</th>
+                                <th>QTD</th>
+                                <th>Aprovada</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -41,6 +42,7 @@
                                 <td>R$ {{$promotion->original_value}}</td>
                                 <td><span class="badge">{{$promotion->discount}}%</span></td>
                                 <td>{{ $promotion->quantity ?? ''}}</td>
+                                <td>{{$promotion->is_aprooved ? 'SIM' : 'NAO'}}</td>
                                 <td>
                                     <a href="{{ route('promotions.edit',$promotion->id) }}" class="btn btn-primary btn-xs">
                                         <i class="fa fa-pencil"></i> Editar

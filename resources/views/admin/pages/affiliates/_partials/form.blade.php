@@ -27,6 +27,15 @@
     @enderror
 </div>
 
+<div class="form-group  @error('mobile_phone') has-error @enderror">
+    <label>Telefone</label>
+    <input class="form-control" name="mobile_phone" type="mobile_phone" value="{{ $syndicate->mobile_phone ?? @old('mobile_phone') }}">
+    @error('mobile_phone')
+    <span class="text-danger">{{ $message ?? '' }}</span>
+    @enderror
+</div>
+
+
 <h4>Localização</h4>
 <hr>
 <div class="row">
@@ -112,13 +121,6 @@
     @enderror
 </div>
 
-<div class="form-group  @error('username') has-error @enderror">
-    <label>Usuário</label>
-    <input class="form-control" name="username" type="username" value="{{ $syndicate->username ?? @old('username') }}">
-    @error('username')
-    <span class="text-danger">{{ $message ?? '' }}</span>
-    @enderror
-</div>
 
 <div class="form-group  @error('email') has-error @enderror">
     <label>Email</label>

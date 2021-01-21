@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Notifications\NewAffiliateAproovedBySyndicate;
 use App\Notifications\UserActivated;
 use App\Services\AsaasService;
+use Illuminate\Support\Facades\Storage;
 
 
 class SyndicatesController extends Controller
@@ -32,21 +33,11 @@ class SyndicatesController extends Controller
     {
         $data = $request->all();
 
-        #create user for syndicate
-        $user = User::createUserAccount($request->email, $request->username, Role::SYNDICATE);
+        $user = User::createUserAccount($request->email, $request->name, Role::SYNDICATE);
 
-        #create syndicate
         $data['user_id'] = $user->id;
-        $syndicate = Syndicate::create($data);
+        Syndicate::create($data);
 
-        #create asaas customer;
-        $result = AsaasService::createCustomer($syndicate);
-        if ($result['success']) {
-            $syndicate->asaas_id = $result['object']->id;
-            $syndicate->save();
-        } else {
-            dd('nao criou' . $result['message']['errors']);
-        }
         return redirect()->route('syndicates.index')->with('msg', '');
     }
 
@@ -73,12 +64,21 @@ class SyndicatesController extends Controller
 
     public function update(StoreUpdateSyndicate $request, $id)
     {
+        $data = $request->all();
 
         if (!$syndicate = Syndicate::find($id)) {
             return redirect()->back();
         };
 
-        $syndicate->update($request->all());
+
+        if ($request->hasFile('brand')) {
+            Storage::delete($syndicate->brand);
+            $data['brand'] = $request->brand->store('profiles');
+        }
+
+
+        $syndicate->update($data);
+
 
         return redirect()->route('syndicates.index');
     }

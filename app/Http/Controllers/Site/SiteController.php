@@ -27,7 +27,7 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $promotions = Promotion::all();
+        $promotions = Promotion::where('is_aprooved',true)->get();
 
         return view('site.pages.home.index', [
             'promotions' => $promotions
@@ -36,7 +36,7 @@ class SiteController extends Controller
 
     public function promotions()
     {
-        $promotions = Promotion::all();
+        $promotions = Promotion::where('is_aprooved',true)->get();
         $categories = Category::all();
 
 
@@ -52,7 +52,7 @@ class SiteController extends Controller
     public function partners(Request $request)
     {
         return view('site.pages.partners.index', [
-            'partners' => Partner::all(),
+            'partners' => Partner::where('is_aprooved',true)->get(),
             'categories' => Category::all(),
             'states' => State::all(),
             'table' => 'partner'
@@ -61,7 +61,7 @@ class SiteController extends Controller
 
     public function syndicates()
     {
-        $syndicates = Syndicate::all();
+        $syndicates = Syndicate::where('is_aprooved',true)->get();
 
         return view('site.pages.syndicates.index', [
             'syndicates' => $syndicates,
