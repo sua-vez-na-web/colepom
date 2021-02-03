@@ -79,6 +79,8 @@
             @include('site.layouts._partials.messages')
 
         </div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+
         @yield('content')
     </main>
 
