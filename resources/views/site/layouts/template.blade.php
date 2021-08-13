@@ -124,7 +124,7 @@
                 <div class="col-lg-3 text-center text-lg-right my-auto">
                     <ul class="list-inline mb-0">
                         <li class="list-inline-item mr-3">
-                            <a href="#">
+                            <a href="https://www.facebook.com/colepomoficial/" target="_blank">
                                 <i class="fab fa-facebook-f fa-2x fa-fw"></i>
                             </a>
                         </li>

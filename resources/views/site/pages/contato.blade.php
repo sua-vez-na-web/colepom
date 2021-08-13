@@ -32,28 +32,41 @@
                 <h2>Deixe que nós ligamos para você</h2>
             </div>
             <div class="col-md-6 offset-md-3">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="{{ route('contact.store') }}" method="post">
+                    @csrf
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input name="nome" placeholder="Nome" class="form-control" required="required" type="text">
+                            <input name="name" placeholder="Nome" class="form-control @error('name') is-invalid @enderror" required="required" type="text">
+                            @error('name')
+                            <span class="text-danger">{{ $message ?? '' }}</span>
+                            @enderror
                         </div>
 
                     </div>
                     <div class="form-group row">
                         <div class="col-md-6">
                             <input name="email" placeholder="Email" class="form-control" required="required" type="email">
+                            @error('email')
+                            <span class="text-danger">{{ $message ?? '' }}</span>
+                            @enderror
                         </div>
                         <div class="col-md-6">
-                            <input name="telefone" placeholder="Telefone" required="required" class="form-control" type="text">
+                            <input name="phone" placeholder="Telefone" required="required" class="form-control" type="text">
+                            @error('phone')
+                            <span class="text-danger">{{ $message ?? '' }}</span>
+                            @enderror
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <input name="cidade" placeholder="Cidade" class="form-control" type="text">
+                            <input name="city" placeholder="Cidade" class="form-control" type="text">
+                            @error('city')
+                            <span class="text-danger">{{ $message ?? '' }}</span>
+                            @enderror
                         </div>
                         <div class="col-md-6">
-                            <select name="estado" required="required" class="select form-control">
+                            <select name="state" required="required" class="select form-control">
                                 <option value="0" disabled selected>Selecione seu estado</option>
                                 <option value="AC">Acre</option>
                                 <option value="AL">Alagoas</option>
@@ -83,16 +96,25 @@
                                 <option value="SE">Sergipe</option>
                                 <option value="TO">Tocantins</option>
                             </select>
+                            @error('state')
+                            <span class="text-danger">{{ $message ?? '' }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input name="assunto" class="form-control" type="text" placeholder="Assunto (opcional)">
+                            <input name="subject" class="form-control" type="text" placeholder="Assunto (opcional)">
+                            @error('subject')
+                            <span class="text-danger">{{ $message ?? '' }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <textarea name="msg" cols="40" rows="5" class="form-control" placeholder="Deixe sua mensagem (opcional)"></textarea>
+                            <textarea name="message" cols="40" rows="5" class="form-control" placeholder="Deixe sua mensagem (opcional)"></textarea>
+                            @error('message')
+                            <span class="text-danger">{{ $message ?? '' }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -105,8 +127,8 @@
         </div>
         <div class="row d-flex flex-column">
             <div class="card p-3">
-                <p>Telefone Fixo: 27 2142-6196</p>
-                <p>Whatsapp: 27 992534915</p>
+                <p>Telefone Fixo: (27) 98833-5381</p>
+                <p>Whatsapp: (27) 98833-5381</p>
                 <p>Endereço Comercial: Avenida Professor Fernando Duarte Rabelo , 865, sala 203 - Bairro: Maria Ortiz - Vitoria Espirito Santo - CEP: 29070440</p>
                 <p> CNPJ - 05355421000159</p>
             </div>

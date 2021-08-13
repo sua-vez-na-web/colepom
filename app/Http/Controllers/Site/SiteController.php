@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactStoreRequest;
 use App\Http\Requests\StoreUpdateAffiliate;
 use App\Http\Requests\StoreUpdatePartner;
 use App\Http\Requests\StoreUpdateSyndicate;
@@ -11,6 +12,7 @@ use App\Models\Affiliate;
 use App\Models\AffiliateCoupom;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Models\Contact;
 use App\Models\Partner;
 use App\Models\Plan;
 use App\Models\Promotion;
@@ -19,7 +21,9 @@ use App\Models\State;
 use App\Models\Store;
 use App\Models\Syndicate;
 use App\Models\User;
+use App\Notifications\NewContactForm;
 use App\Notifications\NewUserRegistration;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -27,7 +31,7 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $promotions = Promotion::where('is_aprooved',true)->get();
+        $promotions = Promotion::where('is_aprooved', true)->get();
 
         return view('site.pages.home.index', [
             'promotions' => $promotions
@@ -36,7 +40,7 @@ class SiteController extends Controller
 
     public function promotions()
     {
-        $promotions = Promotion::where('is_aprooved',true)->get();
+        $promotions = Promotion::where('is_aprooved', true)->get();
         $categories = Category::all();
 
 
@@ -52,7 +56,7 @@ class SiteController extends Controller
     public function partners(Request $request)
     {
         return view('site.pages.partners.index', [
-            'partners' => Partner::where('is_aprooved',true)->get(),
+            'partners' => Partner::where('is_aprooved', true)->get(),
             'categories' => Category::all(),
             'states' => State::all(),
             'table' => 'partner'
@@ -61,7 +65,7 @@ class SiteController extends Controller
 
     public function syndicates()
     {
-        $syndicates = Syndicate::where('is_aprooved',true)->get();
+        $syndicates = Syndicate::where('is_aprooved', true)->get();
 
         return view('site.pages.syndicates.index', [
             'syndicates' => $syndicates,
@@ -91,7 +95,6 @@ class SiteController extends Controller
 
     public function SyndicateRegister()
     {
-
         return view('site.pages.syndicates.register');
     }
 
@@ -136,7 +139,6 @@ class SiteController extends Controller
 
     public function storeSyndicate(StoreUpdateSyndicate $request)
     {
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -248,7 +250,6 @@ class SiteController extends Controller
 
     public function partersSearch(Request $request)
     {
-
         $partners = Partner::searchPartners($request->estado, $request->cidade, $request->category);
 
         return view('site.pages.partners.index', [
@@ -261,7 +262,6 @@ class SiteController extends Controller
 
     public function syndicateSearch(Request $request)
     {
-
         $syndicates = Syndicate::searchSyndicates($request->estado, $request->cidade);
 
         return view('site.pages.partners.index', [
@@ -298,8 +298,6 @@ class SiteController extends Controller
 
     public function syndicateSubscribe(Request $request)
     {
-        // dd($request->all());
-
         $syndicate = Syndicate::find($request->syndicate_id);
 
         if ($syndicate) {
@@ -315,5 +313,16 @@ class SiteController extends Controller
 
             return redirect()->route('site.index')->with('msg', 'Obrigado pelo cadastro, em breve entraremos em contato');
         }
+    }
+
+    public function contact(ContactStoreRequest $request)
+    {
+        $message = $request->all();
+
+        $contact = Contact::create($message);
+        
+        $contact->notify(new NewContactForm());
+        
+        return redirect()->back()->with('msg', 'Sua mensagem foi enviada com sucesso, obrigado!');
     }
 }

@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+
+class Contact extends Model
+{
+    use HasFactory,Notifiable;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'city',
+        'state',
+        'subject',
+        'message',
+    ];
+}
