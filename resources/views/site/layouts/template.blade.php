@@ -60,7 +60,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('site.partners')}}">Parceiros
+                        <a class="nav-link" href="{{ route('site.be-partner') }}">Parceiros
                             <span class="sr-only">Parceiros</span>
                         </a>
                     </li>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="col-lg-3 text-center text-lg-right my-auto">
                     <ul class="list list-group">
-                        <a href="{{route('partners.register')}}" class="list-group text-white">Seja um Parceiro</a>
+                        <a href="{{route('site.be-partner')}}" class="list-group text-white">Seja um Parceiro</a>
                         <a href="{{route('syndicates.register')}}" class="list-group text-white">Cadastre seu Sindicato</a>
                         <a href="{{route('syndicates.register')}}" class="list-group text-white">Cadastre sua Associação</a>
                         <a href="{{ route('page.faq') }}" class="list-group text-white">Perguntas Frequentes</a>
