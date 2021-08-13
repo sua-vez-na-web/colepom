@@ -55,7 +55,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('affiliates.register') }}">Associado
+                        <a class="nav-link" href="{{ route('site.be-affiliate') }}">Associado
                             <span class="sr-only">Associado</span>
                         </a>
                     </li>
