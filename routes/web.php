@@ -40,7 +40,9 @@ Route::group(['namespace' => 'Site'], function () {
     Route::view('termos-de-uso', 'site.pages.termos-de-uso')->name('page.termos-de-uso');
     Route::view('sobre', 'site.pages.sobre')->name('page.sobre');
     Route::view('perguntas-frequentes', 'site.pages.faq')->name('page.faq');
+
     Route::view('contato', 'site.pages.contato')->name('page.contato');
+    Route::post('contato', 'SiteController@contact')->name('contact.store');
 
     Route::view('planos', 'site.pages.home.prices')->name('site.prices');
     Route::view('oferta', 'site.pages.home.oferta');
