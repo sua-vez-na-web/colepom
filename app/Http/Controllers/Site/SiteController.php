@@ -65,7 +65,7 @@ class SiteController extends Controller
 
     public function syndicates()
     {
-        $syndicates = Syndicate::where('is_aprooved', true)->get();
+        $syndicates = Syndicate::where('is_aprooved', true)->take(20)->latest()->get();
 
         return view('site.pages.syndicates.index', [
             'syndicates' => $syndicates,
