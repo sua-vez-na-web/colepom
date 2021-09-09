@@ -32,7 +32,7 @@
                 {!! Form::open(['route'=>'store.affiliates']) !!}
                 <div class="form-group">
                     <label>Sindicato</label>
-                    {!! Form::select('syndicate_id',$syndicates,null,['class'=>'form-control','placeholder'=>'Escolha um Sindicato']) !!}
+                    {!! Form::select('syndicate_id',$syndicates,null,['class'=>'form-control select2','placeholder'=>'Escolha um Sindicato']) !!}
                     @error('syndicate_id')
                     <span class="text-danger">{{ $message ?? '' }}</span>
                     @enderror
@@ -204,5 +204,13 @@
 
 @section('js')
 <script src="{{ asset('js/viaCep.js') }}"></script>
+
+<script>
+    $('.select2').select2({
+        theme: 'bootstrap4',
+    });
+
+</script>
+
 
 @endsection

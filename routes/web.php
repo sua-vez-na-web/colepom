@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Site'], function () {
 
     Route::view('seja-parceiro', 'site.pages.partners.be_partner')->name('site.be-partner');
     Route::view('quero-ser-um-affiliado', 'site.pages.affiliate.be_affiliate')->name('site.be-affiliate');
+    Route::view('cadastro-sindicato', 'site.pages.syndicates.be_syndicate')->name('site.be-syndicate');
 
     Route::get('associado/cadastro', 'SiteController@AffiliateRegister')->name('affiliates.register');
     Route::get('parceiro/cadastro', 'SiteController@PartnerRegister')->name('partners.register');

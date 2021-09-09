@@ -17,22 +17,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
     <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '315489766905520');
         fbq('track', 'PageView');
-        </script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=315489766905520&ev=PageView&noscript=1"
-/>
-</noscript>
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=315489766905520&ev=PageView&noscript=1" />
+    </noscript>
 </head>
 
 <body>
@@ -108,7 +118,7 @@
                 <div class="col-lg-3 text-center text-lg-right my-auto">
                     <ul class="list list-group">
                         <a href="{{route('site.be-partner')}}" class="list-group text-white">Seja um Parceiro</a>
-                        <a href="{{route('syndicates.register')}}" class="list-group text-white">Cadastre seu Sindicato</a>
+                        <a href="{{route('site.be-syndicate')}}" class="list-group text-white">Cadastre seu Sindicato</a>
                         <a href="{{route('syndicates.register')}}" class="list-group text-white">Cadastre sua Associação</a>
                         <a href="{{ route('page.faq') }}" class="list-group text-white">Perguntas Frequentes</a>
                     </ul>
@@ -144,6 +154,8 @@
     <script src="{{asset('js/app.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
     <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
     @yield('js')

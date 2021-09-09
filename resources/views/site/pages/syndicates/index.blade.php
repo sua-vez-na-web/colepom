@@ -52,6 +52,7 @@
 			@include('site.layouts._partials._filters')
 		</div>
 		<div class="col-md-9">
+			<div class="small">Novos Sindicatos:</div>
 			<div class="row">
 				@forelse ($syndicates as $syndicate)
 				<div class="col-md-4 col-sm-6 my-1">

@@ -25,6 +25,7 @@ use App\Notifications\NewContactForm;
 use App\Notifications\NewUserRegistration;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class SiteController extends Controller
@@ -65,7 +66,7 @@ class SiteController extends Controller
 
     public function syndicates()
     {
-        $syndicates = Syndicate::where('is_aprooved', true)->take(20)->latest()->get();
+        $syndicates = Syndicate::latest()->take(20)->get();
 
         return view('site.pages.syndicates.index', [
             'syndicates' => $syndicates,
@@ -81,9 +82,16 @@ class SiteController extends Controller
         return view('site.pages.promotions.show', compact('promotion'));
     }
 
-    public function AffiliateRegister()
+    public function AffiliateRegister(Request $request)
     {
-        $syndicates = Syndicate::pluck('name', 'id');
+        if (!$request->uf) {
+            return redirect()->back()->with('msg', 'Selecione um Estado para se cadastrar');
+        }
+
+        $estado = DB::table('estado')->where('uf', $request->uf)->first();
+        // dd($estado);
+        $syndicates = Syndicate::where('uf_code', $estado->id)->pluck('name', 'id');
+        // dd($syndicates);
         return view('site.pages.affiliate.register', compact('syndicates'));
     }
 
@@ -264,8 +272,8 @@ class SiteController extends Controller
     {
         $syndicates = Syndicate::searchSyndicates($request->estado, $request->cidade);
 
-        return view('site.pages.partners.index', [
-            'partners' => $syndicates,
+        return view('site.pages.syndicates.index', [
+            'syndicates' => $syndicates,
             'states' => State::all(),
             'table' => 'syndicate'
         ]);
@@ -320,9 +328,9 @@ class SiteController extends Controller
         $message = $request->all();
 
         $contact = Contact::create($message);
-        
+
         $contact->notify(new NewContactForm());
-        
+
         return redirect()->back()->with('msg', 'Sua mensagem foi enviada com sucesso, obrigado!');
     }
 }
