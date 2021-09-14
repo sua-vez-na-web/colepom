@@ -36,9 +36,9 @@ class StoreCoupon extends FormRequest
     {
         return [
             'id' => 'id',
-            'code' => 'code',
-            'promotion_id' => 'promotion_id',
-            'discount' => 'discount',
+            'code' => 'codigo',
+            'promotion_id' => 'promoção',
+            'discount' => 'desconto',
         ];
     }
 }
