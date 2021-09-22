@@ -115,9 +115,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('coupons/{id}/aproove', 'CouponsController@aproove')->name('coupons.aproove');
     Route::get('coupons/{id}/edit', 'CouponsController@edit')->name('coupons.edit');
     Route::get('coupons/create', 'CouponsController@create')->name('coupons.create');
-    
+
     Route::put('coupons/edit/{id}', 'CouponsController@update')->name('coupons.update');
-    
+
     Route::post('coupons/store', 'CouponsController@store')->name('coupons.store');
     //AfiliatesCoupons
     Route::get('affiliates-coupons', 'AffiliatesCouponsController@index')->name('affiliates-coupons.index');

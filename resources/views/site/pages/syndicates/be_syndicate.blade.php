@@ -24,7 +24,7 @@
             <h3 class="mb-2 border-bottom">Integração com suas parcerias:</h3>
             <p class="text-justify m-3">
                 Os principais estabelecimentos da sua cidade ou estado em nossa plataforma.
-                Transforme a comunicação da seu sindicato ou associação com uma nova maneira de se relacionar com seu público.                
+                Transforme a comunicação da seu sindicato ou associação com uma nova maneira de se relacionar com seu público.
             </p>
         </div>
     </div>
@@ -38,7 +38,7 @@
                     <small>Indicado para clubes em implementação</small>
                 </div>
                 <div class="body">
-                    <a href="" class="btn btn-lg my-2 btn-outline-dark">Contratar</a>
+                    <a href="{{ route('syndicates.register',['p'=>'plano-inicial']) }}" class="btn btn-lg my-2 btn-outline-dark">Contratar</a>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i class="fa fa-check"></i> &nbsp;Até 100 associados</li>
                         <li class="list-group-item"><i class="fa fa-check"></i> &nbsp;+250 parcerias nacionais</li>
@@ -67,7 +67,7 @@
                     <small>Indicado para clubes em fase de expansão</small>
                 </div>
                 <div class="body">
-                    <a href="" class="btn btn-lg my-2 full_colored">Contratar</a>
+                    <a href="{{ route('syndicates.register',['p'=>'plano-padrao']) }}" class="btn btn-lg my-2 full_colored">Contratar</a>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i class="fa fa-check"></i> &nbsp;Além de todas as funcionalidades do plano inicial:</li>
                         <li class="list-group-item"><i class="fa fa-check"></i> &nbsp;Até 1.000 associados</li>
@@ -91,7 +91,7 @@
                     <small>Indicado para clubes já consolidados</small>
                 </div>
                 <div class="body">
-                    <a href="" class="btn btn-lg my-2 btn-outline-dark">Contratar</a>
+                    <a href="{{ route('syndicates.register',['p'=>'plano-avancado']) }}" class="btn btn-lg my-2 btn-outline-dark">Contratar</a>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i class="fa fa-check"></i> &nbsp;Além de todas as funcionalidades do plano Padrão:</li>
                         <li class="list-group-item"><i class="fa fa-check"></i> &nbsp;Até 2.500 associados</li>
@@ -108,11 +108,10 @@
             <div class="card d-flex flex-column text-center p-1">
                 <div class="header">
                     <h2>ColepomPro</h2>
-                    {{-- <p>Gratuito</p> --}}
                     <small>QUER IR ALÉM? MAIS ASSOCIADOS? MAIS CUSTOMIZAÇÃO? OUTRAS INTEGRAÇÕES?</small>
                 </div>
                 <div class="body">
-                    <a href="" class="btn btn-lg my-2 btn-outline-primary">Fale Conosco</a>
+                    <a href="{{ route('syndicates.register',['p'=>'colepom-pro']) }}" class="btn btn-lg my-2 btn-outline-primary">Fale Conosco</a>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i class="fa fa-check"></i> &nbsp;Muito mais beneficiários</li>
                         <li class="list-group-item"><i class="fa fa-check"></i> &nbsp;Maior personalização da plataforma</li>

@@ -23,6 +23,7 @@ use App\Models\Syndicate;
 use App\Models\User;
 use App\Notifications\NewContactForm;
 use App\Notifications\NewUserRegistration;
+use App\Services\AsaasService;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -89,9 +90,9 @@ class SiteController extends Controller
         }
 
         $estado = DB::table('estado')->where('uf', $request->uf)->first();
-        // dd($estado);
+
         $syndicates = Syndicate::where('uf_code', $estado->id)->pluck('name', 'id');
-        // dd($syndicates);
+
         return view('site.pages.affiliate.register', compact('syndicates'));
     }
 
@@ -101,8 +102,21 @@ class SiteController extends Controller
         return view('site.pages.partners.register', compact('categories'));
     }
 
-    public function SyndicateRegister()
+    public function SyndicateRegister(Request $request)
     {
+        if (!$request->has('p')) {
+            return redirect()->route('site.be-syndicate')->with('msg', 'Você precisa selecionar um plano para continuar');
+        }
+        $plan = Plan::where('slug', $request->p)->first();
+
+        if (!$plan) {
+            return redirect()->route('site.be-syndicate')->with('msg', 'Você precisa selecionar um plano para continuar');
+        }
+
+        if ($plan) {
+            session(['plan' => $plan]);
+        }
+
         return view('site.pages.syndicates.register');
     }
 
@@ -159,12 +173,30 @@ class SiteController extends Controller
         $data['uf_code'] = $request->state ? State::getCodeByUf($request->state) : null;
         $data['city_code'] = City::getCodeByIbge($request->ibge);
 
-
-        $syndicate = $user->syndicate()->create($data);
-
+        $user->syndicate()->create($data);
         $user->notify(new NewUserRegistration($user));
 
-        return redirect()->route('plans.select', $syndicate->id);
+        $plan = session('plan');
+
+        if ($plan) {
+
+            $paymentLink = '';
+            if (!in_array($plan->id, [1, 4])) {
+                // $paymentLink = AsaasService::CreatePaymentLink($plan);
+            }
+
+            $user->subscriptions()->create([
+                'plan_id' => $plan->id,
+                'description' => $plan->description,
+                'cycle' => $plan->cycle,
+                'a_value' => $plan->amount,
+                'a_raw' => json_encode($paymentLink) ?? null
+            ]);
+
+            $user->notify(new NewUserRegistration($user));
+        }
+
+        return redirect()->route('site.index')->with('msg', 'Obrigado pelo cadastro, em breve entraremos em contato');
     }
 
     public function showPartner($id)

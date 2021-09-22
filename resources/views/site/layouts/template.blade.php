@@ -70,7 +70,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('site.be-partner') }}">Parceiros
+                        <a class="nav-link" href="{{ route('site.partners') }}">Parceiros
                             <span class="sr-only">Parceiros</span>
                         </a>
                     </li>

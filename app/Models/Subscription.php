@@ -32,4 +32,9 @@ class Subscription extends Model
     {
         return $this->belongsTo(Syndicate::class, 'syndicate_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

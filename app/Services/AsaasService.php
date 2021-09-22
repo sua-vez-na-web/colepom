@@ -63,4 +63,20 @@ class AsaasService
             ];
         }
     }
+
+    public static function CreatePaymentLink($plan)
+    {
+        $data = [
+            "name" => $plan->name,
+            "description" => $plan->description,
+            "endDate" => now()->addDays(15)->format('Y-m-d'),
+            "value" => $plan->amount,
+            "billingType" => "UNDEFINED",
+            "chargeType" => "RECURRENT",
+            "dueDateLimitDays" => 10,
+            "subscriptionCycle" => $plan->cycle,
+        ];
+
+        self::AsaasRequest('POST', 'paymentLinks', $data);
+    }
 }
