@@ -26,33 +26,13 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Nome</th>
-                                        <th>Presidente</th>
                                         <th>CNPJ</th>
                                         <th>Email</th>
-                                        <th>Aprovado</th>
+                                        <th>Telefone</th>
+                                        <th>Cidade</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach($syndicates as $syndicate)
-                                    <tr>
-                                        <td></td>
-                                        <td>{{$syndicate->name}}</td>
-                                        <td>{{$syndicate->president_name}}</td>
-                                        <td>{{$syndicate->cpf_cnpj}}</td>
-                                        <td>{{$syndicate->email}}</td>
-                                        <td>{{$syndicate->is_aprooved ?'SIM':'NÃO'}}</td>
-                                        <td>
-                                            <a href="{{ route('syndicates.edit',$syndicate->id) }}" class="btn btn-primary btn-xs">
-                                                <i class="fa fa-pencil"></i> Editar
-                                            </a>
-                                            <a href="{{ route('syndicates.show',$syndicate->id) }}" class="btn btn-primary btn-xs">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
                             </table>
                         </div>
                         <!-- /.panel-body -->
@@ -72,10 +52,52 @@
 @section('scripts')
 
 <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-
-        });
+    let dtOverrideGlobals = {
+        // buttons: dtButtons,
+        processing: true,
+        serverSide: true,
+        retrieve: true,
+        aaSorting: [],
+        ajax: "{{ route('syndicates.index') }}",
+        columns: [{
+                data: 'id',
+                name: 'id'
+            },
+            {
+                data: 'name',
+                name: 'name'
+            },
+            {
+                data: 'cpf_cnpj',
+                name: 'cpf_cnpj'
+            },
+            {
+                data: 'email',
+                name: 'email'
+            },
+            {
+                data: 'mobile_phone',
+                name: 'mobile_phone'
+            },
+            {
+                data: 'city',
+                name: 'city'
+            },
+            {
+                data: 'actions',
+                name: 'actions'
+            }
+        ],
+        orderCellsTop: true,
+        order: [
+            [1, 'desc']
+        ],
+        pageLength: 20,
+    };
+    let table = $('#dataTables-example').DataTable(dtOverrideGlobals);
+    $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e) {
+        $($.fn.dataTable.tables(true)).DataTable()
+            .columns.adjust();
     });
 </script>
 @endsection

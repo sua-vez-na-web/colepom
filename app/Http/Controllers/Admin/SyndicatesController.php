@@ -11,16 +11,39 @@ use App\Models\Syndicate;
 use App\Models\User;
 use App\Notifications\NewAffiliateAproovedBySyndicate;
 use App\Notifications\UserActivated;
-use App\Services\AsaasService;
 use Illuminate\Support\Facades\Storage;
 
+use Yajra\DataTables\DataTables;
 
 class SyndicatesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $syndicates = Syndicate::latest()->get();
-        return view('admin.pages.syndicates.index', compact('syndicates'));
+        if ($request->ajax()) {
+            $query = Syndicate::query()->select(sprintf('%s.*', (new Syndicate)->table));
+            $table = DataTables::of($query);
+
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $btn = "<a href='syndicates/$row->id/edit' class='btn btn-primary btn-xs'>
+                <i class='fa fa-pencil'></i> Editar
+                </a>";
+                return $btn;
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : "";
+            });
+
+
+            $table->rawColumns(['actions', 'placeholder']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.pages.syndicates.index');
     }
 
     public function create()
@@ -66,6 +89,7 @@ class SyndicatesController extends Controller
     {
         $data = $request->all();
 
+        // dd($data);
         if (!$syndicate = Syndicate::find($id)) {
             return redirect()->back();
         };

@@ -10,6 +10,7 @@ class Syndicate extends Model
 {
     use SoftDeletes;
 
+    public $table = "syndicates";
     protected $fillable = [
         'user_id',
         'name',
