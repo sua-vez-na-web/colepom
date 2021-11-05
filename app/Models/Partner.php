@@ -56,7 +56,7 @@ class Partner extends Model
 
     public function getImageAttribute()
     {
-        $defaultImage = asset('/img/colepom_bg_white.png');
+        $defaultImage = asset('/img/sem-foto.jpeg');
         return $this->attributes['brand'] ? Storage::url($this->attributes['brand']) : $defaultImage;
     }
 

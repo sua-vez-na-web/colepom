@@ -49,7 +49,7 @@ Route::group(['namespace' => 'Site'], function () {
     Route::view('contato', 'site.pages.contato')->name('page.contato');
     Route::post('contato', 'SiteController@contact')->name('contact.store');
 
-    Route::view('planos', 'site.pages.home.prices')->name('site.prices');
+    //Route::view('planos', 'site.pages.home.prices')->name('site.prices');
     Route::view('oferta', 'site.pages.home.oferta');
 
     Route::get('/ajaxCidades', 'AjaxController@ajaxCidades');
