@@ -50,7 +50,7 @@
         <div class="col-md-6 justify-content-center d-flex align-items-center flex-column">
             <h4 class="text-center">Não tem uma conta?
             </h4>
-            <a href="{{ route('affiliates.register') }}" class="btn btn-outline-dark">Cadastre-se aqui</a>
+            <a href="{{ route('site.be-affiliate') }}" class="btn btn-outline-dark">Cadastre-se aqui</a>
         </div>
     </div>
 </div>

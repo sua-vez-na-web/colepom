@@ -134,4 +134,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('profile', 'ProfileController@edit')->name('profile.edit');
     Route::post('profile', 'ProfileController@update')->name('profile.update');
     Route::post('profile/update-password', 'ProfileController@updatePassword')->name('profile.update-password');
+
+    //Testimonial
+    Route::resource('testimonials', 'TestimonialsController');
+
 });

@@ -17,6 +17,7 @@ use App\Models\Partner;
 use App\Models\Plan;
 use App\Models\Promotion;
 use App\Models\Role;
+use App\Models\Testimonial;
 use App\Models\State;
 use App\Models\Store;
 use App\Models\Syndicate;
@@ -204,18 +205,23 @@ class SiteController extends Controller
         $partner = Partner::find($id);
         $stores = $partner->stores()->pluck('id');
         $promotions = Promotion::whereIn('store_id', $stores)->get();
+        $testimonials = Testimonial::whereIn('partner_id', $partner)->inRandomOrder()
+        ->limit(3)
+        ->get();
 
         return view('site.pages.partners.partner', [
             'partner' => $partner,
             'stores' => $stores,
-            'promotions' => $promotions
+            'promotions' => $promotions,
+            'testimonials' => $testimonials
         ]);
     }
 
     public function showSyndicate($id)
     {
+
         return view('site.pages.syndicates.syndicate', [
-            'syndicate' => Syndicate::find($id)
+            'syndicate' => Syndicate::find($id),
         ]);
     }
 

@@ -47,12 +47,6 @@
 
 <div class="container">
 
-    <div class="container-fluid">
-        <div class="row">
-            <div id="map"></div>
-        </div>
-    </div>
-
     <div class="container">
         <div class="section row">
             <div class="col-md-12">
@@ -97,6 +91,40 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="title">
+            <h2 class="text-center">Depoimentos</h2>
+        </div>
+        <br>
+   
+    <div class="col-md-12">
+			<div class="row">
+            @forelse ($testimonials as $testimonial)
+				<div class="col-md-4 col-sm-12">
+					
+						<div class="card p-2">
+							<div class="tasfa"></div>
+							<div class="white-canvas">
+								<p>{{$testimonial->name}}</p>
+							</div>
+							<!-- <div class="cupom-desconto">{{$partner->discount}}%</div> -->
+							<div class="cupom-block">
+								<h5 class="cupom-title" data-toggle="tooltip" title="{{ $partner->title }}">
+									"{{$testimonial->description}}"
+								</h5>
+							</div>
+                            <p class="card-text"><small class="text-muted">{{$testimonial->created_at->diffForHumans()}}</small></p>
+						</div>
+					
+				</div>
+				@empty
+				<p>Nenhum Registro Encontrado.</p>
+				@endforelse
+			</div>
+		</div>
+
+    </div>
+</div>       
     @endsection
 
     @section('js')
