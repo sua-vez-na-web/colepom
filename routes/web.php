@@ -94,6 +94,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     //Partners
     Route::resource('partners', 'PartnersController');
     Route::get('partners/{id}/aproove', 'PartnersController@aproove')->name('partners.aproove');
+    Route::get('syndicates/{id}/post', 'SyndicatesController@set')->name('syndicates.set');
 
     //Stores
     Route::resource('stores', 'StoresController');
@@ -137,5 +138,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     //Testimonial
     Route::resource('testimonials', 'TestimonialsController');
+
+    //Posts
+    Route::resource('posts', 'PostsController');
 
 });

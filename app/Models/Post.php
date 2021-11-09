@@ -7,21 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
-class Testimonial extends Model
+class Post extends Model
 {
     
     use SoftDeletes;
 
     protected $fillable = [
-        'partner_id', 
-        'name',
-        'description',
+        'syndicate_id', 
+        'title',
+        'body',
+        'link',
         'is_active'      
     ];
 
-    public function partner(){
+    public function syndicate(){
 
-    return $this->belongsTo(Partner::class);
+    return $this->belongsTo(Syndicate::class);
     }
 
 }
