@@ -41,49 +41,20 @@
 </div>
 <div class="container ">
     <div class="row justify-content-center">
+        <h2 class="row justify-content-center">Sobre</h2>   
         <div class="col-md-12">
             <div class="page-text ">
-                <p> {{ $syndicate->observations ?? '' }}</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna velit, dignissim et bibendum et, ultrices sed orci. Curabitur eu tortor est. Phasellus augue leo, porttitor sit amet metus nec, congue luctus dolor. Maecenas dignissim ut nisl ac finibus. Cras ornare purus ut diam elementum elementum. Suspendisse potenti. Vestibulum ut mattis justo. Integer non aliquet libero. Proin suscipit varius mattis. Vivamus eleifend lectus rutrum, vestibulum metus ut, semper diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+Aenean orci justo, tempor semper urna sed, scelerisque dapibus tellus. Proin tincidunt dolor ac fringilla fermentum. Ut dictum mi eu lectus aliquet tristique. Etiam egestas lacus ut risus fringilla finibus. Suspendisse at risus eros. Suspendisse molestie velit eget condimentum tristique. Curabitur vehicula mollis risus sed varius. In sollicitudin nunc ante. Curabitur iaculis quam eu nulla volutpat, eu aliquet ante convallis. Nullam fermentum tincidunt arcu nec sodales. Donec viverra, ex sed facilisis accumsan, metus magna ultrices sem, a fringilla enim ante quis libero. Vestibulum iaculis diam consectetur lacinia fringilla. Vestibulum feugiat erat ac nisi dapibus tincidunt. Suspendisse pretium, magna vel ultricies iaculis, nisi augue egestas nunc, ac ultrices diam mi ac lacus. </p>
             </div>
-
-            <div class="carousel carousel-content slide" id="carousel-868212">
-                <ol class="carousel-indicators">
-                    <li data-slide-to="0" data-target="#carousel-868212">
-                    </li>
-                    <li data-slide-to="1" data-target="#carousel-868212" class="active">
-                    </li>
-                    <li data-slide-to="2" data-target="#carousel-868212">
-                    </li>
-                </ol>
-
-                <div class="carousel-inner">
-                    <div class="carousel-item">
-                        <img class="d-block w-100" alt="Carousel Bootstrap First" src="https://images.unsplash.com/photo-1510130315046-1e47cc196aa0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=42549827c6ab513e2e0d86208749e05e&auto=format&fit=crop&w=1050&q=80">
-                    </div>
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" alt="Carousel Bootstrap Second" src="https://images.unsplash.com/photo-1464979681340-bdd28a61699e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9962230a1213bfd754ed20ae96114c04&auto=format&fit=crop&w=1050&q=80">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" alt="Carousel Bootstrap Third" src="https://images.unsplash.com/photo-1511733897353-5b04f82435a8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=00f1f8fe0951b340878a85747b68b9c1&auto=format&fit=crop&w=1050&q=80">
-                    </div>
-                </div>
-
-                <a class="carousel-control-prev" href="#carousel-868212" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel-868212" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
         </div>
     </div>
 </div>
-<div class="container-fluid ">
-    <div class="row ">
-        <div id="map"></div>
-    </div>
+<br>
+<div class="container">
+    <h2 class="row justify-content-center">Notícias</h2>    
 </div>
 @endsection
 

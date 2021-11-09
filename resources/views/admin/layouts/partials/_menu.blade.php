@@ -104,6 +104,13 @@
                     <span>Planos</span>
                 </a>
             </li>
+            <li class="{{ request()->is('admin/testimonials') || request()->is('admin/testimonials/*') ? 'active' : ''  }}">
+                <a href="{{ route('testimonials.index') }}">
+                    <i class="fa fa-list">
+                    </i>
+                    <span>Depoimentos</span>
+                </a>
+            </li>
             @endcan
             <li><a href="{{route('profile.edit')}}"><i class="fa fa-user"></i>Minha Conta</a></li>
             <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"><i class="fa fa-sign-out"></i> <span>Sair</span></a></li>
