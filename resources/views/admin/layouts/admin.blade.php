@@ -124,6 +124,14 @@
     <script src="{{asset('js/viaCep.js')}}"></script>
     <script src="{{asset('js/jquery.mask.min.js')}}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/7qqk3otd5wrzlt0kaja916gc1w2hw46lgcgmdsuuvxv8pyl0/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#testando', // Replace this CSS selector to match the placeholder element for TinyMCE
+            plugins: 'code table lists',
+            toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+        });
+    </script>
     <script>
         $(function() {
             let copyButtonTrans = "{{ trans('global.datatables.copy') }}";

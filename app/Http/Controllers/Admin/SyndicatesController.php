@@ -29,7 +29,10 @@ class SyndicatesController extends Controller
             $table->editColumn('actions', function ($row) {
                 $btn = "<a href='syndicates/$row->id/edit' class='btn btn-primary btn-xs'>
                 <i class='fa fa-pencil'></i> Editar
+                </a><a href='syndicates/$row->id/post' class='btn btn-primary btn-xs'>
+                <i class='fa fa-pencil'></i> Adicionar Notícia
                 </a>";
+              
                 return $btn;
             });
 
@@ -142,5 +145,12 @@ class SyndicatesController extends Controller
         }
 
         return redirect()->back()->with('msg', 'Sindicato Aprovado!');
+    }
+
+    public function set($id)
+    {
+
+        $syndicates = Syndicate::find($id);
+        return redirect()->route('posts.create', compact('syndicates'));
     }
 }

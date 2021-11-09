@@ -111,6 +111,13 @@
                     <span>Depoimentos</span>
                 </a>
             </li>
+            <li class="{{ request()->is('admin/posts') || request()->is('admin/posts/*') ? 'active' : ''  }}">
+                <a href="{{ route('posts.index') }}">
+                    <i class="fa fa-list">
+                    </i>
+                    <span>Notícias</span>
+                </a>
+            </li>
             @endcan
             <li><a href="{{route('profile.edit')}}"><i class="fa fa-user"></i>Minha Conta</a></li>
             <li><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"><i class="fa fa-sign-out"></i> <span>Sair</span></a></li>
