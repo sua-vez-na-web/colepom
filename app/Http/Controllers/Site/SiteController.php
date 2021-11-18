@@ -12,6 +12,7 @@ use App\Models\Affiliate;
 use App\Models\AffiliateCoupom;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Post;
 use App\Models\Models\Contact;
 use App\Models\Partner;
 use App\Models\Plan;
@@ -205,9 +206,7 @@ class SiteController extends Controller
         $partner = Partner::find($id);
         $stores = $partner->stores()->pluck('id');
         $promotions = Promotion::whereIn('store_id', $stores)->get();
-        $testimonials = Testimonial::whereIn('partner_id', $partner)->inRandomOrder()
-        ->limit(3)
-        ->get();
+        $testimonials = Testimonial::whereIn('partner_id', $partner)->where('is_active', true)->inRandomOrder()->limit(3)->get();
 
         return view('site.pages.partners.partner', [
             'partner' => $partner,
@@ -219,9 +218,12 @@ class SiteController extends Controller
 
     public function showSyndicate($id)
     {
+        $syndicates = Syndicate::find($id);
+        $posts = Post::whereIn('syndicate_id', $syndicates)->where('is_active', true)->inRandomOrder()->limit(3)->get();
 
         return view('site.pages.syndicates.syndicate', [
-            'syndicate' => Syndicate::find($id),
+            'syndicate' => $syndicates,
+            'posts'      => $posts,
         ]);
     }
 

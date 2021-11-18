@@ -1,5 +1,5 @@
 <div class="form-group col-lg-12 col-sm-12  @error('name') has-error @enderror">
-    <input class="form-control" name="syndicate_id" type="hidden" value="{{Request::get('syndicates')}}"> 
+    <input class="form-control" name="syndicate_id" type="hidden" value="{{Request::get('syndicates') ?? @old('syndicates_id')}}"> 
         @error('syndicates')
         <span class="text-danger">{{ $message ?? '' }}</span>
         @enderror
@@ -15,7 +15,7 @@
 
 <div class="form-group col-lg-12 col-sm-12  @error('body') has-error @enderror">
     <label>Texto da Notícia:</label>
-    <textarea class="form-control" name="body" id="testando" value="{{ $post->body ?? @old('body') }}"></textarea>
+    <textarea class="form-control" name="body"  type="text" >{{ $post->body ?? @old('body') }}</textarea>
     @error('body')
     <span class="text-danger">{{ $message ?? '' }}</span>
     @enderror

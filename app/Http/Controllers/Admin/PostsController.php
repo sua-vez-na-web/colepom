@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use App\Models\Role;
 use App\Models\Syndicate;
+use App\Http\Requests\StorePost;
 
 class PostsController extends Controller
 {
@@ -33,10 +33,10 @@ class PostsController extends Controller
     }
 
  
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
 
-      
+
         Post::create($request->all());
 
         return redirect()->route('posts.index')->with('msg', 'Notícia Adicionada!');
@@ -65,13 +65,13 @@ class PostsController extends Controller
    
     public function update(Request $request, $id)
     {
-        if (!$post = Testimonial::find($id)) {
+        if (!$post = Post::find($id)) {
             return redirect()->back();
         };
 
         $post->title = $request->title;
-        $post->body = $request->mybody;
-        $post->syndicate_id = $request->syndicates_id;
+        $post->body = $request->body;
+        $post->syndicate_id;
         $post->link = $request->link;
         $post->is_active = $request->is_active;
  
