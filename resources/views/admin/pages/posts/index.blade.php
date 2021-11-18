@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a href="{{route('posts.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Nova Notícia </a>
+                            <!-- <a href="{{route('posts.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Nova Notícia </a> -->
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
