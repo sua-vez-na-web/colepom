@@ -64,14 +64,14 @@
 <div class="row">
     <div class="form-group col-md-3 col-sm-12  @error('phone') has-error @enderror">
         <label>Telefone</label>
-        <input class="form-control cnpj" name="phone" type="text" value="{{ $syndicate->phone ?? @old('phone') }}">
+        <input class="form-control phone" name="phone" type="text" value="{{ $syndicate->phone ?? @old('phone') }}">
         @error('phone')
         <span class="text-danger">{{ $message ?? '' }}</span>
         @enderror
     </div>
     <div class="form-group col-md-3 col-sm-12  @error('mobile_phone') has-error @enderror">
         <label>Celular</label>
-        <input class="form-control cnpj" name="mobile_phone" type="text"
+        <input class="form-control mobile-phone" name="mobile_phone" type="text"
                value="{{ $syndicate->mobile_phone ?? @old('mobile_phone') }}">
         @error('mobile_phone')
         <span class="text-danger">{{ $message ?? '' }}</span>
@@ -79,7 +79,7 @@
     </div>
     <div class="form-group col-md-3 col-sm-12  @error('municipal_inscription') has-error @enderror">
         <label>Inscrição Municipal</label>
-        <input class="form-control cnpj" name="municipal_inscription" type="text"
+        <input class="form-control" name="municipal_inscription" type="text"
                value="{{ $syndicate->municipal_inscription ?? @old('municipal_inscription') }}">
         @error('municipal_inscription')
         <span class="text-danger">{{ $message ?? '' }}</span>
@@ -87,7 +87,7 @@
     </div>
     <div class="form-group col-md-3 col-sm-12  @error('state_inscription') has-error @enderror">
         <label>Inscrição Estadual</label>
-        <input class="form-control cnpj" name="state_inscription" type="text"
+        <input class="form-control" name="state_inscription" type="text"
                value="{{ $syndicate->state_inscription ?? @old('state_inscription') }}">
         @error('state_inscription')
         <span class="text-danger">{{ $message ?? '' }}</span>
@@ -183,6 +183,12 @@
         @enderror
     </div>
 
+    <h4>Sobre o Sindicato</h4>
+    <hr>
+    <div class="form-group col-sm-12  @error('instagram') has-error @enderror">
+        <label>Sobre</label>
+        <textarea class="form-control" name="description" type="text">{{ $post->body ?? @old('description') }}</textarea>
+    </div>    
 
 
 

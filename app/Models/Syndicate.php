@@ -15,6 +15,7 @@ class Syndicate extends Model
         'user_id',
         'name',
         'president_name',
+        'description',
         'cpf_cnpj',
         'phone',
         'mobile_phone',
