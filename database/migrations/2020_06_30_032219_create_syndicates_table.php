@@ -38,6 +38,7 @@
                 $table->string('municipal_inscription')->nullable();
                 $table->string('state_inscription')->nullable();
                 $table->text('observations')->nullable();
+                $table->text('description')->nullable();
                 $table->boolean('is_aprooved')->default(false);
                 $table->timestamps();
 
