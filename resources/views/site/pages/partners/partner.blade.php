@@ -96,60 +96,58 @@
             <h2 class="text-center">Depoimentos</h2>
         </div>
         <br>
-   
-    <div class="col-md-12">
-			<div class="row">
-            @forelse ($testimonials as $testimonial)
-				<div class="col-md-4 col-sm-12">
-					
-						<div class="card p-2">
-							<div class="tasfa"></div>
-							<div class="white-canvas">
-								<p>{{$testimonial->name}}</p>
-							</div>
-							<!-- <div class="cupom-desconto">{{$partner->discount}}%</div> -->
-							<div class="cupom-block">
-								<h5 class="cupom-title" data-toggle="tooltip" title="{{ $partner->title }}">
-									"{{$testimonial->description}}"
-								</h5>
-							</div>
-                            <p class="card-text"><small class="text-muted">{{$testimonial->created_at->diffForHumans()}}</small></p>
-						</div>
-					
-				</div>
-				@empty
-				<p>Nenhum Registro Encontrado.</p>
-				@endforelse
-			</div>
-		</div>
+
+        <div class="col-md-12">
+            <div class="row">
+                @forelse ($testimonials as $testimonial)
+                <div class="col-md-6 col-sm-12">
+                    <div class="card p-2">
+                        <div class="tasfa"></div>
+                        <div class="white-canvas">
+                            <p class="font-weight-bold">{{$testimonial->name}}</p>
+                        </div>
+
+                        <div class="cupom-block">
+                            <small>
+                                {{$testimonial->description}}
+                            </small>
+                        </div>
+                        <p class="card-text"><small class="text-muted">{{$testimonial->created_at->diffForHumans()}}</small></p>
+                    </div>
+                </div>
+                @empty
+                <p>Nenhum Registro Encontrado.</p>
+                @endforelse
+            </div>
+        </div>
 
     </div>
-</div>       
-    @endsection
+</div>
+@endsection
 
-    @section('js')
+@section('js')
 
-    <script>
-        // Initialize and add the map
-        function initMap() {
-            // The location of Uluru
-            var coordinates = {
-                lat: -22.9732303,
-                lng: -43.2032649
-            };
-            // The map, centered at Uluru
-            var map = new google.maps.Map(
-                document.getElementById('map'), {
-                    zoom: 19,
-                    center: coordinates
-                });
-            // The marker, positioned at Uluru
-            var marker = new google.maps.Marker({
-                position: coordinates,
-                map: map
+<script>
+    // Initialize and add the map
+    function initMap() {
+        // The location of Uluru
+        var coordinates = {
+            lat: -22.9732303,
+            lng: -43.2032649
+        };
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {
+                zoom: 19,
+                center: coordinates
             });
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmo4CfcMoOKVWs05svsO2ksL3zt4MaDZM&callback=initMap">
-    </script>
-    @endsection
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({
+            position: coordinates,
+            map: map
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmo4CfcMoOKVWs05svsO2ksL3zt4MaDZM&callback=initMap">
+</script>
+@endsection

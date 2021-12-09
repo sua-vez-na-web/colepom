@@ -41,49 +41,48 @@
 </div>
 <div class="container ">
     <div class="row justify-content-center">
-        <h2 class="row justify-content-center">Sobre</h2>   
+        <h2 class="row justify-content-center">Sobre</h2>
         <div class="col-md-12">
             <div class="page-text ">
                 <p>{{$syndicate->description ?? 'Não possui detalhes'}}</p>
             </div>
-            </div>
         </div>
     </div>
 </div>
+</div>
 <br>
 <div class="container">
-        <div class="title">
-            <h2 class="text-center">Notícias</h2>
-        </div>
-        <br>
-   
-    <div class="col-md-12">
-			<div class="row">
-            @forelse ($posts as $post)
-				<div class="col-md-4 col-sm-12">
-					
-						<div class="card p-2">
-							<div class="tasfa"></div>
-							<div class="white-canvas">
-								<p>{{$post->title}}</p>
-							</div>
-							
-							<div class="cupom-block">
-								<h5 class="cupom-title" data-toggle="tooltip" title="{{ $post->title }}">
-									"{{$post->body}}"
-								</h5>
-							</div>
-                            <p class="card-text"><small class="text-muted">{{$post->created_at->diffForHumans()}}</small></p>
-						</div>
-					
-				</div>
-				@empty
-				<p>Nenhum Registro Encontrado.</p>
-				@endforelse
-			</div>
-		</div>
-
+    <div class="title">
+        <h2 class="text-center">Notícias</h2>
     </div>
+    <br>
+
+    <div class="col-md-12">
+        <div class="row">
+            @forelse ($posts as $post)
+            <div class="col-md-6 col-sm-12">
+                <div class="card p-2">
+                    <div class="white-canvas">
+                        <a href="{{$post->link}}" target="_blank">
+                            <p class="font-weight-bold">{{$post->title}}</p>
+                        </a>
+                    </div>
+
+                    <div class="cupom-block">
+                        <small>
+                            {{$post->body}}
+                        </small>
+                    </div>
+                    <p class="card-text"><small class="text-muted">{{$post->created_at->diffForHumans()}}</small></p>
+                </div>
+            </div>
+            @empty
+            <p>Nenhum Registro Encontrado.</p>
+            @endforelse
+        </div>
+    </div>
+
+</div>
 @endsection
 
 @section('js')

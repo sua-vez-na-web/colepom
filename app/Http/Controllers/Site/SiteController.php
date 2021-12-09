@@ -218,11 +218,12 @@ class SiteController extends Controller
 
     public function showSyndicate($id)
     {
-        $syndicates = Syndicate::find($id);
-        $posts = Post::whereIn('syndicate_id', $syndicates)->where('is_active', true)->inRandomOrder()->limit(3)->get();
+        $syndicate = Syndicate::find($id);
+        $posts = $syndicate->posts()->where('is_active', true)->inRandomOrder()->limit(3)->get();
+
 
         return view('site.pages.syndicates.syndicate', [
-            'syndicate' => $syndicates,
+            'syndicate' => $syndicate,
             'posts'      => $posts,
         ]);
     }
