@@ -44,6 +44,15 @@
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=315489766905520&ev=PageView&noscript=1" />
     </noscript>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7671199782473925" crossorigin="anonymous"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SGFZKRN4PP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SGFZKRN4PP');
+</script>
 </head>
 
 <body>
